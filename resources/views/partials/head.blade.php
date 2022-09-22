@@ -44,6 +44,8 @@
         <link rel="stylesheet" href="{{ mix('css/themes/cosmic-void.css') }}" crossorigin="anonymous">
     @endif
 
+    <link rel="stylesheet" href="{{ mix('css/themes/arthur.css') }}" crossorigin="anonymous">
+
     @if (isset(auth()->user()->custom_css))
         <link rel="stylesheet" href="{{ auth()->user()->custom_css }}">
     @endif

@@ -29,6 +29,7 @@ mix.options({
      *
      */
     .sass('resources/sass/themes/galactic.scss', 'public/css/themes/galactic.css')
+    .sass('resources/sass/themes/arthur.scss', 'public/css/themes/arthur.css')
     .sass('resources/sass/themes/dark-blue.scss', 'public/css/themes/dark-blue.css')
     .sass('resources/sass/themes/dark-green.scss', 'public/css/themes/dark-green.css')
     .sass('resources/sass/themes/dark-pink.scss', 'public/css/themes/dark-pink.css')
