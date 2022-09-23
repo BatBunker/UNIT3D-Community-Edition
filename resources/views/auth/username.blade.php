@@ -21,6 +21,7 @@
     <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ mix('css/main/login.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ mix('css/main/auth.css') }}" crossorigin="anonymous">
 </head>
 
 <body>

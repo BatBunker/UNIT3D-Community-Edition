@@ -47,6 +47,7 @@ mix.options({
      * Note: These will likely be reworked into VueJS component(s)
      */
     .sass('resources/sass/main/login.scss', 'public/css/main/login.css')
+    .sass('resources/sass/main/auth.scss', 'public/css/main/auth.css')
     .sass('resources/sass/main/twostep.scss', 'public/css/main/twostep.css')
 
     /*
