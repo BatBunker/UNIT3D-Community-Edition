@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'nerd_bot' => (bool) env('nerd_bot_enabled', true),
+    'nerd_bot' => (bool) env('NERD_BOT_ENABLED', true),
 
     /*
     |--------------------------------------------------------------------------

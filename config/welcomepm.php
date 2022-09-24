@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'subject' => 'Welcome to' . \config('app.name'),
+    'subject' => 'Welcome to' . env('APP_NAME',''),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
     | Message
     |
     */
-    'message' => "Welcome To [b]" . \config('app.name') . "[/b].
+    'message' => "Welcome To [b]" . env('APP_NAME','') . "[/b].
 
-    -" . \config('app.name') . ":space_invader:",
+    -" . env('APP_NAME','') . ":space_invader:",
 ];

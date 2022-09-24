@@ -76,9 +76,9 @@ return [
     | Global Freeleech
     |
     */
-    'freeleech' => (bool)env('FREELEECH', false),
+    'freeleech' => (bool) env('FREELEECH', false),
 
-    'freeleech_until' => (string)env('FREELEECH_UNTIL', ''),
+    'freeleech_until' => (string) env('FREELEECH_UNTIL', ''),
 
     /*
     |--------------------------------------------------------------------------
