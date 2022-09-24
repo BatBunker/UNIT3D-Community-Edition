@@ -67,6 +67,6 @@ return [
     |
     */
 
-    'magnet' => (int) env('ENABLE_MAGNET',0),
+    'magnet' => (int) env('ENABLE_MAGNET', 0),
 
 ];

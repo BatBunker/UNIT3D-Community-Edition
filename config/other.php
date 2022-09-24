@@ -218,6 +218,6 @@ return [
     |
     */
 
-    'show-poll' => (bool) env('SHOW_POLL',true),
+    'show-poll' => (bool) env('SHOW_POLL', true),
 
 ];
