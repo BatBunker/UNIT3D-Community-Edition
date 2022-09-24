@@ -191,3 +191,23 @@ img.torrent-poster-img-small,
   border: 1px var(--app-border-light-color) solid;
 }
 
+.top-nav__branding > img {
+  max-width: 150px;
+  font-size: .75em;
+}
+
+#l-footer {
+  border: 1px var(--app-border-light-color) solid;
+}
+
+#l-footer > .container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#l-footer .l-footer-section:first-child,
+#l-footer .l-footer-section:last-child {
+  display: none;
+  visibility: hidden;
+}
