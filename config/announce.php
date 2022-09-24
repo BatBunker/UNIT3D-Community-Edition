@@ -49,7 +49,7 @@ return [
     |
     */
 
-    'rate_limit' => (int) env('max_download_locations',3),
+    'rate_limit' => (int) env('max_download_locations', 3),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ return [
     |
     */
 
-    'connectable_check' => (bool) env('connectable_check',false),
+    'connectable_check' => (bool) env('connectable_check', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'connectable_check_interval' => (int) env('CONNECTABLE_CHECK_INTERVAL',60 * 30),
+    'connectable_check_interval' => (int) env('CONNECTABLE_CHECK_INTERVAL', 60 * 30),
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +88,7 @@ return [
     */
 
     'slots_system' => [
-        'enabled' => (bool) env("SLOTS_SYSTEM",false),
+        'enabled' => (bool) env("SLOTS_SYSTEM", false),
     ],
 
 ];
