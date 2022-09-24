@@ -10,7 +10,8 @@
  * @author     HDVinnie <hdinnovations@protonmail.com>
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
-
+// TODO We have to improve the pages management system.
+// Currently it rally sucks :(
 return [
 
     /*
@@ -22,7 +23,7 @@ return [
     |
     */
 
-    'title' => 'UNIT3D',
+    'title' => env('APP_NAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ return [
     |
     */
 
-    'subTitle' => 'Built On Laravel',
+    'subTitle' => env('SUB_TITLE', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ return [
     |
     */
 
-    'meta_description' => 'Built On Laravel',
+    'meta_description' => env('SUB_TITLE', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,9 +76,9 @@ return [
     | Global Freeleech
     |
     */
-    'freeleech' => false,
+    'freeleech' => (bool)env('FREELEECH', false),
 
-    'freeleech_until' => '12/23/2017 3:00 PM EST',
+    'freeleech_until' => (string)env('FREELEECH_UNTIL', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,7 +88,7 @@ return [
     | Global Double Upload
     |
     */
-    'doubleup' => false,
+    'doubleup' => (bool)env('DOUBLE_UPLOAD', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -98,7 +99,7 @@ return [
     |
     */
 
-    'ratio' => 0.4,
+    'ratio' => \number_format(env('MIN_RATIO', 0.4), 1),
 
     /*
     |--------------------------------------------------------------------------
@@ -111,11 +112,11 @@ return [
     | Restricted mode for invites. If set to true, invites will be restricted
     | Exempt these groups from the invite restrictions
     */
-    'invite-only'   => true,
-    'invite_expire' => '14',
+    'invite-only' => (bool)env('INVITE_ONLY', true),
+    'invite_expire' => (string)env('INVITE_EXPIRE', '14'),
 
     'invites_restriced' => false,
-    'invite_groups'     => [
+    'invite_groups' => [
         'Administrator',
         'Owner',
     ],
@@ -128,7 +129,7 @@ return [
     | This will be the upload and download given to new members. (In Bytes!)
     | Default: 50GiB Upload and 1GiB Download
     */
-    'default_upload'   => '53687091200',
+    'default_upload' => '53687091200',
     'default_download' => '1073741824',
 
     /*
@@ -164,7 +165,7 @@ return [
     | True/1 = Enabled
     | False/0 = Disabled
     */
-    'application_signups' => false,
+    'application_signups' => env('APPLICATION_SIGNUPS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +173,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 1
     */
-    'rules_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/1',
+    'rules_url' => 'https://' . parse_url(env('APP_URL'), PHP_URL_HOST) . '/pages/1',
 
     /*
     |--------------------------------------------------------------------------
@@ -180,7 +181,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 2
     */
-    'faq_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/2',
+    'faq_url' => 'https://' . parse_url(env('APP_URL'), PHP_URL_HOST) . '/pages/2',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +189,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 4
     */
-    'upload-guide_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/4',
+    'upload-guide_url' => 'https://' . parse_url(env('APP_URL'), PHP_URL_HOST) . '/pages/4',
 
     /*
     |--------------------------------------------------------------------------
