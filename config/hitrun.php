@@ -44,7 +44,7 @@ return [
     |
     */
 
-    'max_warnings' => (int) env('MAX_WARNINGS',3),
+    'max_warnings' => (int) env('MAX_WARNINGS', 3),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'revoke' => (int) env('REVOKE_TIME',2),
+    'revoke' => (int) env('REVOKE_TIME', 2),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'grace' => (int) env('grace_time',3),
+    'grace' => (int) env('grace_time', 3),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'buffer' => (int) env('BUFFER_PERCENTAGE',3),
+    'buffer' => (int) env('BUFFER_PERCENTAGE', 3),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
     |
     */
 
-    'expire' => (int) env('EXPIRE_TIME',14),
+    'expire' => (int) env('EXPIRE_TIME', 14),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,6 +101,6 @@ return [
     |
     */
 
-    'prewarn' => (int) env('PREWARN_TIME',1),
+    'prewarn' => (int) env('PREWARN_TIME', 1),
 
 ];

@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'message_limit' => (int) env('MESSAGE_LIMIT',100),
+    'message_limit' => (int) env('MESSAGE_LIMIT', 100),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'nerd_bot' => (bool) env('nerd_bot_enabled',true),
+    'nerd_bot' => (bool) env('nerd_bot_enabled', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'show-chat' => (bool) env('SHOW_CHAT',true),
+    'show-chat' => (bool) env('SHOW_CHAT', true),
 
 
 ];
