@@ -169,7 +169,7 @@
     </div>
     <br>
 
-    <script src="{{ mix('js/app.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ mix('js/public.js') }}" crossorigin="anonymous"></script>
 
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
       let images = 2

@@ -94,7 +94,7 @@
     </div>
 </div>
 
-<script src="{{ mix('js/app.js') }}" crossorigin="anonymous"></script>
+<script src="{{ mix('js/public.js') }}" crossorigin="anonymous"></script>
 @foreach (['warning', 'success', 'info'] as $key)
     @if (Session::has($key))
         <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
