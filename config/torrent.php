@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'download_check_page' => 0,
+    'download_check_page' => (int)env('DOWNLOAD_CHECK_PAGE', 0),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'source' => 'UNIT3D',
+    'source' => env('torrent_source', config('APP_NAME', '')),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,8 +44,8 @@ return [
     |
     */
 
-    'created_by'        => 'Edited by UNIT3D',
-    'created_by_append' => true,
+    'created_by' => env('CREATED_BY', 'Edited by' . env('APP_NAME', '')),
+    'created_by_append' => (bool)env('AAD_CREATED_BY', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     |
     */
 
-    'comment' => 'This torrent was downloaded from UNIT3D',
+    'comment' => env('TORRENT_COMMENT', 'This torrent was downloaded from' . env('APP_NAME', '')),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,6 +67,6 @@ return [
     |
     */
 
-    'magnet' => 0,
+    'magnet' => (int) env('ENABLE_MAGNET',0),
 
 ];

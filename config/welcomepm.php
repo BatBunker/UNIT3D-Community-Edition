@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'subject' => 'Welcome to UNIT3D',
+    'subject' => 'Welcome to' . \config('app.name'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,8 +32,7 @@ return [
     | Message
     |
     */
+    'message' => "Welcome To [b]" . \config('app.name') . "[/b].
 
-    'message' => 'Welcome To [b]UNIT3D[/b].
-
-    - UNIT3D :space_invader:',
+    -" . \config('app.name') . ":space_invader:",
 ];
