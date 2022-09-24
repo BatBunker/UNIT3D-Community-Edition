@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'enabled' => (bool) env('client_blacklist', false),
+    'enabled' => (bool) env('CLIENT_BLACKLIST', false),
 
     /*
     |--------------------------------------------------------------------------
