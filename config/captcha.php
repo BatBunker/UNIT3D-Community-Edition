@@ -21,5 +21,5 @@ return [
     |
     */
 
-    'enabled' => true,
+    'enabled' => (bool) env('CAPTCHA', true),
 ];

@@ -21,7 +21,7 @@ return [
     | IRC Bot Settings
     |
     */
-
+// TODO Test if this still works
     'enabled'      => false,
     'hostname'     => 'example.com',
     'server'       => 'irc.example.com',
