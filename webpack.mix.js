@@ -29,6 +29,7 @@ mix.options({
      *
      */
     .sass('resources/sass/themes/galactic.scss', 'public/css/themes/galactic.css')
+    .sass('resources/sass/themes/arthur.scss', 'public/css/themes/arthur.css')
     .sass('resources/sass/themes/dark-blue.scss', 'public/css/themes/dark-blue.css')
     .sass('resources/sass/themes/dark-green.scss', 'public/css/themes/dark-green.css')
     .sass('resources/sass/themes/dark-pink.scss', 'public/css/themes/dark-pink.css')
@@ -46,6 +47,7 @@ mix.options({
      * Note: These will likely be reworked into VueJS component(s)
      */
     .sass('resources/sass/main/login.scss', 'public/css/main/login.css')
+    .sass('resources/sass/main/auth.scss', 'public/css/main/auth.css')
     .sass('resources/sass/main/twostep.scss', 'public/css/main/twostep.css')
 
     /*
@@ -68,4 +70,5 @@ mix.options({
     .js('resources/js/unit3d/imgbb.js', 'public/js')
     .js('resources/js/vendor/alpine.js', 'public/js')
     .js('resources/js/vendor/virtual-select.js', 'public/js')
-    .js('resources/js/unit3d/chat.js', 'public/js');
+    .js('resources/js/unit3d/chat.js', 'public/js')
+    .js('resources/js/unit3d/public.js', 'public/js');

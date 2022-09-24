@@ -4,7 +4,7 @@
     <div class="page__home">
         @include('blocks.news')
 
-        @if (!auth()->user()->chat_hidden)
+        @if (!auth()->user()->chat_hidden && true === config('other.show-chat'))
             <div id="vue">
                 <script src="{{ mix('js/chat.js') }}" crossorigin="anonymous"></script>
                 @include('blocks.chat')
@@ -12,7 +12,11 @@
         @endif
 
         @include('blocks.featured')
-        @include('blocks.poll')
+
+        @if(true === config('other.show-poll'))
+            @include('blocks.poll')
+        @endif
+
         @include('blocks.top_torrents')
         @include('blocks.top_uploaders')
         @include('blocks.latest_topics')
