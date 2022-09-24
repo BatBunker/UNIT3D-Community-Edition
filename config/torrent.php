@@ -33,7 +33,7 @@ return [
     |
     */
 
-    'source' => env('torrent_source', config('APP_NAME', '')),
+    'source' => env('TORRENT_SOURCE', config('APP_NAME', '')),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     */
 
     'created_by' => env('CREATED_BY', 'Edited by' . env('APP_NAME', '')),
-    'created_by_append' => (bool)env('AAD_CREATED_BY', true),
+    'created_by_append' => (bool) env('AAD_CREATED_BY', true),
 
     /*
     |--------------------------------------------------------------------------
