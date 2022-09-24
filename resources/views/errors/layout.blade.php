@@ -6,10 +6,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Error">
-    <meta property="og:title" content="{{ config('other.title') }}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ url('/img/og.png') }}">
-    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="referrer" content="no-referrer" />
+    <meta name="referrer" content="same-origin" />
+    <meta name="robots" content="noindex" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
