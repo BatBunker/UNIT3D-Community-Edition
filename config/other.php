@@ -11,7 +11,7 @@
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
 // TODO We have to improve the pages management system.
-// Currently it rally sucks :(
+// Currently it really sucks :(
 return [
 
     /*
