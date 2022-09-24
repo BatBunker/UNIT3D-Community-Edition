@@ -12,7 +12,11 @@
         @endif
 
         @include('blocks.featured')
-        @include('blocks.poll')
+
+        @if(true === config('other.show-poll'))
+            @include('blocks.poll')
+        @endif
+
         @include('blocks.top_torrents')
         @include('blocks.top_uploaders')
         @include('blocks.latest_topics')
