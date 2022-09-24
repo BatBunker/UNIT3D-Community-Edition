@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'subject' => 'Welcome to' . env('APP_NAME',''),
+    'subject' => 'Welcome to' . env('APP_NAME', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ return [
     | Message
     |
     */
-    'message' => "Welcome To [b]" . env('APP_NAME','') . "[/b].
+    'message' => "Welcome To [b]" . env('APP_NAME', '') . "[/b].
 
-    -" . env('APP_NAME','') . ":space_invader:",
+    -" . env('APP_NAME', '') . ":space_invader:",
 ];
