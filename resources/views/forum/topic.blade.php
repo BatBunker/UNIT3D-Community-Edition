@@ -107,7 +107,7 @@
                                     <p><span class="badge-user title">{{ $p->user->title }}</span></p>
                                 @endif
                                 <p>
-                                    <span class="badge-user text-bold">Joined: {{ date('d M Y', $p->user->created_at->getTimestamp()) }}</span>
+                                    <span class="badge-user text-bold">Joined: {{ date('d M Y', $p->user->created_at?->getTimestamp()) }}</span>
                                 </p>
 
                                 <p>
