@@ -16,6 +16,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\Internal;
 use App\Models\Page;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\PageControllerTest
@@ -47,7 +48,11 @@ class PageController extends Controller
      */
     public function staff(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $staff = Group::with('users:id,username,group_id,title')->where('is_modo', '=', 1)->orWhere('is_admin', '=', 1)->get()->sortByDesc('position');
+        $staff = Cache::remember("staff_members", 24 * 60 * 60, fn() => Group::with('users:id,username,group_id,title')
+            ->where('is_modo', '=', 1)
+            ->where('is_owner', '!=', 1)
+            ->get()
+            ->sortByDesc('position'));
 
         return \view('page.staff', ['staff' => $staff]);
     }
