@@ -224,7 +224,7 @@
                 {{ __('staff.user-tools') }}
             </h2>
             <div class="panel__body">
-                <p class="form__group form__group--horizontal">
+                <li class="form__group form__group--horizontal">
                     <a class="form__button form__button--text" href="{{ route('staff.applications.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-list"></i>
                         {{ __('staff.applications') }} ({{ $apps->pending }})
@@ -371,121 +371,122 @@
 @endsection
 
 @section('sidebar')
-    <section class="panelV2">
-        <h2 class="panel__heading">SSL Certificate</h2>
-        <dl class="key-value">
-            <dt>URL</dt>
-            <dd>{{ config('app.url') }}</dd>
-            @if (request()->secure())
-                <dt>Connection</dt>
-                <dd>Secure</dd>
-                <dt>Issued By</dt>
-                <dd>{{ (!is_string($certificate)) ? $certificate->getIssuer() : "No Certificate Info Found" }}</dd>
-                <dt>Expires</dt>
-                <dd>{{ (!is_string($certificate)) ? $certificate->expirationDate()->diffForHumans() : "No Certificate Info Found" }}</dd>
-            @else
-                <dt>Connection</dt>
-                <dd>
-                    <strong>Not Secure</strong>
-                </dd>
-                <dt>Issued By</dt>
-                <dd>N/A</dd>
-                <dt>Expires</dt>
-                <dd>N/A</dd>
-            @endif
-        </dl>
-    </section>
-    <section class="panelV2">
-        <h2 class="panel__heading">Server Information</h2>
-        <dl class="key-value">
-            <dt>OS</dt>
-            <dd>{{ $basic['os'] }}</dd>
-            <dt>PHP</dt>
-            <dd>{{ $basic['php'] }}</dd>
-            <dt>Database</dt>
-            <dd>{{ $basic['database'] }}</dd>
-            <dt>Laravel</dt>
-            <dd>{{ $basic['laravel'] }}</dd>
-            <dt>{{ config('unit3d.codebase') }}</dt>
-            <dd>{{ config('unit3d.version') }}</dd>
-        </dl>
-    </section>
-    <div class="dashboard__stats">
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">Torrents</h2>
+    @if(auth()->user()->group->is_admin)
+        <section class="panelV2">
+            <h2 class="panel__heading">SSL Certificate</h2>
             <dl class="key-value">
-                <dt>Total</dt>
-                <dd>{{ $torrents->total }}</dd>
-                <dt>Pending</dt>
-                <dd>{{ $torrents->pending }}</dd>
-                <dt>Rejected</dt>
-                <dd>{{ $torrents->rejected }}</dd>
+                <dt>URL</dt>
+                <dd>{{ config('app.url') }}</dd>
+                @if (request()->secure())
+                    <dt>Connection</dt>
+                    <dd>Secure</dd>
+                    <dt>Issued By</dt>
+                    <dd>{{ (!is_string($certificate)) ? $certificate->getIssuer() : "No Certificate Info Found" }}</dd>
+                    <dt>Expires</dt>
+                    <dd>{{ (!is_string($certificate)) ? $certificate->expirationDate()->diffForHumans() : "No Certificate Info Found" }}</dd>
+                @else
+                    <dt>Connection</dt>
+                    <dd>
+                        <strong>Not Secure</strong>
+                    </dd>
+                    <dt>Issued By</dt>
+                    <dd>N/A</dd>
+                    <dt>Expires</dt>
+                    <dd>N/A</dd>
+                @endif
             </dl>
         </section>
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">Peers</h2>
+        <section class="panelV2">
+            <h2 class="panel__heading">Server Information</h2>
             <dl class="key-value">
-                <dt>Total</dt>
-                <dd>{{ $peers->total }}</dd>
-                <dt>Seeds</dt>
-                <dd>{{ $peers->seeders }}</dd>
-                <dt>Leeches</dt>
-                <dd>{{ $peers->leechers }}</dd>
+                <dt>OS</dt>
+                <dd>{{ $basic['os'] }}</dd>
+                <dt>PHP</dt>
+                <dd>{{ $basic['php'] }}</dd>
+                <dt>Database</dt>
+                <dd>{{ $basic['database'] }}</dd>
+                <dt>Laravel</dt>
+                <dd>{{ $basic['laravel'] }}</dd>
+                <dt>{{ config('unit3d.codebase') }}</dt>
+                <dd>{{ config('unit3d.version') }}</dd>
             </dl>
         </section>
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">Users</h2>
-            <dl class="key-value">
-                <dt>Total</dt>
-                <dd>{{ $users->total }}</dd>
-                <dt>Validating</dt>
-                <dd>{{ $users->validating }}</dd>
-                <dt>Banned</dt>
-                <dd>{{ $users->banned }}</dd>
-            </dl>
-        </section>
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">RAM</h2>
-            <dl class="key-value">
-                <dt>Total</dt>
-                <dd>{{ $ram['total'] }}</dd>
-                <dt>Used</dt>
-                <dd>{{ $ram['used'] }}</dd>
-                <dt>Free</dt>
-                <dd>{{ $ram['available'] }}</dd>
-            </dl>
-        </section>
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">Disk</h2>
-            <dl class="key-value">
-                <dt>Total</dt>
-                <dd>{{ $disk['total'] }}</dd>
-                <dt>Used</dt>
-                <dd>{{ $disk['used'] }}</dd>
-                <dt>Free</dt>
-                <dd>{{ $disk['free'] }}</dd>
-            </dl>
-        </section>
-        <section class="panelV2 panel--grid-item">
-            <h2 class="panel__heading">Load</h2>
-            <dl class="key-value">
-                <dt>Average</dt>
-                <dd>{{ $avg }}</dd>
-            </dl>
-        </section>
-    </div>
-    <section class="panelV2">
-        <h2 class="panel__heading">Directory Permissions</h2>
-        <div class="data-table-wrapper">
-            <table class="data-table">
-                <thead>
+        <div class="dashboard__stats">
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">Torrents</h2>
+                <dl class="key-value">
+                    <dt>Total</dt>
+                    <dd>{{ $torrents->total }}</dd>
+                    <dt>Pending</dt>
+                    <dd>{{ $torrents->pending }}</dd>
+                    <dt>Rejected</dt>
+                    <dd>{{ $torrents->rejected }}</dd>
+                </dl>
+            </section>
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">Peers</h2>
+                <dl class="key-value">
+                    <dt>Total</dt>
+                    <dd>{{ $peers->total }}</dd>
+                    <dt>Seeds</dt>
+                    <dd>{{ $peers->seeders }}</dd>
+                    <dt>Leeches</dt>
+                    <dd>{{ $peers->leechers }}</dd>
+                </dl>
+            </section>
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">Users</h2>
+                <dl class="key-value">
+                    <dt>Total</dt>
+                    <dd>{{ $users->total }}</dd>
+                    <dt>Validating</dt>
+                    <dd>{{ $users->validating }}</dd>
+                    <dt>Banned</dt>
+                    <dd>{{ $users->banned }}</dd>
+                </dl>
+            </section>
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">RAM</h2>
+                <dl class="key-value">
+                    <dt>Total</dt>
+                    <dd>{{ $ram['total'] }}</dd>
+                    <dt>Used</dt>
+                    <dd>{{ $ram['used'] }}</dd>
+                    <dt>Free</dt>
+                    <dd>{{ $ram['available'] }}</dd>
+                </dl>
+            </section>
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">Disk</h2>
+                <dl class="key-value">
+                    <dt>Total</dt>
+                    <dd>{{ $disk['total'] }}</dd>
+                    <dt>Used</dt>
+                    <dd>{{ $disk['used'] }}</dd>
+                    <dt>Free</dt>
+                    <dd>{{ $disk['free'] }}</dd>
+                </dl>
+            </section>
+            <section class="panelV2 panel--grid-item">
+                <h2 class="panel__heading">Load</h2>
+                <dl class="key-value">
+                    <dt>Average</dt>
+                    <dd>{{ $avg }}</dd>
+                </dl>
+            </section>
+        </div>
+        <section class="panelV2">
+            <h2 class="panel__heading">Directory Permissions</h2>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
                     <tr>
                         <th>Directory</th>
                         <th>Current</th>
                         <th><abbr title="Recommended">Rec.</abbr></th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     @foreach ($file_permissions as $permission)
                         <tr>
                             <td>{{ $permission['directory'] }}</td>
@@ -501,8 +502,9 @@
                             <td>{{ $permission['recommended'] }}</td>
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
-        </div>
-    </section>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    @endif
 @endsection
