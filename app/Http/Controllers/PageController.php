@@ -48,7 +48,7 @@ class PageController extends Controller
      */
     public function staff(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $staff = Cache::remember("staff_members", 24 * 60 * 60, fn() => Group::with('users:id,username,group_id,title')
+        $staff = Cache::remember("staff_members", 24 * 60 * 60, fn () => Group::with('users:id,username,group_id,title')
             ->where('is_modo', '=', 1)
             ->where('is_owner', '!=', 1)
             ->get()
