@@ -190,7 +190,7 @@ class TorrentListSearch extends Component
             && $field[-1] === '/'
             && @\preg_match($field, 'Validate regex') !== false;
 
-        return Torrent::with(['user:id,username,group_id', 'user.group', 'category', 'type', 'resolution'])
+        return Torrent::with(['user:id,username,group_id,internal_id', 'user.group','user.internal','category', 'type', 'resolution'])
             ->withCount(['thanks', 'comments'])
             ->when($this->name !== '', fn ($query) => $query->ofName($this->name, $isRegex($this->name)))
             ->when($this->description !== '', fn ($query) => $query->ofDescription($this->description, $isRegex($this->description)))
