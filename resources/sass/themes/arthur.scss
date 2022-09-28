@@ -211,3 +211,24 @@ img.torrent-poster-img-small,
   display: none;
   visibility: hidden;
 }
+
+.checkbox-hidden {
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  & > input[type='checkbox'] {
+    appearance: none;
+  }
+}
+.card_body, .card.is-torrent {
+  border: 1px var(--app-border-light-color) solid;
+
+}
+
+.card.is-torrent .card_head {
+  box-shadow: unset;
+  border: unset;
+}

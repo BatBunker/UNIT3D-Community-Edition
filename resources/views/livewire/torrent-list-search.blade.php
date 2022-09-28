@@ -18,19 +18,19 @@
                     </div>
                     <div class="form-group col-xs-3">
                         <button class="btn btn-md btn-primary" @click="open = ! open"
-                                x-text="open ? '{{ __('common.search-hide') }}' : '{{ __('common.search-advanced') }}'">
+{{--                                x-text="open ? '{{ __('common.search-hide') }}' : '{{ __('common.search-advanced') }}'">--}}
                         </button>
                     </div>
                 </div>
                 <div x-cloak x-show="open" id="torrent-advanced-search">
                     <div class="row">
                         <div class="form-group col-sm-3 col-xs-6 adv-search-description">
-                            <label for="description" class="label label-default">{{ __('torrent.description') }}</label>
+                            {{--                            <label for="description" class="label label-default">{{ __('torrent.description') }}</label>--}}
                             <input wire:model.debounce.500ms="description" type="text" class="form-control"
                                    placeholder="Description">
                         </div>
                         <div class="form-group col-sm-3 col-xs-6 adv-search-mediainfo">
-                            <label for="mediainfo" class="label label-default">{{ __('torrent.media-info') }}</label>
+                            {{--                            <label for="mediainfo" class="label label-default">{{ __('torrent.media-info') }}</label>--}}
                             <input wire:model.debounce.500ms="mediainfo" type="text" class="form-control"
                                    placeholder="Mediainfo">
                         </div>
@@ -370,11 +370,6 @@
                         <i class="{{ config('other.font-awesome') }} fa-download"></i>
                     </div>
                 </th>
-                <th class="torrent-listings-tmdb">
-                    <div>
-                        <i class="{{ config('other.font-awesome') }} fa-id-badge"></i>
-                    </div>
-                </th>
                 <th class="torrent-listings-size">
                     <div sortable wire:click="sortBy('size')" :direction="$sortField === 'size' ? $sortDirection : null"
                          role="button">
@@ -417,12 +412,12 @@
                 @php $meta = null @endphp
                 @if ($torrent->category->tv_meta)
                     @if ($torrent->tmdb || $torrent->tmdb != 0)
-                        @php $meta = cache()->remember('tvmeta:'.$torrent->tmdb.$torrent->category_id, 3_600, fn () => App\Models\Tv::select(['id', 'poster', 'vote_average'])->where('id', '=', $torrent->tmdb)->first()) @endphp
+                        @php $meta = cache()->remember('tvmeta:'.$torrent->tmdb.$torrent->category_id, 3_600, fn () => App\Models\Tv::with('genres')->where('id', '=', $torrent->tmdb)->first()) @endphp
                     @endif
                 @endif
                 @if ($torrent->category->movie_meta)
                     @if ($torrent->tmdb || $torrent->tmdb != 0)
-                        @php $meta = cache()->remember('moviemeta:'.$torrent->tmdb.$torrent->category_id, 3_600, fn () => App\Models\Movie::select(['id', 'poster', 'vote_average'])->where('id', '=', $torrent->tmdb)->first()) @endphp
+                        @php $meta = cache()->remember('moviemeta:'.$torrent->tmdb.$torrent->category_id, 3_600, fn () => App\Models\Movie::with('genres')->where('id', '=', $torrent->tmdb)->first()) @endphp
                     @endif
                 @endif
                 @if ($torrent->category->game_meta)
@@ -439,9 +434,11 @@
                         <td class="torrent-listings-poster" style="width: 1%;">
                             @if ($user->show_poster == 1)
                                 <div class="torrent-poster pull-left">
-                                    @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
-                                        <img src="{{ isset($meta->poster) ? tmdb_image('poster_small', $meta->poster) : 'https://via.placeholder.com/90x135' }}"
-                                             class="torrent-poster-img-small" loading="lazy" alt="{{ __('torrent.poster') }}">
+                                    <a href="{{ route('torrents.similar', ['category_id' => $torrent->category_id, 'tmdb' => $torrent->tmdb]) }}">
+                                        @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
+                                            <img src="{{ isset($meta->poster) ? tmdb_image('poster_small', $meta->poster) : 'https://via.placeholder.com/90x135' }}"
+                                                 class="torrent-poster-img-small" loading="lazy" alt="{{ __('torrent.poster') }}">
+                                    </a>
                                     @endif
 
                                     @if ($torrent->category->game_meta)
@@ -468,35 +465,18 @@
                             @else
                                 <div class="torrent-poster pull-left"></div>
                         @endif
-                        <td class="torrent-listings-format" style="width: 5%; text-align: center;">
-                            <div class="text-center">
-                                @if ($torrent->category->image !== null)
-                                    <div class="text-center">
-                                        <img src="{{ url('files/img/' . $torrent->category->image) }}"
-                                             title="{{ $torrent->category->name }} {{ strtolower(__('torrent.torrent')) }}"
-                                             alt="{{ $torrent->category->name }}"
-                                             loading="lazy"
-                                             style="height: 32px; @if ($torrent->category->movie_meta || $torrent->category->tv_meta) padding-top: 1px; @else padding-top: 15px; @endif">
-                                    </div>
-                                @else
-                                    <i class="{{ $torrent->category->icon }} torrent-icon"
-                                       style="@if ($torrent->category->movie_meta || $torrent->category->tv_meta) padding-top: 1px; @else padding-top: 15px; @endif font-size: 24px;"></i>
-                                @endif
-                            </div>
-                            <div class="text-center">
-                                <span class="label label-success" style="font-size: 13px">
-                                    {{ $torrent->type->name }}
-                                </span>
-                            </div>
-                            @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
-                                <div class="text-center" style="padding-top: 5px;">
-                                <span class="label label-success" style="font-size: 13px">
-                                    {{ $torrent->resolution->name ?? 'N/A' }}
-                                </span>
-                                </div>
-                            @endif
+                        <td class="torrent-listings-format" style="width: 2%; text-align: center; vertical-align: middle;">
+                           <span style="display: flex; flex-direction: column; gap: 1rem;">
+                            @if($torrent->sticky === 1)
+                                   <i  title='{{ __('torrent.sticky') }}' style="font-size: 20px" class="{{ config('other.font-awesome') }} fa-thumbtack"></i>
+                               @endif
+                                <br>
+                            @if($torrent->user->internal !== null)
+                                   <i title="Internal Release by {{$torrent->user->internal->name}}"  class="{{config('other.font-awesome')}} {{$torrent->user->internal->icon}}"></i>
+                               @endif
+                           </span>
                         </td>
-                        <td class="torrent-listings-overview" style="vertical-align: middle;">
+                        <td class="torrent-listings-overview" style="vertical-align: middle;" x-data="{ tooltip: false }">
                             @if($user->group->is_modo || $user->id === $torrent->user_id)
                                 <a href="{{ route('edit_form', ['id' => $torrent->id]) }}">
                                     <button class="btn btn-primary btn-circle" type="button"
@@ -505,11 +485,45 @@
                                     </button>
                                 </a>
                             @endif
-                            <a class="view-torrent torrent-listings-name" style="font-size: 16px;"
+                                <div style="z-index: 5; position: absolute;" x-transition:enter.delay.300ms x-transition:leave.delay.200ms x-cloak x-show.transition.origin.top.delay.400ms="tooltip">
+                                    @include('livewire.includes._tooltip')
+                                </div>
+                            <a  class="view-torrent torrent-listings-name" x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false" style="font-size: 16px;"
                                href="{{ route('torrent', ['id' => $torrent->id]) }}">
                                 {{ $torrent->name }}
                             </a>
                             <br>
+                            <span class="badge-extra">
+                                @if ($torrent->category->image !== null)
+                                    <div class="text-center">
+                                        <img src="{{ url('files/img/' . $torrent->category->image) }}"
+                                             title="{{ $torrent->category->name }} {{ strtolower(__('torrent.torrent')) }}"
+                                             alt="{{ $torrent->category->name }}"
+                                             loading="lazy">
+                                    </div>
+                                @else
+                                    <i class="{{ $torrent->category->icon }}"></i>
+                                @endif
+                                   <label class="checkbox-hidden">
+                                       {{ $torrent->category->name }}
+                                    <input type="checkbox" wire:model.prefetch="categories" value="{{ $torrent->category->id }}">
+                                   </label>
+                                </span>
+                            <span class="badge-extra">
+                                  <label class="checkbox-hidden">
+                                      {{ $torrent->type->name }}
+                                      <input type="checkbox" wire:model.prefetch="types" value="{{ $torrent->type->id }}">
+                                  </label>
+                            </span>
+
+                            @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
+                                <span class="badge-extra">
+                                    <label class="checkbox-hidden">
+                                        <input type="checkbox" wire:model.prefetch="resolutions" value="{{ $torrent->resolution->id }}"> {{ $torrent->resolution->name }}
+                                    </label>
+                                </span>
+                            @endif
+
                             @if ($torrent->anon === 0)
                                 <span class="badge-extra torrent-listings-uploader">
 									<i class="{{ config('other.font-awesome') }} {{ $torrent->user->group->icon }}"></i>
@@ -701,6 +715,20 @@
                                        title='{{ __('torrent.sd-content') }}'></i>
 								</span>
                             @endif
+                                @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
+                                    <span class="{{ rating_color($meta->vote_average ?? 'text-white') }} badge-extra ">
+                                        <i style="color: #01ac61!important;" class="{{ config('other.font-awesome') }} fa-star-half-alt"></i>
+                                        {{ $meta->vote_average ?? 0 }}/10
+                                    </span>
+                                    <div id="imdb_id" style="display: none;">tt{{ $torrent->imdb }}</div>
+                                    <span class='badge-extra'>
+                                    <a href="{{ route('torrents.similar', ['category_id' => $torrent->category_id, 'tmdb' => $torrent->tmdb]) }}">
+                                        <img src="{{ url('img/tmdb_small.png') }}" alt="tmdb_id"
+                                             style="margin-left: -5px;" width="14px" height="14px" loading="lazy">
+                                        {{ $torrent->tmdb }}
+                                    </a>
+                                </span>
+                                @endif
 
                             @if ($torrent->bumped_at != $torrent->created_at && $torrent->bumped_at < Illuminate\Support\Carbon::now()->addDay(2))
                                 <span class='badge-extra text-bold torrent-listings-bumped'>
@@ -732,34 +760,6 @@
                                         <i class="{{ config('other.font-awesome') }} fa-magnet"></i>
                                     </button>
                                 </a>
-                            @endif
-                        </td>
-                        <td class="torrent-listings-tmdb" style="vertical-align: middle;">
-                            @if ($torrent->category->game_meta)
-                                <span class='badge-extra'>
-                                    <img src="{{ url('img/igdb.png') }}" alt="igdb_id" style="margin-left: -5px;"
-                                         width="24px" height="24px" loading="lazy"> {{ $torrent->igdb }}
-                                    <br>
-                                    <span class="{{ rating_color($meta->rating ?? 'text-white') }}">
-                                        <i class="{{ config('other.font-awesome') }} fa-star-half-alt"></i>
-                                        {{ round($meta->rating ?? 0) }}/100
-                                    </span>
-                                </span>
-                            @endif
-                            @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
-                                <div id="imdb_id" style="display: none;">tt{{ $torrent->imdb }}</div>
-                                <span class='badge-extra'>
-                                    <a href="{{ route('torrents.similar', ['category_id' => $torrent->category_id, 'tmdb' => $torrent->tmdb]) }}">
-                                        <img src="{{ url('img/tmdb_small.png') }}" alt="tmdb_id"
-                                             style="margin-left: -5px;" width="24px" height="24px" loading="lazy">
-                                        {{ $torrent->tmdb }}
-                                    </a>
-                                    <br>
-                                    <span class="{{ rating_color($meta->vote_average ?? 'text-white') }}">
-                                        <i class="{{ config('other.font-awesome') }} fa-star-half-alt"></i>
-                                        {{ $meta->vote_average ?? 0 }}/10
-                                    </span>
-                                </span>
                             @endif
                         </td>
                         <td class="torrent-listings-size" style="vertical-align: middle;">
