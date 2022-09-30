@@ -26,6 +26,7 @@ use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
 use function throw_if;
 
 class AnnounceController extends Controller
@@ -538,6 +539,5 @@ class AnnounceController extends Controller
     protected function sendFinalAnnounceResponse($repDict): Response
     {
         return response(Bencode::bencode($repDict), headers: self::HEADERS);
-
     }
 }
