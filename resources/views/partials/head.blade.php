@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 @section('title')
-    <title>{{ config('other.title') }} - {{ config('other.subTitle') }}</title>
+    <title>{{ page_title(config('other.title')) }}</title>
 @show
 
 <meta name="description" content="{{ config('other.meta_description') }}">

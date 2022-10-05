@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('graveyard.graveyard') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('graveyard.graveyard')) }}</title>
 @endsection
 
 @section('breadcrumbs')

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Application - {{ config('other.title') }}</title>
+    <title>{{ page_title('Application') }}</title>
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

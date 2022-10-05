@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('common.subscriptions') }} - {{ __('forum.forums') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('common.subscriptions')) }}</title>
 @endsection
 
 @section('meta')

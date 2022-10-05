@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ __('auth.lost-password') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('auth.lost-password')) }}</title>
     @section('meta')
         <meta name="description" content="{{ __('auth.login-now-on') }} {{ config('other.title') }} . {{ __('auth.not-a-member') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
