@@ -193,7 +193,8 @@ if (! function_exists('language_flag')) {
             return (string)Cache::remember(
                 "page_title_$pageTitle",
                 24 * 60 * 60,
-                fn() => sprintf('%s %s %s', $pageTitle, $separator, config('other.title')));
+                fn () => sprintf('%s %s %s', $pageTitle, $separator, config('other.title'))
+            );
         }
     }
 }
