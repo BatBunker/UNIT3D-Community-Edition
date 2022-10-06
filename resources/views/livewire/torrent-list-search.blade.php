@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group col-xs-3">
                         <button class="btn btn-md btn-primary" @click="open = ! open"
-{{--                                x-text="open ? '{{ __('common.search-hide') }}' : '{{ __('common.search-advanced') }}'">--}}
+                                x-text="open ? '{{ __('common.search-hide') }}' : '{{ __('common.search-advanced') }}'">
                         </button>
                     </div>
                 </div>
