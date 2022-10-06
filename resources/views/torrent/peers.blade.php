@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('torrent.peers') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('torrent.peers')) }}</title>
 @endsection
 
 @section('meta')

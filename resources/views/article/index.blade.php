@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('articles.articles') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('articles.articles')) }}</title>
 @endsection
 
 @section('meta')

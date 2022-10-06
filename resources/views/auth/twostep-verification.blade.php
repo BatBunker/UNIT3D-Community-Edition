@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('auth.title') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('auth.title')) }} </title>
 @endsection
 
 @section('meta')

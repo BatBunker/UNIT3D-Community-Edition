@@ -62,7 +62,13 @@ class PageController extends Controller
      */
     public function internal(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $internals = Internal::with('users')->get()->sortBy('name');
+        $internals = Cache::remember(
+            'internals_groups',
+            24 * 60 * 60,
+            fn () => Internal::with('users')
+                ->get()
+                ->sortBy('name')
+        );
 
         return \view('page.internal', ['internals' => $internals]);
     }
@@ -72,7 +78,7 @@ class PageController extends Controller
      */
     public function blacklist(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $clients = \config('client-blacklist.clients', []);
+        $clients = Cache::remember('client-blacklist', 24 * 60 * 60, fn () => \config('client-blacklist.clients', []));
 
         return \view('page.blacklist', ['clients' => $clients]);
     }

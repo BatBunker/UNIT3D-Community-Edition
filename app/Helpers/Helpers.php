@@ -10,14 +10,17 @@
  * @author     HDVinnie <hdinnovations@protonmail.com>
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
-if (! function_exists('appurl')) {
+
+use Illuminate\Support\Facades\Cache;
+
+if (!function_exists('appurl')) {
     function appurl()
     {
         return config('app.url');
     }
 }
 
-if (! function_exists('href_profile')) {
+if (!function_exists('href_profile')) {
     function href_profile($user)
     {
         $appurl = appurl();
@@ -138,44 +141,60 @@ if (! function_exists('language_flag')) {
             'Chinese'    => 'cn',
             'Croatian'   => 'hr',
             'Czech'      => 'cz',
-            'Danish'     => 'dk',
-            'Dutch'      => 'nl',
-            'Estonian'   => 'ee',
-            'Finnish'    => 'fi',
-            'French'     => 'fr',
-            'Georgian'   => 'ge',
-            'German'     => 'de',
-            'Greek'      => 'gr',
-            'Hebrew'     => 'il',
+            'Danish' => 'dk',
+            'Dutch' => 'nl',
+            'Estonian' => 'ee',
+            'Finnish' => 'fi',
+            'French' => 'fr',
+            'Georgian' => 'ge',
+            'German' => 'de',
+            'Greek' => 'gr',
+            'Hebrew' => 'il',
             'Hindi', 'Tamil', 'Telugu' => 'in',
-            'Hungarian'  => 'hu',
-            'Icelandic'  => 'is',
+            'Hungarian' => 'hu',
+            'Icelandic' => 'is',
             'Indonesian' => 'id',
-            'Italian'    => 'it',
-            'Japanese'   => 'jp',
-            'Korean'     => 'kr',
-            'Latvian'    => 'lv',
+            'Italian' => 'it',
+            'Japanese' => 'jp',
+            'Korean' => 'kr',
+            'Latvian' => 'lv',
             'Lithuanian' => 'lt',
-            'Malay'      => 'my',
+            'Malay' => 'my',
             'Norwegian', 'Norwegian Bokmal' => 'no',
-            'Persian'    => 'ir',
-            'Polish'     => 'pl',
+            'Persian' => 'ir',
+            'Polish' => 'pl',
             'Portuguese' => 'pt',
-            'Romanian'   => 'ro',
-            'Russian'    => 'ru',
-            'Serbian'    => 'rs',
-            'Slovak'     => 'sk',
-            'Slovenian'  => 'si',
-            'Spanish'    => 'es',
-            'Swedish'    => 'se',
-            'Tagalog'    => 'ph',
-            'Thai'       => 'th',
-            'Turkish'    => 'tr',
-            'Ukrainian'  => 'ua',
+            'Romanian' => 'ro',
+            'Russian' => 'ru',
+            'Serbian' => 'rs',
+            'Slovak' => 'sk',
+            'Slovenian' => 'si',
+            'Spanish' => 'es',
+            'Swedish' => 'se',
+            'Tagalog' => 'ph',
+            'Thai' => 'th',
+            'Turkish' => 'tr',
+            'Ukrainian' => 'ua',
             'Vietnamese' => 'vn',
-            default      => null,
+            default => null,
         };
 
-        return $flag !== null ? '/img/flags/'.$flag.'.png' : null;
+        return $flag !== null ? '/img/flags/' . $flag . '.png' : null;
+    }
+
+    if (!function_exists('page_title')) {
+        /**
+         * @param string $pageTitle
+         * @param string $separator
+         * @return string
+         */
+        function page_title(string $pageTitle, string $separator = '::'): string
+        {
+            return (string)Cache::remember(
+                "page_title_$pageTitle",
+                24 * 60 * 60,
+                fn () => sprintf('%s %s %s', $pageTitle, $separator, config('other.title'))
+            );
+        }
     }
 }
