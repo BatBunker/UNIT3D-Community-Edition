@@ -37,6 +37,7 @@ class TrackerException extends \Exception
         128 => 'Client :ua is not acceptable! Please check our Blacklist.',
 
         // Error message about Requests ( Part.2 request params )
+        129 => 'Invalid request!',
         130 => 'key: :attribute is Missing !',
         131 => 'Invalid :attribute ! :reason',  // Normal Invalid, Use below instead.
         132 => 'Invalid :attribute ! the length of :attribute must be :rule',
@@ -83,7 +84,6 @@ class TrackerException extends \Exception
                 $message = \str_replace($key, $value, $message);
             }
         }
-
         parent::__construct($message, $code, $throwable);
     }
 }

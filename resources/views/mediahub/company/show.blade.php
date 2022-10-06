@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ $company->name }} {{ __('mediahub.companies') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title($company->name) }}</title>
 @endsection
 
 @section('meta')

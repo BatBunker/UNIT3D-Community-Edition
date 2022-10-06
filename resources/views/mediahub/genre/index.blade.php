@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('common.genres') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('common.genres')) }}</title>
 @endsection
 
 @section('meta')

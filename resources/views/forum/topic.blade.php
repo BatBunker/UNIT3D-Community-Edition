@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ $topic->name }} - Forums - {{ config('other.title') }}</title>
+    <title>{{ page_title($topic->name) }}</title>
 @endsection
 
 @section('breadcrumbs')

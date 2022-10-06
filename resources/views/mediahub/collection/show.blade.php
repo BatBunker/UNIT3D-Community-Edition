@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ $collection->name }} - {{ config('other.title') }}</title>
+    <title>{{ page_title($collection->name) }} </title>
 @endsection
 
 @section('meta')

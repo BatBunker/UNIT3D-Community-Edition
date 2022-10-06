@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('common.contact') }} - {{ config('other.title') }}</title>
+    <title>{{page_title( __('common.contact')) }}</title>
 @endsection
 
 @section('meta')

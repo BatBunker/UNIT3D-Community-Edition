@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('forum.create-new-topic') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('forum.create-new-topic')) }}</title>
 @endsection
 
 @section('meta')

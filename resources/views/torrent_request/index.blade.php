@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('request.requests') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('request.requests')) }}</title>
 @endsection
 
 @section('breadcrumbs')

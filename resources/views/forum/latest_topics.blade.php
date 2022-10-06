@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('common.latest-topics') }} - {{ __('forum.forums') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('common.latest-topics')) }}</title>
 @endsection
 
 @section('meta')

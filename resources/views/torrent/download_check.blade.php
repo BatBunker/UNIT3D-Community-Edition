@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-    <title>{{ __('torrent.download-check') }} - {{ config('other.title') }}</title>
+    <title>{{ page_title(__('torrent.download-check')) }}</title>
 @endsection
 
 @section('breadcrumbs')
