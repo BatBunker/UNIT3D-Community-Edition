@@ -533,7 +533,6 @@
                                                     <td colspan="8"
                                                         class="torrent-search--grouped__type"
                                                         scope="rowgroup"
-                                                        rowspan="{{ $loop->count }}"
                                                     >
                                                         {{ $torrent->type->name }}
                                                     </td>
@@ -568,7 +567,6 @@
                                                                         <td colspan="8"
                                                                             class="torrent-search--grouped__type"
                                                                             scope="rowgroup"
-                                                                            rowspan="{{ $loop->count }}">
                                                                             {{ $torrent->type->name }}
                                                                         </td>
                                                                     </tr>
@@ -615,7 +613,6 @@
                                                                     <td colspan="8"
                                                                         class="torrent-search--grouped__type"
                                                                         scope="rowgroup"
-                                                                        rowspan="{{ $loop->count }}"
                                                                     >
                                                                         {{ $torrent->type->name }}
                                                                     </td>
