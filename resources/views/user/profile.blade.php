@@ -22,152 +22,36 @@
 @section('content')
     <div class="container">
         @if (!auth()->user()->isAllowed($user))
-            <div class="container pl-0 text-center">
-                <div class="jumbotron shadowed">
-                    <div class="container">
-                        <h1 class="mt-5 text-center">
-                            <i class="{{ config('other.font-awesome') }} fa-times text-danger"></i>{{ __('user.private-profile') }}
-                        </h1>
-                        <div class="separator"></div>
-                        <p class="text-center">{{ __('user.not-authorized') }}</p>
-                    </div>
-                </div>
-            </div>
+            @include('user.partials._unauthorized')
         @else
             <div class="block">
-                <div class="header gradient blue">
-                    <div class="inner_content">
-                        <div class="content">
-                            <div class="col-md-2">
-                                @if ($user->image != null)
-                                    <img src="{{ url('files/img/' . $user->image) }}" alt="{{ $user->username }}"
-                                         class="img-circle">
-                                @else
-                                    <img src="{{ url('img/profile.png') }}" alt="{{ $user->username }}"
-                                         class="img-circle">
-                                @endif
-                            </div>
-                            <div class="col-lg-10">
-                                <h2>{{ $user->username }}
-                                    @if ($user->isOnline())
-                                        <i class="{{ config('other.font-awesome') }} fa-circle text-green"
-                                           data-toggle="tooltip" title=""
-                                           data-original-title="{{ __('user.online') }}"></i>
-                                    @else
-                                        <i class="{{ config('other.font-awesome') }} fa-circle text-red"
-                                           data-toggle="tooltip" title=""
-                                           data-original-title="{{ __('user.offline') }}"></i>
-                                    @endif
-                                    <a href="{{ route('create', ['receiver_id' => $user->id, 'username' => $user->username]) }}">
-                                        <i class="{{ config('other.font-awesome') }} fa-envelope text-info"></i>
-                                    </a>
-                                    <a href="#modal_user_gift" data-toggle="modal"
-                                       data-target="#modal_user_gift"><i
-                                                class="{{ config('other.font-awesome') }} fa-gift text-info"></i></a>
-                                    @if ($user->getWarning() > 0)
-                                        <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                                           aria-hidden="true"
-                                           data-toggle="tooltip" title=""
-                                           data-original-title="{{ __('user.active-warning') }}">
-                                        </i>
-                                    @endif
-                                    @if ($user->notes->count() > 0 && auth()->user()->group->is_modo)
-                                        <a href="{{ route('user_setting', ['username' => $user->username]) }}"
-                                           class="edit">
-                                            <i class="{{ config('other.font-awesome') }} fa-comment fa-beat text-danger"
-                                               aria-hidden="true" data-toggle="tooltip"
-                                               title="" data-original-title="{{ __('user.staff-noted') }}">
-                                            </i>
-                                        </a>
-                                    @endif
-                                    @php $watched = App\Models\Watchlist::whereUserId($user->id)->first(); @endphp
-                                    @if ($watched && auth()->user()->group->is_modo)
-                                        <i class="{{ config('other.font-awesome') }} fa-eye fa-beat text-danger"
-                                           aria-hidden="true" data-toggle="tooltip"
-                                           title="" data-original-title="User is being watched!">
-                                        </i>
-                                    @endif
-                                </h2>
-                                <h4>{{ __('common.group') }}: <span class="badge-user text-bold"
-                                                                 style="color:{{ $user->group->color }}; background-image:{{ $user->group->effect }};"><i
-                                                class="{{ $user->group->icon }}" data-toggle="tooltip" title=""
-                                                data-original-title="{{ $user->group->name }}"></i> {{ $user->group->name }}</span>
-                                </h4>
-                                <h4>{{ __('user.registration-date') }} {{ $user->created_at === null ? "N/A" : date('M d Y', $user->created_at->getTimestamp()) }}</h4>
-                                @if (auth()->user()->id != $user->id)
-                                    <span style="float:right;">
-                                        @if (auth()->user()->group->is_modo)
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                    data-target="#modal_warn_user">
-                                            <span class="{{ config('other.font-awesome') }} fa-radiation-alt"></span> Warn User
-                                        </button>
-                                            <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                    data-target="#modal_user_note"><span
-                                                        class="{{ config('other.font-awesome') }} fa-sticky-note"></span> {{ __('user.note') }} </button>
-                                            @if(! $watched)
-                                                <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                        data-target="#modal_user_watch">
-                                            <span class="{{ config('other.font-awesome') }} fa-eye"></span> Watch </button>
-                                            @else
-                                                <form style="display: inline;"
-                                                      action="{{ route('staff.watchlist.destroy', ['id' => $watched->id]) }}"
-                                                      method="POST">
-							                    @csrf
-                                                    @method('DELETE')
-							                    <button class="btn btn-xs btn-warning" type="submit">
-								                    <i class="{{ config('other.font-awesome') }} fa-eye-slash"></i> Unwatch
-							                    </button>
-						                    </form>
-                                            @endif
-                                            @if ($user->group->id == 5)
-                                                <button class="btn btn-xs btn-warning" data-toggle="modal"
-                                                        data-target="#modal_user_unban"><span
-                                                            class="{{ config('other.font-awesome') }} fa-undo"></span> {{ __('user.unban') }} </button>
-                                            @else
-                                                <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                        data-target="#modal_user_ban"><span
-                                                            class="{{ config('other.font-awesome') }} fa-ban"></span> {{ __('user.ban') }}</button>
-                                            @endif
-                                            <a href="{{ route('user_setting', ['username' => $user->username]) }}"
-                                               class="btn btn-xs btn-warning"><span
-                                                        class="{{ config('other.font-awesome') }} fa-pencil"></span> {{ __('user.edit') }} </a>
-                                            <button class="btn btn-xs btn-danger" data-toggle="modal"
-                                                    data-target="#modal_user_delete"><span
-                                                        class="{{ config('other.font-awesome') }} fa-trash"></span> {{ __('user.delete') }} </button>
-                                        @endif
-                                        </span>
-                                @endif
+                {{-- Profile header --}}
+                @include('user.partials._header')
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                @if (auth()->user()->isAllowed($user,'profile','show_profile_torrent_count'))--}}
+{{--                    <div class="button-holder some-padding">--}}
+{{--                        <div class="text-center">--}}
+{{--                            <span class="badge-user badge-float p-10"><i--}}
+{{--                                        class="{{ config('other.font-awesome') }} fa-upload"></i> {{ __('user.total-uploads') }}--}}
+{{--                                : <span class="text-green text-bold">{{ $user->torrents_count }}</span></span>--}}
+{{--                            <span class="badge-user badge-float p-10"><i--}}
+{{--                                        class="{{ config('other.font-awesome') }} fa-download"></i> {{ __('user.total-downloads') }}--}}
+{{--                                        : <span--}}
+{{--                                        class="text-red text-bold">{{ $history->where('actual_downloaded', '>', 0)->count() }}</span></span>--}}
+{{--                            <span class="badge-user badge-float p-10"><i--}}
+{{--                                        class="{{ config('other.font-awesome') }} fa-cloud-upload"></i> {{ __('user.total-seeding') }}--}}
+{{--                                        : <span class="text-green text-bold">{{ $user->getSeeding() }}</span></span>--}}
+{{--                            <span class="badge-user badge-float p-10"><i--}}
+{{--                                        class="{{ config('other.font-awesome') }} fa-cloud-download"></i> {{ __('user.total-leeching') }}--}}
+{{--                                        : <span class="text-red text-bold">{{ $user->getLeeching() }}</span></span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+
+{{--                <hr class="no-space">--}}
 
 
-                @if (auth()->user()->isAllowed($user,'profile','show_profile_torrent_count'))
-                    <div class="button-holder some-padding">
-                        <div class="text-center">
-                            <span class="badge-user badge-float p-10"><i
-                                        class="{{ config('other.font-awesome') }} fa-upload"></i> {{ __('user.total-uploads') }}
-                                : <span class="text-green text-bold">{{ $user->torrents_count }}</span></span>
-                            <span class="badge-user badge-float p-10"><i
-                                        class="{{ config('other.font-awesome') }} fa-download"></i> {{ __('user.total-downloads') }}
-                                        : <span
-                                        class="text-red text-bold">{{ $history->where('actual_downloaded', '>', 0)->count() }}</span></span>
-                            <span class="badge-user badge-float p-10"><i
-                                        class="{{ config('other.font-awesome') }} fa-cloud-upload"></i> {{ __('user.total-seeding') }}
-                                        : <span class="text-green text-bold">{{ $user->getSeeding() }}</span></span>
-                            <span class="badge-user badge-float p-10"><i
-                                        class="{{ config('other.font-awesome') }} fa-cloud-download"></i> {{ __('user.total-leeching') }}
-                                        : <span class="text-red text-bold">{{ $user->getLeeching() }}</span></span>
-                        </div>
-                    </div>
-                @endif
-
-                <hr class="no-space">
-
-
-                <h3><i class="{{ config('other.font-awesome') }} fa-unlock"></i> {{ __('user.public-info') }}</h3>
+{{--                <h3><i class="{{ config('other.font-awesome') }} fa-unlock"></i> {{ __('user.public-info') }}</h3>--}}
                 <div style="word-wrap: break-word; display: table; width: 100%;">
                     <table class="table user-info table-condensed table-striped table-bordered">
                         <tbody>
@@ -468,89 +352,89 @@
                     </table>
                 </div>
             </div>
-
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-12 profile-footer">
-                        {{ __('user.badges') }}
-                        <i class="{{ config('other.font-awesome') }} fa-badge text-success"></i>
-                        <span>:</span>
-                        @if (auth()->user()->isAllowed($user,'profile','show_profile_badge'))
-                            @if ($user->getSeeding() >= '150')
-                                <span class="badge-user" style="background-color:#3fb618; color:rgb(255,255,255);"
-                                      data-toggle="tooltip"
-                                      title="" data-original-title="{{ __('user.certified-seeder-desc') }}"><i
-                                            class="{{ config('other.font-awesome') }} fa-upload"></i> {{ __('user.certified-seeder') }}!</span>
-                            @endif
-                            @if ($history->where('actual_downloaded', '>', 0)->count() >= '100')
-                                <span class="badge-user" style="background-color:#ff0039; color:rgb(255,255,255);"
-                                      data-toggle="tooltip"
-                                      title="" data-original-title="{{ __('user.certified-downloader-desc') }}"><i
-                                            class="{{ config('other.font-awesome') }} fa-download"></i> {{ __('user.certified-downloader') }}!</span>
-                            @endif
-                            @if ($user->seedbonus >= 50_000)
-                                <span class="badge-user" style="background-color:#9400d3; color:rgb(255,255,255);"
-                                      data-toggle="tooltip"
-                                      title="" data-original-title="{{ __('user.certified-banker-desc') }}"><i
-                                            class="{{ config('other.font-awesome') }} fa-coins"></i> {{ __('user.certified-banker') }}!</span>
-                            @endif
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-12 profile-footer">
-                        {{ __('user.recent-achievements') }}
-                        <i class="{{ config('other.font-awesome') }} fa-trophy text-success"></i>
-                        <span>:</span>
-                        @if (auth()->user()->isAllowed($user,'profile','show_profile_achievement'))
-                            @php
-                                $x=1;
-                            @endphp
-                            @foreach ($achievements as $achievement)
-                                @php
-                                    if($x > 25) { continue; }
-                                @endphp
-                                <img src="/img/badges/{{ $achievement->details->name }}.png" data-toggle="tooltip" title=""
-                                     height="50px" data-original-title="{{ $achievement->details->name }}"
-                                     alt="{{ $achievement->details->name }}">
-                                @php
-                                    $x++;
-                                @endphp
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-12 profile-footer followers">
-                        {{ __('user.recent-followers') }}
-                        <i class="{{ config('other.font-awesome') }} fa-users text-success"></i>
-                        <span>:</span>
-                        @if (auth()->user()->isAllowed($user,'profile','show_profile_follower'))
-                            @foreach ($followers as $f)
-                                @if ($f->user->image != null)
-                                    <a href="{{ route('users.show', ['username' => $f->user->username]) }}">
-                                        <img src="{{ url('files/img/' . $f->user->image) }}" data-toggle="tooltip"
-                                             title="{{ $f->user->username }}" height="50px"
-                                             data-original-title="{{ $f->user->username }}"
-                                             alt="{{ $f->user->username }}">
-                                    </a>
-                                @else
-                                    <a href="{{ route('users.show', ['username' => $f->user->username]) }}">
-                                        <img src="{{ url('img/profile.png') }}" data-toggle="tooltip"
-                                             title="{{ $f->user->username }}" height="50px"
-                                             data-original-title="{{ $f->user->username }}"
-                                             alt="{{ $f->user->username }}">
-                                    </a>
-                                @endif
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
+{{-- Hidden for now --}}
+{{--            <div class="well">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12 profile-footer">--}}
+{{--                        {{ __('user.badges') }}--}}
+{{--                        <i class="{{ config('other.font-awesome') }} fa-badge text-success"></i>--}}
+{{--                        <span>:</span>--}}
+{{--                        @if (auth()->user()->isAllowed($user,'profile','show_profile_badge'))--}}
+{{--                            @if ($user->getSeeding() >= '150')--}}
+{{--                                <span class="badge-user" style="background-color:#3fb618; color:rgb(255,255,255);"--}}
+{{--                                      data-toggle="tooltip"--}}
+{{--                                      title="" data-original-title="{{ __('user.certified-seeder-desc') }}"><i--}}
+{{--                                            class="{{ config('other.font-awesome') }} fa-upload"></i> {{ __('user.certified-seeder') }}!</span>--}}
+{{--                            @endif--}}
+{{--                            @if ($history->where('actual_downloaded', '>', 0)->count() >= '100')--}}
+{{--                                <span class="badge-user" style="background-color:#ff0039; color:rgb(255,255,255);"--}}
+{{--                                      data-toggle="tooltip"--}}
+{{--                                      title="" data-original-title="{{ __('user.certified-downloader-desc') }}"><i--}}
+{{--                                            class="{{ config('other.font-awesome') }} fa-download"></i> {{ __('user.certified-downloader') }}!</span>--}}
+{{--                            @endif--}}
+{{--                            @if ($user->seedbonus >= 50_000)--}}
+{{--                                <span class="badge-user" style="background-color:#9400d3; color:rgb(255,255,255);"--}}
+{{--                                      data-toggle="tooltip"--}}
+{{--                                      title="" data-original-title="{{ __('user.certified-banker-desc') }}"><i--}}
+{{--                                            class="{{ config('other.font-awesome') }} fa-coins"></i> {{ __('user.certified-banker') }}!</span>--}}
+{{--                            @endif--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="well">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12 profile-footer">--}}
+{{--                        {{ __('user.recent-achievements') }}--}}
+{{--                        <i class="{{ config('other.font-awesome') }} fa-trophy text-success"></i>--}}
+{{--                        <span>:</span>--}}
+{{--                        @if (auth()->user()->isAllowed($user,'profile','show_profile_achievement'))--}}
+{{--                            @php--}}
+{{--                                $x=1;--}}
+{{--                            @endphp--}}
+{{--                            @foreach ($achievements as $achievement)--}}
+{{--                                @php--}}
+{{--                                    if($x > 25) { continue; }--}}
+{{--                                @endphp--}}
+{{--                                <img src="/img/badges/{{ $achievement->details->name }}.png" data-toggle="tooltip" title=""--}}
+{{--                                     height="50px" data-original-title="{{ $achievement->details->name }}"--}}
+{{--                                     alt="{{ $achievement->details->name }}">--}}
+{{--                                @php--}}
+{{--                                    $x++;--}}
+{{--                                @endphp--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="well">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12 profile-footer followers">--}}
+{{--                        {{ __('user.recent-followers') }}--}}
+{{--                        <i class="{{ config('other.font-awesome') }} fa-users text-success"></i>--}}
+{{--                        <span>:</span>--}}
+{{--                        @if (auth()->user()->isAllowed($user,'profile','show_profile_follower'))--}}
+{{--                            @foreach ($followers as $f)--}}
+{{--                                @if ($f->user->image != null)--}}
+{{--                                    <a href="{{ route('users.show', ['username' => $f->user->username]) }}">--}}
+{{--                                        <img src="{{ url('files/img/' . $f->user->image) }}" data-toggle="tooltip"--}}
+{{--                                             title="{{ $f->user->username }}" height="50px"--}}
+{{--                                             data-original-title="{{ $f->user->username }}"--}}
+{{--                                             alt="{{ $f->user->username }}">--}}
+{{--                                    </a>--}}
+{{--                                @else--}}
+{{--                                    <a href="{{ route('users.show', ['username' => $f->user->username]) }}">--}}
+{{--                                        <img src="{{ url('img/profile.png') }}" data-toggle="tooltip"--}}
+{{--                                             title="{{ $f->user->username }}" height="50px"--}}
+{{--                                             data-original-title="{{ $f->user->username }}"--}}
+{{--                                             alt="{{ $f->user->username }}">--}}
+{{--                                    </a>--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             @if (auth()->user()->id == $user->id || auth()->user()->group->is_modo)
                 <div class="block">
                     <h3><i class="{{ config('other.font-awesome') }} fa-broadcast-tower"></i> {{ __('user.client-list') }}

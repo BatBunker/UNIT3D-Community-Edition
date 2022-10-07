@@ -223,6 +223,7 @@ img.torrent-poster-img-small,
     appearance: none;
   }
 }
+
 .card_body, .card.is-torrent {
   border: 1px var(--app-border-light-color) solid;
 
@@ -231,4 +232,38 @@ img.torrent-poster-img-small,
 .card.is-torrent .card_head {
   box-shadow: unset;
   border: unset;
+}
+
+.user-profile {
+
+}
+
+.user-profile__container {
+  background: rgba(0, 0, 0, .8);
+}
+
+.user-profile__avatar {
+  height: 100%;
+
+  img {
+    height: 100px;
+    width: 100px;
+  }
+
+}
+
+.block, .container > .block, .container > .box, .container > .well, .well {
+  box-shadow: unset !important;
+  border-radius: unset !important;
+  padding: unset !important;
+  border: 1px var(--app-border-light-color) solid !important;
+}
+
+.profile-footer {
+  background-color: #262626 !important;
+  padding: unset !important;
+  padding-inline: 15px !important;;
+  border: 1px var(--app-border-light-color) solid !important;
+  border-radius: unset !important;
+
 }

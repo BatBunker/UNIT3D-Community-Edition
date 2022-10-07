@@ -9,7 +9,6 @@
 @import '../js/wysibb/theme/default/wbbtheme.css';
 @import 'vendor/virtual-select';
 @import 'vendor/alpinejs';
-
 // UNIT3D components
 @import 'variables';
 @import 'main/main';
@@ -44,6 +43,7 @@
 @import 'components/user-active';
 @import 'components/user-torrents';
 @import 'components/user-uploads';
+@import "components/user-header";
 @import 'layout/header';
 @import 'layout/main';
 @import 'layout/secondary-nav';
@@ -52,3 +52,5 @@
 @import 'pages/home';
 @import 'pages/staff';
 @import 'pages/torrents';
+
+@import "helpers";
