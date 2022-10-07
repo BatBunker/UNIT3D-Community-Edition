@@ -88,6 +88,7 @@ class UserController extends Controller
             ->whereNotNull('unlocked_at')
             ->get();
 
+
         return \view('user.profile', [
             'route'        => 'profile',
             'user'         => $user,
@@ -212,6 +213,25 @@ class UserController extends Controller
                         ->withErrors('Your avatar is too large, max file size: '.($maxUpload / 1_000_000).' MB');
                 }
             }
+        }
+
+        // Personal artwork
+        if ($request->hasFile('personal_artwork') && $request->file('personal_artwork')->getError() === 0) {
+            $personalArtwork = $request->file('personal_artwork');
+            if (\in_array($personalArtwork->getClientOriginalExtension(), ['jpg', 'JPG', 'jpeg', 'bmp', 'png', 'PNG', 'tiff', 'gif']) && \preg_match('#image/*#', (string) $personalArtwork->getMimeType())){
+                $filename = $user->username.'.'.$personalArtwork->getClientOriginalExtension();
+                if ($maxUpload > $personalArtwork->getSize()) {
+                    $uploadDir = public_path('/files/covers/');
+                    if (is_dir($uploadDir) === false){
+                        if (mkdir($uploadDir) === false) {
+                            return  to_route('users.show')->withErrors('The upload filed due to system error please Contact the staff!');
+                        }
+                    }
+                    $personalArtwork->move($uploadDir, $filename);
+                    $user->personal_artwork = $user->username.'.'.$personalArtwork->getClientOriginalExtension();
+                }
+            }
+
         }
 
         // Prevent User from abusing BBCODE Font Size (max. 99)
