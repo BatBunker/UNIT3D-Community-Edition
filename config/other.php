@@ -221,6 +221,6 @@ return [
 
     'show-poll' => (bool) env('SHOW_POLL', true),
 
-    'auth-backdrop' => (string) env('AUTH_BACKDROP','')
+    'auth-backdrop' => (string) env('AUTH_BACKDROP', '')
 
 ];
