@@ -141,7 +141,7 @@ class AnnounceController extends Controller
     protected function checkClient(Request $request): void
     {
         // If any of the required query parameters are missing. (info_hash, peer_id, port, uploaded, downloaded, left)
-        throw_if($request->query->count() <= 6, new TrackerException(129));
+        throw_if($request->query->count() < 6, new TrackerException(129));
 
         // Miss Header User-Agent is not allowed.
         throw_if(!$request->header('User-Agent'), new TrackerException(120));
