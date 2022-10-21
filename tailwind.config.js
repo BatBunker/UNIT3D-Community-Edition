@@ -7,7 +7,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'discord': "#5865f2"
+            }
+        },
     },
     plugins: [],
 }
