@@ -25,7 +25,7 @@
                     @foreach($pages as $page)
                         <tr>
                             <td>
-                                <a href="{{ route('pages.show', ['id' => $page->id]) }}">
+                                <a href="{{ route('pages.show', ['slug' => $page->slug]) }}">
                                     {{ $page->name }}
                                 </a>
                             </td>

@@ -3,11 +3,11 @@
         <a class="top-nav__branding" href="{{ route('home.index') }}">
             <img src="{{asset('logo.png')}}" loading="lazy" alt="Site logo">
         </a>
-        <livewire:quick-search-dropdown />
+        <livewire:quick-search-dropdown/>
     </div>
     <ul class="top-nav__main-menus" x-bind:class="expanded && 'mobile'">
         <li class="top-nav--left__list-item top-nav__dropdown">
-            <a class="top-nav__dropdown--nontouch"  href="{{ route('torrents') }}">
+            <a class="top-nav__dropdown--nontouch" href="{{ route('torrents') }}">
                 <div class="top-nav--left__container">
                     {{ __('torrent.torrents') }}
                 </div>
@@ -41,7 +41,7 @@
                         <i class="{{ config('other.font-awesome') }} fa-rss"></i>
                         {{ __('rss.rss') }}
                     </a>
-                </li>                
+                </li>
                 <li>
                     <a href="{{ route('mediahub.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-database"></i>
@@ -51,7 +51,7 @@
             </ul>
         </li>
         <li class="top-nav--left__list-item top-nav__dropdown">
-            <a class="top-nav__dropdown--nontouch"  href="{{ route('forums.index') }}">
+            <a class="top-nav__dropdown--nontouch" href="{{ route('forums.index') }}">
                 <div class="top-nav--left__container">
                     {{ __('common.community') }}
                 </div>
@@ -63,38 +63,38 @@
             </a>
             <ul>
                 <li>
-                    <a  href="{{ route('forums.index') }}">
+                    <a href="{{ route('forums.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-comments"></i>
                         {{ __('forum.forums') }}
                     </a>
                 </li>
                 <li>
-                    <a  href="{{ route('playlists.index') }}">
+                    <a href="{{ route('playlists.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-list-ol"></i>
                         {{ __('playlist.playlists') }}
                     </a>
                 </li>
                 <li>
-                    <a  href="{{ route('polls') }}">
+                    <a href="{{ route('polls') }}">
                         <i class="{{ config('other.font-awesome') }} fa-chart-pie"></i>
                         {{ __('poll.polls') }}
                     </a>
                 </li>
                 <li>
-                    <a  href="{{ route('stats') }}">
+                    <a href="{{ route('stats') }}">
                         <i class="{{ config('other.font-awesome') }} fa-chart-bar"></i>
                         {{ __('common.extra-stats') }}
                     </a>
                 </li>
                 <li>
-                    <a  href="{{ route('articles.index') }}">
+                    <a href="{{ route('articles.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-newspaper"></i>
                         {{ __('common.news') }}
                     </a>
                 </li>
                 @if (!empty(config('unit3d.chat-link-url')))
                     <li>
-                        <a  href="{{ config('unit3d.chat-link-url') }}">
+                        <a href="{{ config('unit3d.chat-link-url') }}">
                             <i class="{{ config('unit3d.chat-link-icon') }}"></i>
                             {{ config('unit3d.chat-link-name') ?: __('common.chat') }}
                         </a>
@@ -119,9 +119,9 @@
                                 ->count()
                         @endphp
                         @if ($tickets > 0)
-                            <x-animation.notification />
+                            <x-animation.notification/>
                         @endif
-                    <!-- Notification for Users -->
+                        <!-- Notification for Users -->
                     @else
                         @php
                             $ticket_unread = DB::table('tickets')
@@ -130,20 +130,20 @@
                                 ->count()
                         @endphp
                         @if ($ticket_unread > 0)
-                            <x-animation.notification />
+                            <x-animation.notification/>
                         @endif
                     @endif
                 </div>
             </a>
             <ul>
                 <li>
-                    <a href="{{ config('other.rules_url') }}">
+                    <a href="{{ route('pages.show', ['slug' => \config('other.rules_slug_name')]) }}">
                         <i class="{{ config('other.font-awesome') }} fa-info"></i>
                         {{ __('common.rules') }}
                     </a>
                 </li>
                 <li>
-                    <a href="{{ config('other.faq_url') }}">
+                    <a href="{{ route('pages.show', ['slug' => \config('other.faq_slug_name')]) }}">
                         <i class="{{ config('other.font-awesome') }} fa-question"></i>
                         {{ __('common.faq') }}
                     </a>
@@ -155,12 +155,12 @@
                         <!-- Notifications for Mods -->
                         @if (auth()->user()->group->is_modo)
                             @if ($tickets > 0)
-                                <x-animation.notification />
+                                <x-animation.notification/>
                             @endif
-                        <!-- Notification for Users -->
+                            <!-- Notification for Users -->
                         @else
                             @if ($ticket_unread > 0)
-                                <x-animation.notification />
+                                <x-animation.notification/>
                             @endif
                         @endif
                     </a>
@@ -227,7 +227,7 @@
                 <i class="{{ config('other.font-awesome') }} fa-sync-alt text-blue"></i>
                 {{ auth()->user()->getRatioString() }}
             </li>
-        </ul> 
+        </ul>
         <ul class="top-nav__ratio-bar" x-bind:class="expanded && 'mobile'">
             <li class="ratio-bar__uploaded" title="{{ __('common.upload') }}">
                 <a href="{{ route('user_uploads', ['username' => auth()->user()->username]) }}">
@@ -261,7 +261,7 @@
             </li>
             <li class="ratio-bar__points" title="{{ __('user.my-bonus-points') }}">
                 <a href="{{ route('earnings.index', ['username' => auth()->user()->username]) }}">
-                    <i class="{{ config('other.font-awesome') }} fa-coins" ></i>
+                    <i class="{{ config('other.font-awesome') }} fa-coins"></i>
                     {{ auth()->user()->getSeedbonus() }}
                 </a>
             </li>
@@ -277,34 +277,38 @@
                     {{ auth()->user()->fl_tokens }}
                 </a>
             </li>
-        </ul> 
-        <a class="top-nav__username--highresolution" href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
-            <span class="text-bold" style="color:{{ auth()->user()->group->color }}; background-image:{{ auth()->user()->group->effect }};">
+        </ul>
+        <a class="top-nav__username--highresolution"
+           href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
+            <span class="text-bold"
+                  style="color:{{ auth()->user()->group->color }}; background-image:{{ auth()->user()->group->effect }};">
                 <i class="{{ auth()->user()->group->icon }}"></i>
                 {{ auth()->user()->username }}
                 @if (auth()->user()->getWarning() > 0)
                     <i class="{{ config('other.font-awesome') }} fa-exclamation-circle text-orange"
-                        title="{{ __('common.active-warning') }}"></i>
+                       title="{{ __('common.active-warning') }}"></i>
                 @endif
             </span>
         </a>
         <ul class="top-nav__icon-bar" x-bind:class="expanded && 'mobile'">
             @if (auth()->user()->group->is_modo)
                 <li>
-                    <a class="top-nav--right__icon-link" href="{{ route('staff.dashboard.index') }}" title="{{ __('staff.staff-dashboard') }}">
+                    <a class="top-nav--right__icon-link" href="{{ route('staff.dashboard.index') }}"
+                       title="{{ __('staff.staff-dashboard') }}">
                         <i class="{{ config('other.font-awesome') }} fa-cogs"></i>
                     </a>
                 </li>
             @endif
             @if (auth()->user()->group->is_modo)
                 <li>
-                    <a class="top-nav--right__icon-link" href="{{ route('staff.moderation.index') }}" title="{{ __('staff.torrent-moderation') }}">
+                    <a class="top-nav--right__icon-link" href="{{ route('staff.moderation.index') }}"
+                       title="{{ __('staff.torrent-moderation') }}">
                         <i class="{{ config('other.font-awesome') }} fa-tasks"></i>
                         @php
                             $torrents_unmoderated = DB::table('torrents')->where('status', '=', '0')->count()
                         @endphp
                         @if ($torrents_unmoderated > 0)
-                            <x-animation.notification />
+                            <x-animation.notification/>
                         @endif
                     </a>
                 </li>
@@ -319,37 +323,41 @@
                 <a class="top-nav--right__icon-link" href="{{ route('inbox') }}" title="{{ __('pm.inbox') }}">
                     <i class="{{ config('other.font-awesome') }} fa-envelope"></i>
                     @if ($pm > 0)
-                        <x-animation.notification />
+                        <x-animation.notification/>
                     @endif
                 </a>
             </li>
             <li>
-                <a class="top-nav--right__icon-link" href="{{ route('notifications.index') }}" title="{{ __('user.notifications') }}">
+                <a class="top-nav--right__icon-link" href="{{ route('notifications.index') }}"
+                   title="{{ __('user.notifications') }}">
                     <i class="{{ config('other.font-awesome') }} fa-bell"></i>
                     @if (auth()->user()->unreadNotifications->count() > 0)
-                        <x-animation.notification />
+                        <x-animation.notification/>
                     @endif
                 </a>
             </li>
             <li class="top-nav__dropdown">
-                <a class="top-nav__dropdown--nontouch" href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
+                <a class="top-nav__dropdown--nontouch"
+                   href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
                     <img
-                        src="{{ url(auth()->user()->image ? 'files/img/'.auth()->user()->image : 'img/profile.png')}}"
-                        alt="{{ auth()->user()->username }}"
-                        class="top-nav__profile-image"
+                            src="{{ url(auth()->user()->image ? 'files/img/'.auth()->user()->image : 'img/profile.png')}}"
+                            alt="{{ auth()->user()->username }}"
+                            class="top-nav__profile-image"
                     >
                 </a>
                 <a class="top-nav__dropdown--touch" tabindex="0">
                     <img
-                        src="{{ url(auth()->user()->image ? 'files/img/'.auth()->user()->image : 'img/profile.png')}}"
-                        alt="{{ auth()->user()->username }}"
-                        class="top-nav__profile-image"
+                            src="{{ url(auth()->user()->image ? 'files/img/'.auth()->user()->image : 'img/profile.png')}}"
+                            alt="{{ auth()->user()->username }}"
+                            class="top-nav__profile-image"
                     >
                 </a>
                 <ul>
                     <li>
-                        <a class="top-nav__username" href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
-                            <span class="text-bold" style="color:{{ auth()->user()->group->color }}; background-image:{{ auth()->user()->group->effect }};">
+                        <a class="top-nav__username"
+                           href="{{ route('users.show', ['username' => auth()->user()->username]) }}">
+                            <span class="text-bold"
+                                  style="color:{{ auth()->user()->group->color }}; background-image:{{ auth()->user()->group->effect }};">
                                 <i class="{{ auth()->user()->group->icon }}"></i>
                                 {{ auth()->user()->username }}
                                 @if (auth()->user()->getWarning() > 0)
@@ -366,7 +374,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="top-nav--right__link" href="{{ route('user_settings', ['username' => auth()->user()->username]) }}">
+                        <a class="top-nav--right__link"
+                           href="{{ route('user_settings', ['username' => auth()->user()->username]) }}">
                             <i class="{{ config('other.font-awesome') }} fa-cogs"></i>
                             {{ __('user.my-settings') }}
                         </a>
@@ -427,8 +436,8 @@
         </ul>
     </div>
     <button
-        class="top-nav__toggle {{ \config('other.font-awesome') }}"
-        x-bind:class="expanded ? 'fa-times mobile' : 'fa-bars'"
-        x-on:click="expanded = !expanded"
+            class="top-nav__toggle {{ \config('other.font-awesome') }}"
+            x-bind:class="expanded ? 'fa-times mobile' : 'fa-bars'"
+            x-on:click="expanded = !expanded"
     ></button>
 </nav>

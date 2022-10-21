@@ -120,7 +120,7 @@ class LoginController extends Controller
         }
 
         if ($user->read_rules == 0) {
-            return \redirect()->to(\config('other.rules_url'))
+            return \redirect()->route('pages.show', ['slug' => \config('other.rules_slug_name')])
                 ->withWarning(\trans('auth.require-rules'));
         }
 

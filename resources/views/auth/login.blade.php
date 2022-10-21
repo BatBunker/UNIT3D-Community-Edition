@@ -28,7 +28,8 @@
             <div class="flex flex-col">
                 <div class="flex relative">
                          <span class="inline-flex items-center px-3 border-t bg-white border-l border-b border-neutral-400 text-neutral-700 text-sm">
-                            <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                            <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                 viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round"
                                     d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
                             </svg>
@@ -88,6 +89,15 @@
                     <h2 class="inactive underlineHover">{{ __('auth.signup') }} </h2>
                 </a>
             </div>
+            @if(config('other.discord-link'))
+                <button type="submit"
+                        id="disocrd-button"
+                        class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-discord hover:text-black hover:bg-white focus:outline-none focus:ring-2">
+                    <span class="w-full">Discord</span>
+                </button>
+            @endif
+
+
 
         </form>
         <!--User Resets-->

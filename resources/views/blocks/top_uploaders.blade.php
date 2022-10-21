@@ -2,18 +2,20 @@
     <div class="clearfix visible-sm-block"></div>
     <div class="panel panel-chat shoutbox">
         <div class="panel-heading">
-            <h4><i class="{{ config('other.font-awesome') }} fa-trophy-alt"></i> {{ __('user.top-uploaders-count') }}</h4>
+            <h4><i class="{{ config('other.font-awesome') }} fa-trophy-alt"></i> {{ __('user.top-uploaders-count') }}
+            </h4>
         </div>
 
         <ul class="nav nav-tabs mb-12" role="tablist">
-            <li class="col-md-6">
+            <li style="padding: 0!important;font-weight: 900" class="col-md-6">
                 <a href="#alltime" role="tab" data-toggle="tab" aria-expanded="true">
-                    <i class="{{ config('other.font-awesome') }} fa-trophy-alt text-gold"></i> {{ __('stat.all-time') }}
+                    {{ __('stat.all-time') }}
                 </a>
             </li>
-            <li class="active col-md-6">
-                <a href="#30days" role="tab" data-toggle="tab" aria-expanded="false">
-                    <i class="{{ config('other.font-awesome') }} fa-trophy text-success"></i> {{ __('stat.last30days') }}
+            <li style="padding: 0!important;" class="active col-md-6 ">
+                <a style="text-align: right;margin: 0!important;font-weight: 900" href="#30days" role="tab"
+                   data-toggle="tab" aria-expanded="false">
+                    {{ __('stat.last30days') }}
                 </a>
             </li>
         </ul>

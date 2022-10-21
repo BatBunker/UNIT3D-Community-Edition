@@ -1,5 +1,6 @@
 $default-font-family: Exo, Titillium Web, Tahoma, Verdana, sans-serif;
 /* open props*/
+/*! purgecss start ignore */
 :where(html) {
   --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   --font-serif: ui-serif, serif;
@@ -551,3 +552,4 @@ $default-font-family: Exo, Titillium Web, Tahoma, Verdana, sans-serif;
     transform: scale(.9)
   }
 }
+/*! purgecss end ignore */

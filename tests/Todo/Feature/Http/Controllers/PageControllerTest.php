@@ -112,7 +112,7 @@ class PageControllerTest extends TestCase
         $page = Page::factory()->create();
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get(route('pages.show', ['id' => $page->id]));
+        $response = $this->actingAs($user)->get(route('pages.show', ['slug' => $page->slug]));
 
         $response->assertOk();
         $response->assertViewIs('page.page');
