@@ -124,13 +124,13 @@ Route::group(['middleware' => 'language'], function () {
         });
 
         // Pages System
-        Route::group(['prefix' => 'pages'], function () {
+        Route::group(['prefix' => 'wiki'], function () {
             Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('pages.index');
             Route::get('/staff', [App\Http\Controllers\PageController::class, 'staff'])->name('staff');
             Route::get('/internal', [App\Http\Controllers\PageController::class, 'internal'])->name('internal');
             Route::get('/blacklist', [App\Http\Controllers\PageController::class, 'blacklist'])->name('blacklist');
             Route::get('/aboutus', [App\Http\Controllers\PageController::class, 'about'])->name('about');
-            Route::get('/{id}', [App\Http\Controllers\PageController::class, 'show'])->where('id', '[0-9]+')->name('pages.show');
+            Route::get('/{slug}', [App\Http\Controllers\PageController::class, 'show'])->name('pages.show');
         });
 
         // Comments System

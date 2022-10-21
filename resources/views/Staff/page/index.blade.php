@@ -49,7 +49,7 @@
                             <menu class="data-table__actions">
                                 <li class="data-table__action">
                                     <a
-                                        href="{{ route('pages.show', ['id' => $page->id]) }}"
+                                        href="{{ route('pages.show', ['slug' => $page->slug]) }}"
                                         class="form__button form__button--text"
                                     >
                                         {{ __('common.view') }}
@@ -57,7 +57,7 @@
                                 </li>
                                 <li class="data-table__action">
                                     <a
-                                        href="{{ route('staff.pages.edit', ['id' => $page->id]) }}"
+                                        href="{{ route('staff.pages.edit', ['id' => $page->slug]) }}"
                                         class="form__button form__button--text"
                                     >
                                         {{ __('common.edit') }}
@@ -65,7 +65,7 @@
                                 </li>
                                 <li class="data-table__action">
                                     <form
-                                        action="{{ route('staff.pages.destroy', ['id' => $page->id]) }}"
+                                        action="{{ route('staff.pages.destroy', ['id' => $page->slug]) }}"
                                         method="POST"
                                         x-data
                                     >

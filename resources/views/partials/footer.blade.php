@@ -38,7 +38,7 @@
                 <h2 class="l-footer-section-title">{{ __('common.pages') }}</h2>
                 <ul>
                     @foreach ($footer_pages as $page)
-                        <li><a href="{{ route('pages.show', ['id' => $page->id]) }}">{{ $page->name }}</a></li>
+                        <li><a href="{{ route('pages.show', ['slug' => $page->slug]) }}">{{ $page->name }}</a></li>
                     @endforeach
                     <li><a href="{{ route('pages.index') }}">[View All]</a></li>
                 </ul>
