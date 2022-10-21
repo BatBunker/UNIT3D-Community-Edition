@@ -173,7 +173,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 1
     */
-    'rules_slug_name' => (string) env('RULES_SLUG_NAME','rules'),
+    'rules_slug_name' => (string) env('RULES_SLUG_NAME', 'rules'),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +181,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 2
     */
-    'faq_slug_name' => (string) env('FAQ_SLUG_NAME','faq'),
+    'faq_slug_name' => (string) env('FAQ_SLUG_NAME', 'faq'),
 
     /*
     |--------------------------------------------------------------------------
@@ -189,7 +189,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 4
     */
-    'upload-guide_slug_name' => (string) env('UPLOAD-GUIDE_SLUG_NAME','guide'),
+    'upload-guide_slug_name' => (string) env('UPLOAD-GUIDE_SLUG_NAME', 'guide'),
 
     /*
     |--------------------------------------------------------------------------
