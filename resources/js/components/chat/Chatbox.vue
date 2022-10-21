@@ -15,7 +15,7 @@
             <div class="panel-heading" id="frameHeader">
                 <div class="button-holder no-space">
                     <div class="button-left">
-                        <h4><i class="fas fa-comment-dots"></i> Chatbox v3.0</h4>
+                        <h4>Chatbox</h4>
                     </div>
                     <div class="button-right">
                         <a href="" view="bot" @click.prevent="startBot()" class="btn btn-xs btn-warning">

@@ -1,5 +1,5 @@
 @php
-  $artWork = $user->personal_artwork !== null ? url('files/covers/' . $user->personal_artwork)  : '';
+    $artWork = $user->personal_artwork !== null ? url('files/covers/' . $user->personal_artwork)  : '/img/default_featured.jpg';
 @endphp
 <section class="user-header" style="background-image: url({{$artWork}})">
     <div class="user-header__container">
@@ -22,10 +22,8 @@
                   </span>
                     @else
                         <span>
-                       <i class="{{ config('other.font-awesome') }} fa-circle text-red"
-                          title="{{ __('user.offline') }}">
-                   </span>
-                        </i>
+                       <i class="{{ config('other.font-awesome') }} fa-circle text-red" title="{{ __('user.offline') }}"></i>
+                        </span>
                     @endif
                     <span>
                     <a href="{{ route('create', ['receiver_id' => $user->id, 'username' => $user->username]) }}">
@@ -71,7 +69,8 @@
                     @if(!empty($user->title))
                         <span class="badge-extra">{{ $user->title }}</span>
                     @endif
-                    <span class="badge-extra text-bold" style="color:{{ $user->group->color }}!important; background-image:{{ $user->group->effect }};">
+                    <span class="badge-extra text-bold"
+                          style="color:{{ $user->group->color }}!important; background-image:{{ $user->group->effect }};">
                 {{ $user->group->name }}
             </span>
                     <span class="badge-extra"> Joined: {{ $user->created_at === null ? "N/A" : date('M d Y', $user->created_at->getTimestamp()) }}</span>
@@ -83,7 +82,7 @@
                 @endphp
                 @foreach ($achievements as $achievement)
                     @php
-                        if($x > 10) { continue; }
+                        if($x > 15) { continue; }
                     @endphp
                     <img loading="lazy" src="/img/badges/{{ $achievement->details->name }}.png"
                          height="40px" title="{{ $achievement->details->name }}"
@@ -142,18 +141,22 @@
                             @if ($user->group->id == 5)
                                 <button class="btn btn-xs btn-warning" data-toggle="modal"
                                         data-target="#modal_user_unban"><span
-                                            class="{{ config('other.font-awesome') }} fa-undo"></span> {{ __('user.unban') }} </button>
+                                            class="{{ config('other.font-awesome') }} fa-undo"></span> {{ __('user.unban') }}
+                                </button>
                             @else
                                 <button class="btn btn-xs btn-danger" data-toggle="modal"
                                         data-target="#modal_user_ban"><span
-                                            class="{{ config('other.font-awesome') }} fa-ban"></span> {{ __('user.ban') }}</button>
+                                            class="{{ config('other.font-awesome') }} fa-ban"></span> {{ __('user.ban') }}
+                                </button>
                             @endif
                             <a href="{{ route('user_setting', ['username' => $user->username]) }}"
                                class="btn btn-xs btn-warning"><span
-                                        class="{{ config('other.font-awesome') }} fa-pencil"></span> {{ __('user.edit') }} </a>
+                                        class="{{ config('other.font-awesome') }} fa-pencil"></span> {{ __('user.edit') }}
+                            </a>
                             <button class="btn btn-xs btn-danger" data-toggle="modal"
                                     data-target="#modal_user_delete"><span
-                                        class="{{ config('other.font-awesome') }} fa-trash"></span> {{ __('user.delete') }} </button>
+                                        class="{{ config('other.font-awesome') }} fa-trash"></span> {{ __('user.delete') }}
+                            </button>
                         </div>
                     @endif
                 @endif
