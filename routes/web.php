@@ -944,6 +944,3 @@ Route::group(['middleware' => 'language'], function () {
         });
     });
 });
-
-// chatBox
-Route::get('/chat', fn () => view('chat'));

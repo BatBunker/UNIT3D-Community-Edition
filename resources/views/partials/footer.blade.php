@@ -67,20 +67,6 @@
     </div>
 </div>
 
-<div class="subfooter text-center">
-    <div class="container">
-        <div class="subfooter-inner">
-            <div class="row">
-                <div class="col-md-12">
-                    <span class="text-bold">
-                        This page took {{ number_format(microtime(true) - LARAVEL_START, 3) }} seconds to render and {{ number_format(memory_get_peak_usage(true) / 1024 / 1024, 2) }} MB of memory
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button">
     <i class="{{ config('other.font-awesome') }} fa-arrow-square-up"></i>
 </a>
