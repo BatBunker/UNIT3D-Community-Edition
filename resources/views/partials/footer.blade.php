@@ -38,7 +38,7 @@
                 <h2 class="l-footer-section-title">{{ __('common.pages') }}</h2>
                 <ul>
                     @foreach ($footer_pages as $page)
-                        <li><a href="{{ route('pages.show', ['slug' => $page->slug]) }}">{{ $page->name }}</a></li>
+                        <li><a href="{{ route('pages.show', ['id' => $page->id]) }}">{{ $page->name }}</a></li>
                     @endforeach
                     <li><a href="{{ route('pages.index') }}">[View All]</a></li>
                 </ul>
@@ -50,7 +50,7 @@
             <ul>
                 <li><a href="{{ route('staff') }}">{{ __('common.staff') }}</a></li>
                 <li><a href="{{ route('internal') }}">{{ __('common.internal') }}</a></li>
-                <li><a href="{{ route('blacklist') }}">{{ __('common.blacklist') }}</a></li>
+                <li><a href="{{ route('client_blacklist') }}">{{ __('common.blacklist') }}</a></li>
                 <li><a href="{{ route('about') }}">{{ __('common.about') }}</a></li>
             </ul>
         </div>
@@ -63,6 +63,20 @@
                 <li><a href="https://github.com/HDInnovations/UNIT3D" target="_blank"
                        class="btn btn-xs btn-primary">{{ __('common.powered-by') }}</a></li>
             </ul>
+        </div>
+    </div>
+</div>
+
+<div class="subfooter text-center">
+    <div class="container">
+        <div class="subfooter-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="text-bold">
+                        This page took {{ number_format(microtime(true) - (defined('LARAVEL_START') ? LARAVEL_START : request()->server('REQUEST_TIME_FLOAT')), 3) }} seconds to render and {{ number_format(memory_get_peak_usage(true) / 1024 / 1024, 2) }} MB of memory
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </div>

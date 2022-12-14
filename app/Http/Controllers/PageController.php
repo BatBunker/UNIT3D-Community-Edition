@@ -13,10 +13,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlacklistClient;
 use App\Models\Group;
 use App\Models\Internal;
 use App\Models\Page;
-use Illuminate\Support\Facades\Cache;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\PageControllerTest
@@ -36,9 +36,9 @@ class PageController extends Controller
     /**
      * Show A Page.
      */
-    public function show(string $slug): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $page = Page::whereSlug($slug)->firstOrFail();
+        $page = Page::findOrFail($id);
 
         return \view('page.page', ['page' => $page]);
     }
@@ -48,11 +48,12 @@ class PageController extends Controller
      */
     public function staff(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $staff = Cache::remember("staff_members", 24 * 60 * 60, fn () => Group::with('users:id,username,group_id,title')
+        $staff = Group::query()
+            ->with('users:id,username,group_id,title')
             ->where('is_modo', '=', 1)
-            ->where('is_owner', '!=', 1)
+            ->orWhere('is_admin', '=', 1)
             ->get()
-            ->sortByDesc('position'));
+            ->sortByDesc('position');
 
         return \view('page.staff', ['staff' => $staff]);
     }
@@ -62,25 +63,22 @@ class PageController extends Controller
      */
     public function internal(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $internals = Cache::remember(
-            'internals_groups',
-            24 * 60 * 60,
-            fn () => Internal::with('users')
-                ->get()
-                ->sortBy('name')
-        );
+        $internals = Internal::query()
+            ->with('users')
+            ->get()
+            ->sortBy('name');
 
         return \view('page.internal', ['internals' => $internals]);
     }
 
     /**
-     * Show Blacklist Page.
+     * Show Client-Blacklist Page.
      */
-    public function blacklist(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function clientblacklist(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $clients = Cache::remember('client-blacklist', 24 * 60 * 60, fn () => \config('client-blacklist.clients', []));
+        $clients = BlacklistClient::all();
 
-        return \view('page.blacklist', ['clients' => $clients]);
+        return \view('page.blacklist.client', ['clients' => $clients]);
     }
 
     /**

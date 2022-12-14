@@ -10,8 +10,7 @@
  * @author     HDVinnie <hdinnovations@protonmail.com>
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
-// TODO We have to improve the pages management system.
-// Currently it really sucks :(
+
 return [
 
     /*
@@ -23,7 +22,7 @@ return [
     |
     */
 
-    'title' => env('APP_NAME'),
+    'title' => 'UNIT3D',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +33,7 @@ return [
     |
     */
 
-    'subTitle' => env('SUB_TITLE', ''),
+    'subTitle' => 'Built On Laravel',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +55,7 @@ return [
     |
     */
 
-    'meta_description' => env('SUB_TITLE', ''),
+    'meta_description' => 'Built On Laravel',
 
     /*
     |--------------------------------------------------------------------------
@@ -76,9 +75,9 @@ return [
     | Global Freeleech
     |
     */
-    'freeleech' => (bool)env('FREELEECH', false),
+    'freeleech' => false,
 
-    'freeleech_until' => (string)env('FREELEECH_UNTIL', ''),
+    'freeleech_until' => '12/23/2017 3:00 PM EST',
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +87,7 @@ return [
     | Global Double Upload
     |
     */
-    'doubleup' => (bool)env('DOUBLE_UPLOAD', false),
+    'doubleup' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +98,7 @@ return [
     |
     */
 
-    'ratio' => \number_format(env('MIN_RATIO', 0.4), 1),
+    'ratio' => 0.4,
 
     /*
     |--------------------------------------------------------------------------
@@ -112,11 +111,11 @@ return [
     | Restricted mode for invites. If set to true, invites will be restricted
     | Exempt these groups from the invite restrictions
     */
-    'invite-only' => (bool)env('INVITE_ONLY', true),
-    'invite_expire' => (string)env('INVITE_EXPIRE', '14'),
+    'invite-only'   => true,
+    'invite_expire' => '14',
 
     'invites_restriced' => false,
-    'invite_groups' => [
+    'invite_groups'     => [
         'Administrator',
         'Owner',
     ],
@@ -129,7 +128,7 @@ return [
     | This will be the upload and download given to new members. (In Bytes!)
     | Default: 50GiB Upload and 1GiB Download
     */
-    'default_upload' => '53687091200',
+    'default_upload'   => '53687091200',
     'default_download' => '1073741824',
 
     /*
@@ -165,7 +164,7 @@ return [
     | True/1 = Enabled
     | False/0 = Disabled
     */
-    'application_signups' => env('APPLICATION_SIGNUPS', false),
+    'application_signups' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -173,7 +172,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 1
     */
-    'rules_slug_name' => (string) env('RULES_SLUG_NAME', 'rules'),
+    'rules_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/1',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +180,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 2
     */
-    'faq_slug_name' => (string) env('FAQ_SLUG_NAME', 'faq'),
+    'faq_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/2',
 
     /*
     |--------------------------------------------------------------------------
@@ -189,7 +188,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 4
     */
-    'upload-guide_slug_name' => (string) env('UPLOAD-GUIDE_SLUG_NAME', 'guide'),
+    'upload-guide_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/4',
 
     /*
     |--------------------------------------------------------------------------
@@ -209,22 +208,4 @@ return [
     | The ID value of staff forum area. Should be the main / parent ID.
     */
     'staff-forum-id' => '',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Show Poll
-    |--------------------------------------------------------------------------
-    |
-    | Hide or show the Poll's
-    |
-    */
-
-    'show-poll' => (bool)env('SHOW_POLL', true),
-
-
-    'auth-backdrop' => (string)env('AUTH_BACKDROP', ''),
-
-
-    'discord-link' => (string)env('DISCORD_LINK', false)
-
 ];
