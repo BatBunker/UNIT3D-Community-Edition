@@ -10,8 +10,8 @@
                 text-decoration: underline;
             }
         </style>
-        @if(false === auth()->user()->chat_hidden && true ===  config('chat.show-chat'))
-            <div id="vue" style="margin: 0 calc(max(0px, 45vw - 800px)*-1)">
+        @if(config('chat.show-chat'))
+            <div id="vue">
                 <script src="{{ mix('js/chat.js') }}" crossorigin="anonymous"></script>
                 @include('blocks.chat')
             </div>

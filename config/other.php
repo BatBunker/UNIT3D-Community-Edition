@@ -172,7 +172,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 1
     */
-    'rules_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/1',
+    'rules_slug_name' => (string) env('RULES_SLUG_NAME', 'rules'),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,7 +180,8 @@ return [
     |--------------------------------------------------------------------------
     | Example: 2
     */
-    'faq_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/2',
+
+    'faq_slug_name' => (string) env('FAQ_SLUG_NAME', 'faq'),
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +189,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 4
     */
-    'upload-guide_url' => 'https://'.parse_url(env('APP_URL'), PHP_URL_HOST).'/pages/4',
+    'upload-guide_slug_name' => (string) env('UPLOAD-GUIDE_SLUG_NAME', 'guide'),
 
     /*
     |--------------------------------------------------------------------------

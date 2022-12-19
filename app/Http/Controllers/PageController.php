@@ -36,9 +36,9 @@ class PageController extends Controller
     /**
      * Show A Page.
      */
-    public function show(int $id): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function show(string $slug): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $page = Page::findOrFail($id);
+        $page = Page::whereSlug($slug)->firstorfail();
 
         return \view('page.page', ['page' => $page]);
     }
