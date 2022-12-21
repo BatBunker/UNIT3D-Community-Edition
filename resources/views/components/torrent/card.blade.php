@@ -37,7 +37,8 @@
     ],
 ])
 
-<article class="torrent-card">
+<article class="torrent-card"
+         style="--app-torrent-card-bg: url('{{isset($meta->backdrop) ? tmdb_image('back_small', $meta->backdrop) : ''}}'); background-size:cover; ">
     <header class="torrent-card__header">
         <div class="torrent-card__left-header">
             <span class="torrent-card__category">{{ $torrent->category->name }}</span>
@@ -67,24 +68,24 @@
     </header>
     <aside class="torrent-card__aside">
         <a
-            class="torrent-card__similar-link"
-            href="{{ route('torrents.similar', ['category_id' => $torrent->category_id, 'tmdb' => $torrent->tmdb]) }}"
+                class="torrent-card__similar-link"
+                href="{{ route('torrents.similar', ['category_id' => $torrent->category_id, 'tmdb' => $torrent->tmdb]) }}"
         >
             <figure class="torrent-card__figure">
                 <img
-                    class="torrent-card__image"
-                    @switch (true)
-                        @case ($torrent->category->movie_meta || $torrent->category->tv_meta)
-                            src="{{ isset($meta->poster) ? tmdb_image('poster_mid', $meta->poster) : 'https://via.placeholder.com/160x240' }}"
-                            @break
+                        class="torrent-card__image"
+                        @switch (true)
+                            @case ($torrent->category->movie_meta || $torrent->category->tv_meta)
+                                src="{{ isset($meta->poster) ? tmdb_image('poster_mid', $meta->poster) : 'https://via.placeholder.com/160x240' }}"
+                        @break
                         @case ($torrent->category->game_meta && isset($torrent->meta) && $meta->cover->image_id && $meta->name)
                             src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{ $torrent->meta->cover->image_id }}.jpg"
-                            @break
+                        @break
                         @case ($torrent->category->no_meta || $torrent->category->music_meta)
                             src="https://via.placeholder.com/160x240"
-                            @break
-                    @endswitch
-                    alt="{{ __('torrent.poster') }}"
+                        @break
+                        @endswitch
+                        alt="{{ __('torrent.poster') }}"
                 />
             </figure>
         </a>
@@ -94,13 +95,13 @@
             <a class="torrent-card__link" href="{{ route('torrent', ['id' => $torrent->id]) }}">{{ $torrent->name }}</a>
         </h2>
         <div class="torrent-card__rating-and-genres">
-            <span
-                class="torrent-card__rating"
-                title="{{ $meta->vote_average }}/10 ({{ $meta->vote_count }} {{ __('torrent.votes') }})"
-            >
-                <i class="{{ \config('other.font-awesome') }} fa-star"></i>
-                {{ $meta->vote_average }}
-            </span>
+                <span
+                        class="torrent-card__rating"
+                        title="{{ $meta->vote_average }}/10 ({{ $meta->vote_count }} {{ __('torrent.votes') }})"
+                >
+                    <i class="{{ \config('other.font-awesome') }} fa-star"></i>
+                    {{ $meta->vote_average }}
+                </span>
             <span class="torrent-card__meta-seperator"> &bull; </span>
             <ul class="torrent-card__genres">
                 @foreach($meta->genres as $genre)
@@ -119,7 +120,7 @@
     <footer class="torrent-card__footer">
         <div class="torrent-card__left-footer">
             <address class="torrent-card__uploader">
-                <x-user_tag :anon="$torrent->anon" :user="$torrent->user" />
+                <x-user_tag :anon="$torrent->anon" :user="$torrent->user"/>
             </address>
             <span class="torrent-card__meta-seperator"> &bull; </span>
             <time title="{{ $torrent->created_at }}" datetime="{{ $torrent->created_at }}">
@@ -129,17 +130,17 @@
         <div class="torrent-card__right-footer">
             @if (config('torrent.download_check_page'))
                 <a
-                    class="form__standard-icon-button"
-                    download
-                    href="{{ route('download_check_page', ['id' => $torrent->id]) }}"
+                        class="form__standard-icon-button"
+                        download
+                        href="{{ route('download_check_page', ['id' => $torrent->id]) }}"
                 >
                     <i class="{{ \config('other.font-awesome') }} fa-download"></i>
                 </a>
             @else
                 <a
-                    class="form__standard-icon-button"
-                    download
-                    href="{{ route('download', ['id' => $torrent->id]) }}"
+                        class="form__standard-icon-button"
+                        download
+                        href="{{ route('download', ['id' => $torrent->id]) }}"
                 >
                     <i class="{{ \config('other.font-awesome') }} fa-download"></i>
                 </a>

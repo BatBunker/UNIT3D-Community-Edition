@@ -1,61 +1,83 @@
 .featured-carousel__slide {
-    scroll-snap-align: center;
-    flex: 1 0 40%;
+  scroll-snap-align: center;
+  flex: 1 0 40%;
 }
 
 .featured-carousel__slide:first-child {
-    scroll-snap-align: center start;
+  scroll-snap-align: center start;
 }
 
 .featured-carousel__slide:last-child {
-    scroll-snap-align: center end;
+  scroll-snap-align: center end;
 }
 
 .featured-carousel {
-    gap: 16px;
-    margin: 0;
-    padding: 16px;
-    list-style-type: none;
-    margin-bottom: 0;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    display: flex;
-    flex: 1 1 0;
-    scrollbar-width: none;
+  gap: 16px;
+  margin: 0;
+  padding: 16px;
+  list-style-type: none;
+  margin-bottom: 0;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  display: flex;
+  flex: 1 1 0;
+  scrollbar-width: none;
+  background-color: var(--app-panel-bg--transparent);
 }
 
 .featured-carousel::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .featured-carousel__feature-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
 }
 
 .featured-carousel__featured-until,
 .featured-carousel__featured-by {
-    text-align: center;
-    font-size: 11.5px;
+  text-align: center;
+  font-size: 11.5px;
 }
 
 .featured-carousel__nav {
-    display: flex;
+  display: flex;
 }
 
 .featured-carousel__next,
 .featured-carousel__previous {
-    flex-grow: 1;
-    background-color: var(--panel-head-bg);
-    padding: 10px;
-    border: none;
+  flex-grow: 1;
+  background-color: var(--app-panel-bg--transparent);
+  padding: 10px;
+  border: none;
+  font-size: 3rem;
 }
 
 .featured-carousel__next:hover,
 .featured-carousel__previous:hover {
-    background-color: #777;
+  backdrop-filter: brightness(1.2);
+}
+
+.carousel-wrapper {
+  background-color: var(--app-panel-bg--transparent) !important;
+  border: unset !important;
+  box-shadow: unset !important;
+}
+
+.featured-carousel__next {
+  text-align: right;
+}
+
+.featured-carousel__previous {
+  text-align: left;
+}
+
+.carousel__heading {
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.5;
 }

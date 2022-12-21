@@ -20,6 +20,7 @@ return [
     // Featured Torrents
     'featured-by'             => 'Featured by',
     'featured-torrents'       => 'Featured Torrents',
+    'hot-torrents'            => 'Hot Torrents',
     'featured-torrents-intro' => 'Get Them While You Can!',
     'featured-until'          => 'This is a featured torrent until',
 

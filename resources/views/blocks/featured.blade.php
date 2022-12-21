@@ -1,9 +1,9 @@
 @if ($featured)
-    <div class="col-md-10 col-sm-10 col-md-offset-1">
+    <div class="col-md-10 col-sm-10 col-md-offset-1 carousel-wrapper">
         <div class="clearfix visible-sm-block"></div>
-        <div class="panel panel-chat shoutbox">
-            <div class="panel-heading featured-header">
-                <h4><i class="{{ config('other.font-awesome') }} fa-star"></i> {{ __('blocks.featured-torrents') }}</h4>
+        <div>
+            <div class="carousel__header">
+                <h4 class="carousel__heading"><i class="{{ config('other.font-awesome') }} fa-fire"></i> {{ __('blocks.hot-torrents') }}</h4>
             </div>
             <div x-data>
                 <ul
@@ -25,18 +25,18 @@
                         @endphp
                         <li class="featured-carousel__slide">
                             <x-torrent.card :meta="$meta" :torrent="$feature->torrent" />
-                            <footer class="featured-carousel__feature-details">
-                                <p class="featured-carousel__featured-until">
-                                    {{ __('blocks.featured-until') }}:<br>
-                                    <time datetime="{{ $feature->created_at->addDay(7) }}">
-                                        {{ $feature->created_at->addDay(7)->toFormattedDateString() }}
-                                        ({{ $feature->created_at->addDay(7)->diffForHumans() }}!)
-                                    </time>
-                                </p>
-                                <p class="featured-carousel__featured-by">
-                                    {{ __('blocks.featured-by') }}: {{ $feature->user->username }}!
-                                </p>
-                            </footer>
+{{--                            <footer class="featured-carousel__feature-details">--}}
+{{--                                <p class="featured-carousel__featured-until">--}}
+{{--                                    {{ __('blocks.featured-until') }}:<br>--}}
+{{--                                    <time datetime="{{ $feature->created_at->addDay(7) }}">--}}
+{{--                                        {{ $feature->created_at->addDay(7)->toFormattedDateString() }}--}}
+{{--                                        ({{ $feature->created_at->addDay(7)->diffForHumans() }}!)--}}
+{{--                                    </time>--}}
+{{--                                </p>--}}
+{{--                                <p class="featured-carousel__featured-by">--}}
+{{--                                    {{ __('blocks.featured-by') }}: {{ $feature->user->username }}!--}}
+{{--                                </p>--}}
+{{--                            </footer>--}}
                         </li>
                     @endforeach
                 </ul>

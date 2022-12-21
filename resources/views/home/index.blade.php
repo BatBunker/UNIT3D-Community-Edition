@@ -1,14 +1,8 @@
 @extends('layout.default')
 @section('content')
     <div class="page__home">
+        @include('blocks.featured')
         @include('blocks.news')
-
-        <style>
-            .hidden-text {
-                text-align: center;
-                font-weight: bolder;
-                text-decoration: underline;
-            }
         </style>
         @if(config('chat.show-chat'))
             <div id="vue">
@@ -16,8 +10,6 @@
                 @include('blocks.chat')~
             </div>
         @endif
-
-        @include('blocks.featured')
 
         @if(true === config('other.show-poll'))
             @include('blocks.poll')
