@@ -1,25 +1,4 @@
-:root {
-  --app-body-bg-color: rgba(0, 0, 0, 0.9);
 
-  --app-border-light-color: hsl(0, 0%, 24%);
-  --app-border-dark-1-color: hsl(0, 0%, 18%);
-
-  --app-panel-header-bg-color: hsl(0, 0%, 20%);
-  --app-panel-body-bg-color: hsl(0, 0%, 15%);
-
-  --app-stripe-odd-color: hsl(0, 0%, 16%);
-
-  --app-table-stripe-odd-color: hsl(0, 0%, 16%);
-  --app-table-stripe-even-color: hsl(0, 0%, 13%);
-  --app-table-success-bg-color: hsl(0, 2%, 11%);
-
-  --app-button-dark-color: hsl(0, 0%, 26%);
-  --app-button-light-color: hsl(0, 0%, 28%);
-
-  --app-text-color: #ffffff;
-  --app-text-visited-color: #d4d4d4;
-
-}
 
 body {
   background-color: var(--app-body-bg-color);

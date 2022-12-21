@@ -1,0 +1,25 @@
+/**
+  * Created by PhpStorm.
+ * User: Redeemerr
+ * Date: 21/12/2022
+ * Time: 17:22
+ */
+.cookie-consent {
+  display: block;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 10;
+  color: var(--app-text-color--light);
+  background-color: var(--app-cookie-consent-bg-color);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.cookie-consent__content {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  justify-content: center;
+}

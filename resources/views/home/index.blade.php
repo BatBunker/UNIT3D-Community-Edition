@@ -13,7 +13,7 @@
         @if(config('chat.show-chat'))
             <div id="vue">
                 <script src="{{ mix('js/chat.js') }}" crossorigin="anonymous"></script>
-                @include('blocks.chat')
+                @include('blocks.chat')~
             </div>
         @endif
 

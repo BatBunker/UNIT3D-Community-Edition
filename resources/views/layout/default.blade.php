@@ -4,7 +4,6 @@
     @include('partials.head')
 </head>
 <body>
-@include('cookie-consent::index')
 <header>
     @include('partials.top_nav')
     <nav class="secondary-nav">
@@ -56,6 +55,7 @@
         </article>
     @endif
 </main>
+@include('cookie-consent::index')
 @include('partials.footer')
 
 <script src="{{ mix('js/app.js') }}" crossorigin="anonymous"></script>
