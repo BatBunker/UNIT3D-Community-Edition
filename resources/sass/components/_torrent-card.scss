@@ -116,8 +116,9 @@
 
 .torrent-card:hover > * {
   opacity: 100%;
+  backdrop-filter: blur(8px) brightness(.6);
   transition: all .3s ease-out;
-  backdrop-filter: blur(8px);
+
 }
 
 

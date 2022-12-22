@@ -1,0 +1,16 @@
+/**
+  * Created by PhpStorm.
+ * User: Redeemerr
+ * Date: 22/12/2022
+ * Time: 22:16
+ */
+.tabs {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  padding: unset;
+}
+
+.tabs--centered {
+  justify-content: center;
+}
