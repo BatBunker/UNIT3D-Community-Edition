@@ -1,9 +1,9 @@
 @foreach ($articles as $article)
-    <div class="col-md-10 col-sm-10 col-md-offset-1">
+    <div class="col-md-10 col-sm-10 col-md-offset-1 panelv3">
         @if ($article->newNews)
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h4 class="text-center">
+            <div>
+                <div class="panel__heading">
+                    <h4 class="text-left">
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                            href="#collapse4" style="color:#ffffff;">
                             @joypixels(':rotating_light:') {{ __('blocks.new-news') }} {{ $article->created_at->diffForHumans() }}
@@ -12,19 +12,23 @@
                     </h4>
                 </div>
                 @else
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            <h4 class="text-center">
+                    <div class="pb15">
+                        <div class="">
+                            <h4 class="panelv3__heading panel__heading--transparent">
                                 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapse4" style="color:#ffffff;">
-                                    {{ __('blocks.check-news') }} {{ $article->created_at->diffForHumans() }}
+                                    <i class="{{ config('other.font-awesome') }} fa-fire"></i>  {{ __('blocks.check-news') }} {{ $article->created_at->diffForHumans() }}
                                 </a>
+                                <div class="pull-right">
+                                    <a href="{{ route('articles.index') }}" class="btn btn-primary">
+                                        {{ __('common.view-all') }}
+                                    </a>
+                                </div>
                             </h4>
                         </div>
                         @endif
                         <div aria-expanded="{{ ($article->newNews ? 'true' : 'false') }}" id="collapse4"
-                             class="panel-collapse collapse {{ ($article->newNews ? 'in' : '') }}"
-                             style="{{ ($article->newNews ? '' : 'height: 0;') }}">
+                             class="panel-collapse {{ ($article->newNews ?  '': 'in') }}">
                             <div class="panel-body no-padding">
                                 <div class="news-blocks">
                                     <a href="{{ route('articles.show', ['id' => $article->id]) }}"
@@ -54,11 +58,6 @@
                                         {{ __('articles.read-more') }}
                                     </a>
 
-                                    <div class="pull-right">
-                                        <a href="{{ route('articles.index') }}" class="btn btn-primary">
-                                            {{ __('common.view-all') }}
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -2,20 +2,21 @@
     <div
         :class="
             this.fullscreen == 1
-                ? `col-md-10 col-sm-10 col-md-offset-1 chatbox panel-fullscreen`
-                : `col-md-10 col-sm-10 col-md-offset-1 chatbox`
+                ? `col-md-10 col-sm-10 col-md-offset-1 panelv3 panel-fullscreen`
+                : `col-md-10 col-sm-10 col-md-offset-1 panelv3 `
         "
         id="chatbody"
         audio="false"
+        style="padding-bottom: 15px!important; "
     >
         <div
             :class="this.fullscreen == 1 ? `clearfix visible-sm-block panel-fullscreen` : `clearfix visible-sm-block`"
         ></div>
-        <div :class="this.fullscreen == 1 ? `panel panel-chat panel-fullscreen` : `panel panel-chat`">
-            <div class="panel-heading" id="frameHeader">
+        <div :class="this.fullscreen == 1 ? `panelv3 panel-fullscreen` : `panelv3`">
+            <div class="panelv3__heading panel__heading--transparent" id="frameHeader">
                 <div class="button-holder no-space">
                     <div class="button-left">
-                        <h4>Chatbox</h4>
+                        <h4 class="panelv3__heading panel__heading--transparent"><i class="fas fa-comment-dots"></i> Chatbox</h4>
                     </div>
                     <div class="button-right">
                         <a href="" view="bot" @click.prevent="startBot()" class="btn btn-xs btn-warning">
@@ -230,6 +231,29 @@
         max-width: 500px;
     }
 }
+.panel__heading--transparent {
+  background: transparent!important;
+}
+
+.panelv3 {
+  background-color: transparent !important;
+  border: unset !important;
+  box-shadow: unset !important;
+}
+.panelv3__heading {
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1.5;
+}
+.dividerv2 {
+  border: 1px solid var(--app-divider-color);
+  display: block;
+}
+
+.pb15 {
+  padding-bottom: 15px!important;
+}
+
 </style>
 <script>
 import ChatroomsDropdown from './ChatroomsDropdown';
