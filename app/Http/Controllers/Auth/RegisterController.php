@@ -68,7 +68,7 @@ class RegisterController extends Controller
                 ->withErrors(\trans('auth.invalid-key'));
         }
 
-        $validatingGroup = \cache()->rememberForever('validating_group', fn() => Group::where('slug', '=', 'validating')->pluck('id'));
+        $validatingGroup = \cache()->rememberForever('validating_group', fn () => Group::where('slug', '=', 'validating')->pluck('id'));
 
         $user = new User();
         $user->username = $request->input('username');
@@ -141,7 +141,6 @@ class RegisterController extends Controller
         $userNotification->user_id = $user->id;
         $userNotification->save();
         if ($key) {
-
             // Update The Invite Record
             $key->accepted_by = $user->id;
             $key->accepted_at = new Carbon();

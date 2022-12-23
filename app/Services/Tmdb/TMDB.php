@@ -97,7 +97,6 @@ class TMDB
             } elseif (isset($item['iso_639_1'])) {
                 $returnData = $item;
             }
-
         }
         return $returnData;
     }
