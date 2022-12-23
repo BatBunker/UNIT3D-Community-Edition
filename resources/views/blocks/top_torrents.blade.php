@@ -157,7 +157,7 @@
                         @endif
                         @if ($d->category->movie_meta)
                             @if ($d->tmdb || $d->tmdb != 0)
-                                @php $meta = cache()->remember('moviemeta:'.$leech->tmdb.$new->category_id, 3_600, fn () => App\Models\Movie::query()->with('genres', 'cast', 'companies', 'collection')->where('id', '=', $d->tmdb)->first()) @endphp
+                                @php $meta = cache()->remember('moviemeta:'.$d->tmdb.$d->category_id, 3_600, fn () => App\Models\Movie::query()->with('genres', 'cast', 'companies', 'collection')->where('id', '=', $d->tmdb)->first()) @endphp
                             @endif
                         @endif
                         <li class="featured-carousel__slide">

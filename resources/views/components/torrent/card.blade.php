@@ -38,7 +38,7 @@
 ])
 
 <article class="torrent-card"
-         style="--app-torrent-card-bg: url('{{isset($meta->backdrop) ? tmdb_image('back_small', $meta->backdrop) : ''}}'); background-size:cover; ">
+         style="--app-torrent-card-bg: url('{{isset($meta->backdrop) ? tmdb_image('back_small', $meta->backdrop) : tmdb_image('poster_mid', $meta->poster)}}'); background-size:cover; ">
     <header class="torrent-card__header">
         <div class="torrent-card__left-header">
             <span class="torrent-card__category">{{ $torrent->category->name }}</span>
