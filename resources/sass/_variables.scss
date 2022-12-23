@@ -1,3 +1,4 @@
+/*! purgecss start ignore */
 $default-font-family: Exo, Titillium Web, Tahoma, Verdana, sans-serif;
 
 :where(html) {
@@ -33,3 +34,5 @@ $default-font-family: Exo, Titillium Web, Tahoma, Verdana, sans-serif;
     --shadow-strength: 25%
   }
 }
+
+/* purgecss end ignore */
