@@ -8,15 +8,36 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Application">
-    <meta name="referrer" content="no-referrer" />
-    <meta name="referrer" content="same-origin" />
-    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="referrer" content="same-origin"/>
+    <meta name="robots" content="noindex"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ mix('css/themes/arthur.css') }}" crossorigin="anonymous">
+    <style>
+        .form-control, button {
+            box-shadow: unset !important;
+            border: unset !important;
+            border-radius: unset !important;;
+        }
+
+        button {
+            background: black !important;
+            transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+            transition-property: all;
+            transition-duration: 200ms;
+            transition-delay: 150ms
+        }
+
+        button:is(:hover,:focus-within) {
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,19 +52,20 @@
 @if(config('other.application_signups') == true)
     <div class="container">
         <div class="block">
-            <div class="row">
+            <div style="background-color: var(--app-body-bg-color);" class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-chat shoutbox">
-                        <div class="header gradient blue">
-                            <div class="inner_content">
-                                <h1>
+                    <div class="panelv3">
+                        <div class="">
+                            <div class="">
+                                <h1 style="color: var(--app-text-visited-color)"
+                                    class="panelv3__heading panel__heading--transparent">
                                     {{ __('auth.application') }}
                                 </h1>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="alert alert-info text-center">
-                                {{ config('other.title') }} {{ __('auth.appl-intro') }}
+                        <div style="background-color: #222;color: var(--app-text-visited-color)" class="panel-body">
+                            <div style="font-weight: 900" class="text-center ">
+                                !! {{ config('other.title') }} {{ __('auth.appl-intro') }} !!
                             </div>
                             <hr>
 
@@ -130,7 +152,8 @@
 
                                 <div class="form-group">
                                     <button id="addLink" class="btn btn-primary">{{ __('auth.add-profile') }}</button>
-                                    <button id="delLink" class="btn btn-primary">{{ __('auth.delete-profile') }}</button>
+                                    <button id="delLink"
+                                            class="btn btn-primary">{{ __('auth.delete-profile') }}</button>
                                 </div>
 
                                 <hr>
@@ -140,7 +163,7 @@
                                             config('other.title')]) }}<span class="badge-extra">BBCode
                                                 {{ __('common.is-allowed') }}</span></label>
                                     <label>
-                                        <textarea name="referrer" cols="30" rows="10" maxlength="500"
+                                        <textarea style="background-color: var(--app-body-bg-color);" name="referrer" cols="30" rows="10" maxlength="500"
                                                   class="form-control"></textarea>
                                     </label>
                                 </div>
@@ -168,59 +191,59 @@
     <script src="{{ mix('js/public.js') }}" crossorigin="anonymous"></script>
 
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-      let images = 2
+        let images = 2
 
-      $('#addImg').on('click', function (e) {
-        e.preventDefault()
-        images += 1
-        const imageHTML = '<div class="form-group extra-image"><label for="image' + images +
-          '">Proof Image URL ' + images +
-          ':</label><input type="text" name="images[]" class="form-control" value="" required></div>'
-        $('.more-images').append(imageHTML)
-      })
+        $('#addImg').on('click', function (e) {
+            e.preventDefault()
+            images += 1
+            const imageHTML = '<div class="form-group extra-image"><label for="image' + images +
+                '">Proof Image URL ' + images +
+                ':</label><input type="text" name="images[]" class="form-control" value="" required></div>'
+            $('.more-images').append(imageHTML)
+        })
 
-      $('#delImg').on('click', function (e) {
-        e.preventDefault()
-        images = (images > 2) ? images - 1 : 2
-        $('.extra-image').last().remove()
-      })
+        $('#delImg').on('click', function (e) {
+            e.preventDefault()
+            images = (images > 2) ? images - 1 : 2
+            $('.extra-image').last().remove()
+        })
 
     </script>
 
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-      let links = 2
+        let links = 2
 
-      $('#addLink').on('click', function (e) {
-        e.preventDefault()
-        links += 1
-        const linkHTML = '<div class="form-group extra-link"><label for="link' + links +
-          '">Profile Link URL ' + links +
-          ':</label><input type="text" name="links[]" class="form-control" value="" required></div>'
-        $('.more-links').append(linkHTML)
-      })
+        $('#addLink').on('click', function (e) {
+            e.preventDefault()
+            links += 1
+            const linkHTML = '<div class="form-group extra-link"><label for="link' + links +
+                '">Profile Link URL ' + links +
+                ':</label><input type="text" name="links[]" class="form-control" value="" required></div>'
+            $('.more-links').append(linkHTML)
+        })
 
-      $('#delLink').on('click', function (e) {
-        e.preventDefault()
-        links = (links > 2) ? links - 1 : 2
-        $('.extra-link').last().remove()
-      })
+        $('#delLink').on('click', function (e) {
+            e.preventDefault()
+            links = (links > 2) ? links - 1 : 2
+            $('.extra-link').last().remove()
+        })
 
     </script>
 
     @foreach (['warning', 'success', 'info'] as $key)
         @if (Session::has($key))
             <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-              const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-              })
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
 
-              Toast.fire({
-                icon: '{{ $key }}',
-                title: '{{ Session::get($key) }}'
-              })
+                Toast.fire({
+                    icon: '{{ $key }}',
+                    title: '{{ Session::get($key) }}'
+                })
 
             </script>
         @endif
@@ -228,12 +251,12 @@
 
     @if (Session::has('errors'))
         <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-          Swal.fire({
-            title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
-            icon: 'error',
-            html: jQuery('#ERROR_COPY').html(),
-            showCloseButton: true,
-          })
+            Swal.fire({
+                title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
+                icon: 'error',
+                html: jQuery('#ERROR_COPY').html(),
+                showCloseButton: true,
+            })
 
         </script>
     @endif
