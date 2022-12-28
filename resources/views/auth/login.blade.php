@@ -89,14 +89,12 @@
                     <h2 class="inactive underlineHover">{{ __('auth.signup') }} </h2>
                 </a>
             </div>
-            @if(config('other.discord-link'))
-                <button type="submit"
-                        id="disocrd-button"
-                        class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-discord hover:text-black hover:bg-white focus:outline-none focus:ring-2">
-                    <span class="w-full">Discord</span>
-                </button>
+            @if(config('other.enable-support'))
+                <a href="{{config('other.support-link')}}"
+                   class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black hover:text-black hover:bg-white focus:outline-none focus:ring-2">
+                    <span class="w-full">Support</span>
+                </a>
             @endif
-
 
 
         </form>

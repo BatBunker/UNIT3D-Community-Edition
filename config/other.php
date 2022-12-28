@@ -111,11 +111,11 @@ return [
     | Restricted mode for invites. If set to true, invites will be restricted
     | Exempt these groups from the invite restrictions
     */
-    'invite-only'   => true,
+    'invite-only' => true,
     'invite_expire' => '14',
 
     'invites_restriced' => false,
-    'invite_groups'     => [
+    'invite_groups' => [
         'Administrator',
         'Owner',
     ],
@@ -128,7 +128,7 @@ return [
     | This will be the upload and download given to new members. (In Bytes!)
     | Default: 50GiB Upload and 1GiB Download
     */
-    'default_upload'   => '53687091200',
+    'default_upload' => '53687091200',
     'default_download' => '1073741824',
 
     /*
@@ -145,7 +145,7 @@ return [
     | 7 = Dark Teal Theme
     | 8 = Dark Yellow Theme
     */
-    'default_style' => 0,
+    'default_style' => 9,
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 1
     */
-    'rules_slug_name' => (string) env('RULES_SLUG_NAME', 'rules'),
+    'rules_slug_name' => (string)env('RULES_SLUG_NAME', 'rules'),
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +181,7 @@ return [
     | Example: 2
     */
 
-    'faq_slug_name' => (string) env('FAQ_SLUG_NAME', 'faq'),
+    'faq_slug_name' => (string)env('FAQ_SLUG_NAME', 'faq'),
 
     /*
     |--------------------------------------------------------------------------
@@ -189,7 +189,7 @@ return [
     |--------------------------------------------------------------------------
     | Example: 4
     */
-    'upload-guide_slug_name' => (string) env('UPLOAD-GUIDE_SLUG_NAME', 'guide'),
+    'upload-guide_slug_name' => (string)env('UPLOAD-GUIDE_SLUG_NAME', 'guide'),
 
     /*
     |--------------------------------------------------------------------------
@@ -209,4 +209,16 @@ return [
     | The ID value of staff forum area. Should be the main / parent ID.
     */
     'staff-forum-id' => '',
+
+    /*
+  |--------------------------------------------------------------------------
+  | Support platform
+  |--------------------------------------------------------------------------
+  |
+  | support platform Link
+  |
+  */
+    'enable-support' => env('ENABLE_SUPPORT', false),
+
+    'support-link' => env('SUPPORT_LINK', '#')
 ];
