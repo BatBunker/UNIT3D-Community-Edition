@@ -95,7 +95,6 @@ class Rss extends Model
             'description'     => null,
             'uploader'        => null,
             'imdb'            => null,
-            'mal'             => null,
             'categories'      => null,
             'types'           => null,
             'resolutions'     => null,

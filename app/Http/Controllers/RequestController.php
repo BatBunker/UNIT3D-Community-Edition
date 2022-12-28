@@ -137,7 +137,6 @@ class RequestController extends Controller
         $torrentRequest->imdb = $request->input('imdb');
         $torrentRequest->tvdb = $request->input('tvdb');
         $torrentRequest->tmdb = $request->input('tmdb');
-        $torrentRequest->mal = $request->input('mal');
         $torrentRequest->igdb = $request->input('igdb');
         $torrentRequest->type_id = $request->input('type_id');
         $torrentRequest->resolution_id = $request->input('resolution_id');
@@ -150,7 +149,6 @@ class RequestController extends Controller
             'imdb'          => 'required|numeric',
             'tvdb'          => 'required|numeric',
             'tmdb'          => 'required|numeric',
-            'mal'           => 'required|numeric',
             'igdb'          => 'required|numeric',
             'category_id'   => 'required|exists:categories,id',
             'type_id'       => 'required|exists:types,id',
@@ -240,7 +238,6 @@ class RequestController extends Controller
         $imdb = $request->input('imdb');
         $tvdb = $request->input('tvdb');
         $tmdb = $request->input('tmdb');
-        $mal = $request->input('mal');
         $igdb = $request->input('igdb');
         $category = $request->input('category_id');
         $type = $request->input('type_id');
@@ -252,7 +249,6 @@ class RequestController extends Controller
         $torrentRequest->imdb = $imdb;
         $torrentRequest->tvdb = $tvdb;
         $torrentRequest->tmdb = $tmdb;
-        $torrentRequest->mal = $mal;
         $torrentRequest->igdb = $igdb;
         $torrentRequest->category_id = $category;
         $torrentRequest->type_id = $type;
@@ -265,7 +261,6 @@ class RequestController extends Controller
             'imdb'          => 'required|numeric',
             'tvdb'          => 'required|numeric',
             'tmdb'          => 'required|numeric',
-            'mal'           => 'required|numeric',
             'igdb'          => 'required|numeric',
             'category_id'   => 'required|exists:categories,id',
             'type_id'       => 'required|exists:types,id',

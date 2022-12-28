@@ -189,7 +189,6 @@ class TorrentController extends Controller
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->mal = $request->input('mal');
         $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
@@ -234,7 +233,6 @@ class TorrentController extends Controller
             'imdb'           => 'required|numeric',
             'tvdb'           => 'required|numeric',
             'tmdb'           => 'required|numeric',
-            'mal'            => 'required|numeric',
             'igdb'           => 'required|numeric',
             'season_number'  => $seasonRule,
             'episode_number' => $episodeRule,
@@ -489,7 +487,6 @@ class TorrentController extends Controller
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->mal = $request->input('mal');
         $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
@@ -536,7 +533,6 @@ class TorrentController extends Controller
             'imdb'           => 'required|numeric',
             'tvdb'           => 'required|numeric',
             'tmdb'           => 'required|numeric',
-            'mal'            => 'required|numeric',
             'igdb'           => 'required|numeric',
             'season_number'  => $seasonRule,
             'episode_number' => $episodeRule,

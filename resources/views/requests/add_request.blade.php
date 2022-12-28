@@ -136,20 +136,6 @@
                             <label class="form__label form__label--floating" for="autotvdb">TVDB ID</label>
                         </p>
                         <p class="form__group">
-                            <input type="hidden" name="mal" value="0" />
-                            <input
-                                id="automal"
-                                class="form__text"
-                                inputmode="numeric"
-                                name="mal"
-                                pattern="[0-9]*"
-                                placeholder=""
-                                type="text"
-                                value="{{ old('mal') }}"
-                            >
-                            <label class="form__label form__label--floating" for="automal">MAL ID ({{ __('torrent.required-anime') }})</label>
-                        </p>
-                        <p class="form__group">
                             <input
                                 id="igdb"
                                 class="form__text"

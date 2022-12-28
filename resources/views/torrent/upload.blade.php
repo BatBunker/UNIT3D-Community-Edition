@@ -295,20 +295,6 @@
                             >
                             <label class="form__label form__label--floating" for="autotvdb">TVDB ID</label>
                         </p>
-                        <p class="form__group">
-                            <input type="hidden" name="mal" value="0" />
-                            <input
-                                type="text"
-                                name="mal"
-                                id="automal"
-                                inputmode="numeric"
-                                pattern="[0-9]*"
-                                x-bind:value="(cats[cat].type === 'movie' || cats[cat].type === 'tv') ? '{{ old('mal') }}' : '0'"
-                                class="form__text"
-                                placeholder=""
-                            >
-                            <label class="form__label form__label--floating" for="automal">MAL ID ({{ __('torrent.required-anime') }})</label>
-                        </p>
                     </div>
                     <p class="form__group" x-show="cats[cat].type === 'game'">
                         <input

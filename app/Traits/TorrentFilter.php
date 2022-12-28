@@ -131,11 +131,6 @@ trait TorrentFilter
         return $query->where('tvdb', '=', $tvdbId);
     }
 
-    public function scopeOfMal(Builder $query, int $malId): Builder
-    {
-        return $query->where('mal', '=', $malId);
-    }
-
     public function scopeOfPlaylist(Builder $query, int $playlistId): Builder
     {
         return $query->whereIn('id', PlaylistTorrent::select('torrent_id')->where('playlist_id', '=', $playlistId));

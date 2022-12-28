@@ -143,10 +143,7 @@
                             <input wire:model="tvdbId" class="form__text" placeholder="">
                             <label class="form__label form__label--floating">TVDb ID</label>
                         </p>
-                        <p class="form__group">
-                            <input wire:model="malId" class="form__text" placeholder="">
-                            <label class="form__label form__label--floating">MAL ID</label>
-                        </p>
+
                     </div>
                     <div class="form__group--short-horizontal">
                         <div class="form__group">

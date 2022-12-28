@@ -43,8 +43,6 @@ class TorrentRequestSearch extends Component
 
     public string $tvdbId = '';
 
-    public string $malId = '';
-
     public $unfilled;
 
     public $claimed;
@@ -79,7 +77,6 @@ class TorrentRequestSearch extends Component
         'tmdbId'        => ['except' => ''],
         'imdbId'        => ['except' => ''],
         'tvdbId'        => ['except' => ''],
-        'malId'         => ['except' => ''],
         'unfilled'      => ['except' => false],
         'claimed'       => ['except' => false],
         'pending'       => ['except' => false],
@@ -160,9 +157,6 @@ class TorrentRequestSearch extends Component
             })
             ->when($this->tvdbId, function ($query) {
                 $query->where('tvdb', '=', $this->tvdbId);
-            })
-            ->when($this->malId, function ($query) {
-                $query->where('mal', '=', $this->malId);
             })
             ->when($this->unfilled || $this->claimed || $this->pending || $this->filled, function ($query) {
                 $query->where(function ($query) {

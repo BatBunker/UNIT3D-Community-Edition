@@ -26,7 +26,6 @@ class TorrentRequestFactory extends Factory
             'imdb'               => $this->faker->word(),
             'tvdb'               => $this->faker->word(),
             'tmdb'               => $this->faker->word(),
-            'mal'                => $this->faker->word(),
             'igdb'               => $this->faker->word(),
             'description'        => $this->faker->text(),
             'user_id'            => fn () => User::factory()->create()->id,

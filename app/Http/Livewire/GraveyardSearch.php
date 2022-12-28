@@ -36,8 +36,6 @@ class GraveyardSearch extends Component
 
     public string $tvdbId = '';
 
-    public string $malId = '';
-
     public array $free = [];
 
     public bool $doubleup = false;
@@ -68,7 +66,6 @@ class GraveyardSearch extends Component
         'tmdbId'        => ['except' => ''],
         'imdbId'        => ['except' => ''],
         'tvdbId'        => ['except' => ''],
-        'malId'         => ['except' => ''],
         'free'          => ['except' => []],
         'doubleup'      => ['except' => false],
         'featured'      => ['except' => false],
@@ -122,7 +119,6 @@ class GraveyardSearch extends Component
             ->when($this->tmdbId !== '', fn ($query) => $query->ofTmdb((int) $this->tmdbId))
             ->when($this->imdbId !== '', fn ($query) => $query->ofImdb((int) (\preg_match('/tt0*(?=(\d{7,}))/', $this->imdbId, $matches) ? $matches[1] : $this->imdbId)))
             ->when($this->tvdbId !== '', fn ($query) => $query->ofTvdb((int) $this->tvdbId))
-            ->when($this->malId !== '', fn ($query) => $query->ofMal((int) $this->malId))
             ->when($this->free !== [], fn ($query) => $query->ofFreeleech($this->free))
             ->when($this->doubleup !== false, fn ($query) => $query->doubleup())
             ->when($this->featured !== false, fn ($query) => $query->featured())

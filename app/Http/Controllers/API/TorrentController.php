@@ -121,7 +121,6 @@ class TorrentController extends BaseController
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->mal = $request->input('mal');
         $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
@@ -185,7 +184,6 @@ class TorrentController extends BaseController
             'imdb'              => 'required|numeric',
             'tvdb'              => 'required|numeric',
             'tmdb'              => 'required|numeric',
-            'mal'               => 'required|numeric',
             'igdb'              => 'required|numeric',
             'season_number'     => $seasonRule,
             'episode_number'    => $episodeRule,
@@ -362,7 +360,6 @@ class TorrentController extends BaseController
             ->when($request->filled('tmdbId'), fn ($query) => $query->ofTmdb((int) $request->tmdbId))
             ->when($request->filled('imdbId'), fn ($query) => $query->ofImdb((int) $request->imdbId))
             ->when($request->filled('tvdbId'), fn ($query) => $query->ofTvdb((int) $request->tvdbId))
-            ->when($request->filled('malId'), fn ($query) => $query->ofMal((int) $request->malId))
             ->when($request->filled('playlistId'), fn ($query) => $query->ofPlaylist((int) $request->playlistId))
             ->when($request->filled('collectionId'), fn ($query) => $query->ofCollection((int) $request->collectionId))
             ->when($request->filled('free'), fn ($query) => $query->ofFreeleech($request->free))
