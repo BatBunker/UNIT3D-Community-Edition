@@ -6,9 +6,9 @@ jobs:
     strategy:
       matrix:
         operating-system:
-          - ubuntu-latest
+          - ubuntu-20.04
         php-version:
-          - '8.1'
+          - '8.2'
     name: php ${{ matrix.php-version }} on ${{ matrix.operating-system }}
     services:
       mysql:
@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup PHP 8.1
+      - name: Setup PHP 8.2
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
