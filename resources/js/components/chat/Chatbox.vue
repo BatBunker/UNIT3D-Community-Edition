@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-body" id="frameBody">
+            <div style="padding-bottom: unset!important;" class="panel-body" id="frameBody">
                 <div id="frame" @mouseover="freezeChat()" @mouseout="unfreezeChat()">
                     <div class="content no-space">
                         <div class="button-holder nav nav-tabs mb-5" id="frameTabs">

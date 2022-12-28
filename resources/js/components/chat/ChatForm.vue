@@ -163,7 +163,7 @@ export default {
       }
     },
     sendMessage() {
-      let msg = this.editor.val();
+      let msg = this.input.val();
 
       if (msg !== null && msg !== '') {
         this.$emit('message-sent', {
