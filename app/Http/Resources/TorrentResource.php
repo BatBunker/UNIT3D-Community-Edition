@@ -65,8 +65,6 @@ class TorrentResource extends JsonResource
                 'tmdb_id'           => $this->tmdb,
                 'imdb_id'           => $this->imdb,
                 'tvdb_id'           => $this->tvdb,
-                'mal_id'            => $this->mal,
-                'igdb_id'           => $this->igdb,
                 'category_id'       => $this->category_id,
                 'type_id'           => $this->type_id,
                 'resolution_id'     => $this->when($this->resolution_id !== null, $this->resolution_id),

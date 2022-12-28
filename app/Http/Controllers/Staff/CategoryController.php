@@ -54,7 +54,6 @@ class CategoryController extends Controller
         $category->icon = $request->input('icon');
         $category->movie_meta = $request->input('movie_meta');
         $category->tv_meta = $request->input('tv_meta');
-        $category->game_meta = $request->input('game_meta');
         $category->music_meta = $request->input('music_meta');
         $category->no_meta = $request->input('no_meta');
 
@@ -75,7 +74,6 @@ class CategoryController extends Controller
             'icon'          => 'required',
             'movie_meta'    => 'required',
             'tv_meta'       => 'required',
-            'game_meta'     => 'required',
             'music_meta'    => 'required',
             'no_meta'       => 'required',
         ]);
@@ -113,7 +111,6 @@ class CategoryController extends Controller
         $category->icon = $request->input('icon');
         $category->movie_meta = $request->input('movie_meta');
         $category->tv_meta = $request->input('tv_meta');
-        $category->game_meta = $request->input('game_meta');
         $category->music_meta = $request->input('music_meta');
         $category->no_meta = $request->input('no_meta');
 
@@ -132,7 +129,6 @@ class CategoryController extends Controller
             'icon'          => 'required',
             'movie_meta'    => 'required',
             'tv_meta'       => 'required',
-            'game_meta'     => 'required',
             'music_meta'    => 'required',
             'no_meta'       => 'required',
         ]);

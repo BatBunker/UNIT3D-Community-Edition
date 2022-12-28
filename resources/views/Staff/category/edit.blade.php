@@ -104,18 +104,6 @@
                     <label for="tv_meta">TV metadata?</label>
                 </p>
                 <p class="form__group">
-                    <input type="hidden" name="game_meta" value="0">
-                    <input
-                        id="game_meta"
-                        class="form__checkbox"
-                        type="checkbox"
-                        name="game_meta"
-                        value="1"
-                        @checked($category->game_meta)
-                    >
-                    <label for="game_meta">Game metadata?</label>
-                </p>
-                <p class="form__group">
                     <input type="hidden" name="music_meta" value="0">
                     <input
                         id="music_meta"

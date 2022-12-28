@@ -39,7 +39,6 @@ class TorrentFactory extends Factory
             'imdb'               => $this->faker->randomNumber(),
             'tvdb'               => $this->faker->randomNumber(),
             'tmdb'               => $this->faker->randomNumber(),
-            'igdb'               => $this->faker->randomNumber(),
             'type_id'            => fn () => Type::factory()->create()->id,
             'resolution_id'      => fn () => Resolution::factory()->create()->id,
             'stream'             => $this->faker->boolean(),

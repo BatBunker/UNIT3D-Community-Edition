@@ -135,21 +135,6 @@
                             >
                             <label class="form__label form__label--floating" for="autotvdb">TVDB ID</label>
                         </p>
-                        <p class="form__group">
-                            <input
-                                id="igdb"
-                                class="form__text"
-                                inputmode="numeric"
-                                name="igdb"
-                                pattern="[0-9]*"
-                                placeholder
-                                type="text"
-                                value="{{ old('igdb') ?? '0' }}"
-                            >
-                            <label class="form__label form__label--floating" for="name">
-                                IGDB ID ({{ __('request.required') }} For Games)
-                            </label>
-                        </p>
                     </div>
                     @livewire('bbcode-input', [
                         'name' => 'description',

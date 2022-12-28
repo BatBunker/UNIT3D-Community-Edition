@@ -38,7 +38,6 @@ use App\Repositories\ChatRepository;
 use App\Services\Tmdb\TMDBScraper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use MarcReichel\IGDBLaravel\Models\Game;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\RequestControllerTest
@@ -81,21 +80,11 @@ class RequestController extends Controller
             $meta = Movie::with('genres', 'cast', 'companies', 'collection')->where('id', '=', $torrentRequest->tmdb)->first();
         }
 
-        if ($torrentRequest->category->game_meta && ($torrentRequest->igdb || $torrentRequest->igdb != 0)) {
-            $meta = Game::with([
-                'cover'    => ['url', 'image_id'],
-                'artworks' => ['url', 'image_id'],
-                'genres'   => ['name'],
-                'videos'   => ['video_id', 'name'],
-                'involved_companies.company',
-                'involved_companies.company.logo',
-                'platforms', ])
-                ->find($torrentRequest->igdb);
-        }
 
         return \view('requests.request', [
             'torrentRequest'      => $torrentRequest,
-            'voters'              => $voters, 'user' => $user,
+            'voters'              => $voters,
+            'user'                => $user,
             'comments'            => $comments,
             'carbon'              => $carbon,
             'meta'                => $meta,
@@ -137,7 +126,6 @@ class RequestController extends Controller
         $torrentRequest->imdb = $request->input('imdb');
         $torrentRequest->tvdb = $request->input('tvdb');
         $torrentRequest->tmdb = $request->input('tmdb');
-        $torrentRequest->igdb = $request->input('igdb');
         $torrentRequest->type_id = $request->input('type_id');
         $torrentRequest->resolution_id = $request->input('resolution_id');
         $torrentRequest->bounty = $request->input('bounty');
@@ -149,7 +137,6 @@ class RequestController extends Controller
             'imdb'          => 'required|numeric',
             'tvdb'          => 'required|numeric',
             'tmdb'          => 'required|numeric',
-            'igdb'          => 'required|numeric',
             'category_id'   => 'required|exists:categories,id',
             'type_id'       => 'required|exists:types,id',
             'resolution_id' => 'nullable|exists:resolutions,id',
@@ -238,7 +225,6 @@ class RequestController extends Controller
         $imdb = $request->input('imdb');
         $tvdb = $request->input('tvdb');
         $tmdb = $request->input('tmdb');
-        $igdb = $request->input('igdb');
         $category = $request->input('category_id');
         $type = $request->input('type_id');
         $resolution = $request->input('resolution_id');
@@ -249,7 +235,6 @@ class RequestController extends Controller
         $torrentRequest->imdb = $imdb;
         $torrentRequest->tvdb = $tvdb;
         $torrentRequest->tmdb = $tmdb;
-        $torrentRequest->igdb = $igdb;
         $torrentRequest->category_id = $category;
         $torrentRequest->type_id = $type;
         $torrentRequest->resolution_id = $resolution;
@@ -261,7 +246,6 @@ class RequestController extends Controller
             'imdb'          => 'required|numeric',
             'tvdb'          => 'required|numeric',
             'tmdb'          => 'required|numeric',
-            'igdb'          => 'required|numeric',
             'category_id'   => 'required|exists:categories,id',
             'type_id'       => 'required|exists:types,id',
             'resolution_id' => 'nullable|exists:resolutions,id',

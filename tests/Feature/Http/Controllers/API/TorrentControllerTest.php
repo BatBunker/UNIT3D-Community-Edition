@@ -129,7 +129,6 @@ class TorrentControllerTest extends TestCase
             'imdb'          => $torrent->imdb,
             'tvdb'          => $torrent->tvdb,
             'tmdb'          => $torrent->tmdb,
-            'igdb'          => $torrent->igdb,
             'type_id'       => $type->id,
             'resolution_id' => $resolution->id,
             'anonymous'     => $torrent->anon,

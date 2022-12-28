@@ -121,7 +121,6 @@ class TorrentController extends BaseController
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
         $torrent->anon = $request->input('anonymous');
@@ -184,7 +183,6 @@ class TorrentController extends BaseController
             'imdb'              => 'required|numeric',
             'tvdb'              => 'required|numeric',
             'tmdb'              => 'required|numeric',
-            'igdb'              => 'required|numeric',
             'season_number'     => $seasonRule,
             'episode_number'    => $episodeRule,
             'anon'              => 'required',

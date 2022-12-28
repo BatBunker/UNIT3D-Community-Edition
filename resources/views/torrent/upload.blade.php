@@ -296,19 +296,6 @@
                             <label class="form__label form__label--floating" for="autotvdb">TVDB ID</label>
                         </p>
                     </div>
-                    <p class="form__group" x-show="cats[cat].type === 'game'">
-                        <input
-                            type="text"
-                            name="igdb"
-                            id="autoigdb"
-                            inputmode="numeric"
-                            pattern="[0-9]*"
-                            x-bind:value="cats[cat].type === 'game' ? '{{ old('igdb') }}' : '0'"
-                            class="form__text"
-                            x-bind:required="cats[cat].type === 'game'"
-                        >
-                        <label class="form__label form__label--floating" for="autoigdb">IGDB ID <b>({{ __('torrent.required-games') }})</b></label>
-                    </p>
                     <p class="form__group">
                         <input
                             type="text"

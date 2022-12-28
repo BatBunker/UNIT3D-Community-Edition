@@ -42,9 +42,6 @@
                 @include('torrent.partials.tv_meta', ['torrent' => $torrent])
             @endif
 
-            @if ($torrent->category->game_meta)
-                @include('torrent.partials.game_meta')
-            @endif
             @livewire('similar-torrent', ['categoryId' => $categoryId, 'tmdbId' => $tmdbId])
         </div>
     </div>

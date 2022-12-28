@@ -50,8 +50,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use MarcReichel\IGDBLaravel\Models\Game;
-use MarcReichel\IGDBLaravel\Models\PlatformLogo;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\TorrentControllerTest
@@ -77,9 +75,7 @@ class TorrentController extends Controller
      * Display The Torrent reasource.
      *
      * @throws \JsonException
-     * @throws \MarcReichel\IGDBLaravel\Exceptions\MissingEndpointException
      * @throws \ReflectionException
-     * @throws \MarcReichel\IGDBLaravel\Exceptions\InvalidParamsException
      */
     public function show(Request $request, int|string $id): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
@@ -105,21 +101,6 @@ class TorrentController extends Controller
         if ($torrent->category->movie_meta && $torrent->tmdb && $torrent->tmdb != 0) {
             $meta = Movie::with('genres', 'cast', 'companies', 'collection', 'recommendations')->where('id', '=', $torrent->tmdb)->first();
             $trailer = ( new \App\Services\Tmdb\Client\Movie($torrent->tmdb))->get_trailer();
-        }
-
-        if ($torrent->category->game_meta && ($torrent->igdb || $torrent->igdb != 0)) {
-            $meta = Game::with([
-                'cover'    => ['url', 'image_id'],
-                'artworks' => ['url', 'image_id'],
-                'genres'   => ['name'],
-                'videos'   => ['video_id', 'name'],
-                'involved_companies.company',
-                'involved_companies.company.logo',
-                'platforms', ])
-                ->find($torrent->igdb);
-            $link = collect($meta->videos)->take(1)->pluck('video_id');
-            $trailer = isset($link[0]) ? 'https://www.youtube.com/embed/'.$link[0] : '/img/no-video.png';
-            $platforms = PlatformLogo::whereIn('id', collect($meta->platforms)->pluck('platform_logo')->toArray())->get();
         }
 
         $featured = $torrent->featured == 1 ? FeaturedTorrent::where('torrent_id', '=', $id)->first() : null;
@@ -189,7 +170,6 @@ class TorrentController extends Controller
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
         $torrent->type_id = $request->input('type_id');
@@ -233,7 +213,6 @@ class TorrentController extends Controller
             'imdb'           => 'required|numeric',
             'tvdb'           => 'required|numeric',
             'tmdb'           => 'required|numeric',
-            'igdb'           => 'required|numeric',
             'season_number'  => $seasonRule,
             'episode_number' => $episodeRule,
             'anon'           => 'required',
@@ -376,7 +355,6 @@ class TorrentController extends Controller
             $temp['type'] = match (1) {
                 $cat->movie_meta => 'movie',
                 $cat->tv_meta    => 'tv',
-                $cat->game_meta  => 'game',
                 $cat->music_meta => 'music',
                 $cat->no_meta    => 'no',
                 default          => 'no',
@@ -487,7 +465,6 @@ class TorrentController extends Controller
         $torrent->imdb = $request->input('imdb');
         $torrent->tvdb = $request->input('tvdb');
         $torrent->tmdb = $request->input('tmdb');
-        $torrent->igdb = $request->input('igdb');
         $torrent->season_number = $request->input('season_number');
         $torrent->episode_number = $request->input('episode_number');
         $torrent->anon = $request->input('anonymous');
@@ -533,7 +510,6 @@ class TorrentController extends Controller
             'imdb'           => 'required|numeric',
             'tvdb'           => 'required|numeric',
             'tmdb'           => 'required|numeric',
-            'igdb'           => 'required|numeric',
             'season_number'  => $seasonRule,
             'episode_number' => $episodeRule,
             'anon'           => 'required',

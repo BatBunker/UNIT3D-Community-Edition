@@ -32,10 +32,6 @@
                 @include('torrent.partials.tv_meta')
             @endif
 
-            {{-- Game Meta Block --}}
-            @if ($torrent->category->game_meta)
-                @include('torrent.partials.game_meta')
-            @endif
 
             {{-- No Meta Block --}}
             @if ($torrent->category->no_meta)

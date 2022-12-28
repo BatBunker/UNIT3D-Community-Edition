@@ -108,11 +108,6 @@
                         @endphp
                     @endif
                 @endif
-                @if ($torrent->category->game_meta)
-                    @if ($torrent->igdb || $torrent->igdb != 0)
-                        @php $meta = MarcReichel\IGDBLaravel\Models\Game::with(['cover' => ['url', 'image_id'], 'genres' => ['name']])->find($torrent->igdb) @endphp
-                    @endif
-                @endif
 
                 <div class="col-md-4">
                     <div class="card is-torrent">
@@ -145,14 +140,6 @@
                                          class="show-poster" alt="{{ __('torrent.poster') }}">
                                 @endif
 
-                                @if ($torrent->category->game_meta && isset($meta) && $meta->cover['image_id'] && $meta->name)
-                                    <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{ $meta->cover['image_id'] }}.jpg"
-                                         class="show-poster"
-                                         data-name='<i style="color: #a5a5a5;">{{ $meta->name ?? 'N/A' }}</i>'
-                                         data-image='<img src="https://images.igdb.com/igdb/image/upload/t_original/{{ $meta->cover['image_id'] }}.jpg"
-									     alt="{{ __('torrent.poster') }}" style="height: 1000px;">'
-                                         class="torrent-poster-img-small show-poster" alt="{{ __('torrent.poster') }}">
-                                @endif
 
                                 @if ($torrent->category->music_meta)
                                     <img src="https://via.placeholder.com/200x300" class="show-poster"
@@ -190,21 +177,11 @@
                                     </span>
                                     @endforeach
                                 @endif
-                                @if (isset($meta->genres) && $torrent->category->game_meta)
-                                    @foreach ($meta->genres as $genre)
-                                        <span class="genre-label">
-                                        <i class="{{ config('other.font-awesome') }} fa-theater-masks"></i> {{ $genre['name'] }}
-                                    </span>
-                                    @endforeach
-                                @endif
                                 <p class="description_plot">
                                     @if($torrent->category->movie_meta || $torrent->category->tv_meta)
                                         {{ $meta->overview ?? '' }}
                                     @endif
 
-                                    @if($torrent->category->game_meta)
-                                        {{ $meta->summary ?? '' }}
-                                    @endif
                                 </p>
                             </div>
                         </div>
@@ -235,10 +212,7 @@
                                     {{ round($meta->vote_average ?? 0) }}/10
                                     ({{ $meta->vote_count ?? 0 }} {{ __('torrent.votes') }})
                                 @endif
-                                @if($torrent->category->game_meta)
-                                    {{ round($meta->rating ?? 0) }}/100
-                                    ({{ $meta->rating_count ?? 0 }} {{ __('torrent.votes') }})
-                                @endif
+
 							</span>
                         </div>
                     </div>

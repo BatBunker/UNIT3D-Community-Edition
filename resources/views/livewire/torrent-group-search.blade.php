@@ -594,9 +594,6 @@
                                     @case ('tv')
                                     src="{{ isset($meta->poster) ? tmdb_image('poster_small', $meta->poster) : 'https://via.placeholder.com/90x135' }}"
                                     @break
-                                    @case ('game')
-                                    src="{{ isset($meta->cover) ? 'https://images.igdb.com/igdb/image/upload/t_cover_small_2x/'.$meta->cover['image_id'].'.png' : 'https://via.placeholder.com/90x135' }}"
-                                    @break
                                     @case ('no')
                                     @if(file_exists(public_path().'/files/img/torrent-cover_'.$media->torrents->first()->id.'.jpg'))
                                     src="{{ url('files/img/torrent-cover_'.$media->torrents->first()->id.'.jpg') }}"

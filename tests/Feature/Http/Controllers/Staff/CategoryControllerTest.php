@@ -110,7 +110,6 @@ class CategoryControllerTest extends TestCase
             'icon'       => $category->icon,
             'movie_meta' => $category->movie_meta,
             'tv_meta'    => $category->tv_meta,
-            'game_meta'  => $category->game_meta,
             'music_meta' => $category->music_meta,
             'no_meta'    => $category->no_meta,
         ]);
@@ -136,7 +135,6 @@ class CategoryControllerTest extends TestCase
             'icon'       => $category->icon,
             'movie_meta' => $category->movie_meta,
             'tv_meta'    => $category->tv_meta,
-            'game_meta'  => $category->game_meta,
             'music_meta' => $category->music_meta,
             'no_meta'    => $category->no_meta,
         ]);
