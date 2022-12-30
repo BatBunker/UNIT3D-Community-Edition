@@ -131,22 +131,6 @@
                         TVDB ID
                     </label>
                 </p>
-                <p class="form__group">
-                    <input type="hidden" name="mal" value="0" />
-                    <input
-                        id="automal"
-                        class="form__text"
-                        inputmode="numeric"
-                        name="mal"
-                        pattern="[0-9]*"
-                        placeholder=""
-                        type="text"
-                        value="{{ $rss->object_torrent->mal }}"
-                    >
-                    <label class="form__label form__label--floating" for="mal">
-                        MAL ID
-                    </label>
-                </p>
             </div>
             <div class="form__group--horizontal">
                 <div class="form__group">

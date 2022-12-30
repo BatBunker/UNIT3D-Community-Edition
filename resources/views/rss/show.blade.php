@@ -56,10 +56,6 @@
                                 TVDB Link:<a href="https://anon.to?https://www.thetvdb.com/?tab=series&id={{ $data->tvdb }}"
                                              target="_blank">{{ $data->tvdb }}</a><br>
                             @endif
-                            @if (($data->category->movie_meta || $data->category->tv_meta) && $data->mal != 0)
-                                MAL Link:<a href="https://anon.to?https://myanimelist.net/anime/{{ $data->mal }}"
-                                             target="_blank">{{ $data->mal }}</a><br>
-                            @endif
                             @if ($data->internal == 1)
                                 <comments>This is a high quality internal release!</comments>
                             @endif
