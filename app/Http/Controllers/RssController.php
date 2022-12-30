@@ -178,7 +178,6 @@ class RssController extends Controller
                 ->when($search->tmdb !== null, fn ($query) => $query->ofTmdb((int) $search->tmdb))
                 ->when($search->imdb !== null, fn ($query) => $query->ofImdb((int) (\preg_match('/tt0*(?=(\d{7,}))/', $search->imdb, $matches) ? $matches[1] : $search->imdb)))
                 ->when($search->tvdb !== null, fn ($query) => $query->ofTvdb((int) $search->tvdb))
-                ->when($search->mal !== null, fn ($query) => $query->ofMal((int) $search->mal))
                 ->when($search->freeleech !== null, fn ($query) => $query->ofFreeleech([25, 50, 75, 100]))
                 ->when($search->doubleupload !== null, fn ($query) => $query->doubleup())
                 ->when($search->featured !== null, fn ($query) => $query->featured())
