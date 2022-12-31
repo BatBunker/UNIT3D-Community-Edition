@@ -106,7 +106,7 @@
                     @else
                         <tr>
                             @endif
-                            <td class="torrent-listings-poster" style="width: 1%;">
+                            <td class="torrent-listings-poster" style="min-width: 53px;">
                                 @if ($user->show_poster == 1)
                                     <div class="torrent-poster pull-left">
                                         @if ($torrent->category->movie_meta || $torrent->category->tv_meta)
