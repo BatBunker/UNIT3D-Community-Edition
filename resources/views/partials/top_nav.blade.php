@@ -1,81 +1,91 @@
 <nav class="container mx-auto py-20">
-    <div class="grid grid-cols-3 ">
-        <div class="space-x-10 flex items-center justify-end">
-            <ul class="flex text-zinc-300 gap-8 leading-8 items-center" x-bind:class="expanded && 'mobile'">
-                @if (auth()->user()->group->is_modo)
-                    <li>
-                        <a class="" href="{{ route('staff.dashboard.index') }}"
-                           title="{{ __('staff.staff-dashboard') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-10 h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"/>
-                            </svg>
-
-                        </a>
-                    </li>
-                @endif
-                @if (auth()->user()->group->is_modo)
-                    <li>
-                        <a class="" href="{{ route('staff.moderation.index') }}"
-                           title="{{ __('staff.torrent-moderation') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                 stroke="currentColor" class="w-10 h-10">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
-                            </svg>
-
-                            @php
-                                $torrents_unmoderated = DB::table('torrents')->where('status', '=', '0')->count()
-                            @endphp
-                            {{--                            @if ($torrents_unmoderated > 0)--}}
-{{--                                <x-animation.notification/>--}}
-{{--                            @endif--}}
-                        </a>
-                    </li>
-                @endif
-                <li>
-                    @php
-                        $pm = DB::table('private_messages')
-                            ->where('receiver_id', '=', auth()->user()->id)
-                            ->where('read', '=', '0')
-                            ->count()
-                    @endphp
-                    <a class="top-nav--right__icon-link" href="{{ route('inbox') }}" title="{{ __('pm.inbox') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-10 h-10">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
-                        </svg>
-
-{{--                        @if ($pm > 0)--}}
-{{--                            <x-animation.notification/>--}}
-{{--                        @endif--}}
-                    </a>
-                </li>
-                <li>
-                    <a class="top-nav--right__icon-link" href="{{ route('notifications.index') }}"
-                       title="{{ __('user.notifications') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-10 h-10">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
-                        </svg>
-
-{{--                        @if (auth()->user()->unreadNotifications->count() > 0)--}}
-{{--                            <x-animation.notification/>--}}
-{{--                        @endif--}}
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-        <div class="mx-auto">
+    <div class="grid grid-cols-2">
+        <div>
             <a href="{{ route('home.index') }}">
                 <img src="{{asset('logo.png')}}" loading="lazy" alt="Site logo">
             </a>
         </div>
-        <div class="space-x-10 flex items-center justify-start">
+        <div class="space-x-10 flex items-center justify-end">
+            <div>
+                <ul class="flex text-zinc-300 gap-8 leading-8 items-center">
+                    @if (auth()->user()->group->is_modo)
+                        <li>
+                            <a class="" href="{{ route('staff.dashboard.index') }}"
+                               title="{{ __('staff.staff-dashboard') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-10 h-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"/>
+                                </svg>
+
+                            </a>
+                        </li>
+                    @endif
+                    @if (auth()->user()->group->is_modo)
+                        <li>
+                            <a class="" href="{{ route('staff.moderation.index') }}"
+                               title="{{ __('staff.torrent-moderation') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="w-10 h-10">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                                </svg>
+
+                                @php
+                                    $torrents_unmoderated = DB::table('torrents')->where('status', '=', '0')->count()
+                                @endphp
+                                {{--                            @if ($torrents_unmoderated > 0)--}}
+                                {{--                                <x-animation.notification/>--}}
+                                {{--                            @endif--}}
+                            </a>
+                        </li>
+                    @endif
+                    <li>
+                        @php
+                            $pm = DB::table('private_messages')
+                                ->where('receiver_id', '=', auth()->user()->id)
+                                ->where('read', '=', '0')
+                                ->count()
+                        @endphp
+                        <a class="top-nav--right__icon-link" href="{{ route('inbox') }}" title="{{ __('pm.inbox') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="w-10 h-10">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                            </svg>
+
+                            {{--                        @if ($pm > 0)--}}
+                            {{--                            <x-animation.notification/>--}}
+                            {{--                        @endif--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="top-nav--right__icon-link" href="{{ route('notifications.index') }}"
+                           title="{{ __('user.notifications') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="w-10 h-10">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
+                            </svg>
+
+                            {{--                        @if (auth()->user()->unreadNotifications->count() > 0)--}}
+                            {{--                            <x-animation.notification/>--}}
+                            {{--                        @endif--}}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="top-nav--right__icon-link" href="{{ route('notifications.index') }}"
+                           title="{{ __('user.notifications') }}">
+
+                            {{--                        @if (auth()->user()->unreadNotifications->count() > 0)--}}
+                            {{--                            <x-animation.notification/>--}}
+                            {{--                        @endif--}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <livewire:quick-search-dropdown/>
         </div>
     </div>
@@ -131,6 +141,17 @@
                           d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"/>
                 </svg>
                 Music
+            </a>
+        </li>
+        <li class="hover:bg-[#262626] p-2 text-center">
+            <a href="{{ route('top10.index')}}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-20 h-20 mx-auto">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/>
+                </svg>
+
+                Top 10
             </a>
         </li>
         <li class="hover:bg-[#262626] p-2 text-center">
@@ -198,9 +219,9 @@
                             })
                             ->count()
                     @endphp
-{{--                    @if ($tickets > 0)--}}
-{{--                        <x-animation.notification/>--}}
-{{--                    @endif--}}
+                    {{--                    @if ($tickets > 0)--}}
+                    {{--                        <x-animation.notification/>--}}
+                    {{--                    @endif--}}
                     <!-- Notification for Users -->
                 @else
                     @php
@@ -220,9 +241,9 @@
                                 })
                                 ->count()
                         @endphp
-{{--                        @if ($tickets > 0)--}}
-{{--                            <x-animation.notification/>--}}
-{{--                        @endif--}}
+                        {{--                        @if ($tickets > 0)--}}
+                        {{--                            <x-animation.notification/>--}}
+                        {{--                        @endif--}}
                         <!-- Notification for Users -->
                     @else
                         @php
@@ -231,24 +252,24 @@
                                 ->where('user_read', '=', '0')
                                 ->count()
                         @endphp
-{{--                        @if ($ticket_unread > 0)--}}
-{{--                            <x-animation.notification/>--}}
-{{--                        @endif--}}
+                        {{--                        @if ($ticket_unread > 0)--}}
+                        {{--                            <x-animation.notification/>--}}
+                        {{--                        @endif--}}
                     @endif
                 @endif
 
 
                 <!-- Notifications for Mods -->
-{{--                @if (auth()->user()->group->is_modo)--}}
-{{--                    @if ($tickets > 0)--}}
-{{--                        <x-animation.notification/>--}}
-{{--                    @endif--}}
-{{--                    <!-- Notification for Users -->--}}
-{{--                @else--}}
-{{--                    @if ($ticket_unread > 0)--}}
-{{--                        <x-animation.notification/>--}}
-{{--                    @endif--}}
-{{--                @endif--}}
+                {{--                @if (auth()->user()->group->is_modo)--}}
+                {{--                    @if ($tickets > 0)--}}
+                {{--                        <x-animation.notification/>--}}
+                {{--                    @endif--}}
+                {{--                    <!-- Notification for Users -->--}}
+                {{--                @else--}}
+                {{--                    @if ($ticket_unread > 0)--}}
+                {{--                        <x-animation.notification/>--}}
+                {{--                    @endif--}}
+                {{--                @endif--}}
             </a>
         </li>
         <li class="hover:bg-[#262626] p-2 text-center">
@@ -304,27 +325,19 @@
     </ul>
 </nav>
 <nav class="container mx-auto p-4 brightness-150">
-    <div class="grid  grid-cols-3 gap-x-2">
-        <ul class=" col-span-2 flex justify-center gap-x-6">
-            <li class="" title="{{ __('common.upload') }}">
-                <i class="{{ config('other.font-awesome') }} fa-arrow-up text-green-600"></i>
-                {{ auth()->user()->getUploaded() }}
-            </li>
-            <li class="" title="{{ __('common.download') }}">
-                <i class="{{ config('other.font-awesome') }} fa-arrow-down text-red-600"></i>
-                {{ auth()->user()->getDownloaded() }}
-            </li>
+    <div class="grid grid-cols-3 gap-x-2">
+        <ul class="col-span-2 flex justify-start gap-x-8">
             <li class="" title="{{ __('common.ratio') }}">
                 <i class="{{ config('other.font-awesome') }} fa-sync-alt text-blue-600"></i>
                 {{ auth()->user()->getRatioString() }}
             </li>
-            <li class="" title="{{ __('common.upload') }}">
+            <li title="{{ __('common.upload') }}">
                 <a href="{{ route('user_uploads', ['username' => auth()->user()->username]) }}">
                     <i class="{{ config('other.font-awesome') }} fa-arrow-up text-green-600"></i>
                     {{ auth()->user()->getUploaded() }}
                 </a>
             </li>
-            <li class="" title="{{ __('common.download') }}">
+            <li title="{{ __('common.download') }}">
                 <a href="{{ route('user_torrents', ['username' => auth()->user()->username, 'downloaded' => 'include']) }}">
                     <i class="{{ config('other.font-awesome') }} fa-arrow-down text-red-600"></i>
                     {{ auth()->user()->getDownloaded() }}
@@ -366,9 +379,8 @@
                     {{ auth()->user()->fl_tokens }}
                 </a>
             </li>
-
         </ul>
-        <ul class="flex justify-center gap-x-6">
+        <ul class="flex justify-end gap-x-6">
             <li>
                 <a style="color:{{ auth()->user()->group->color }}; background-image:{{ auth()->user()->group->effect }};"
                    class="text-bold"
@@ -388,7 +400,6 @@
                     <i class="{{ config('other.font-awesome') }} fa-eye text-green-700"></i>
                 </a>
             </li>
-
             <li>
                 <a href="{{ route('user_security', ['username' => auth()->user()->username]) }}"
                    title=" {{ __('user.my-security') }}">
