@@ -6,17 +6,17 @@
 <body>
 <header>
     @include('partials.top_nav')
-    <nav class="secondary-nav container mx-auto ">
-{{--        <ol class="breadcrumbsV2">--}}
-{{--            @if (! Route::is('home.index'))--}}
-{{--                <li class="breadcrumbV2">--}}
-{{--                  <a class="breadcrumb__link" href="{{ route('home.index') }}">--}}
-{{--                      <i class="{{ config('other.font-awesome') }} fa-home"></i>--}}
-{{--                  </a>--}}
-{{--                </li>--}}
-{{--            @endif--}}
-{{--            @yield('breadcrumbs')--}}
-{{--        </ol>--}}
+    <nav class="secondary-nav">
+        <ol class="breadcrumbsV2">
+            @if (! Route::is('home.index'))
+                <li class="breadcrumbV2">
+                  <a class="breadcrumb__link" href="{{ route('home.index') }}">
+                      <i class="{{ config('other.font-awesome') }} fa-home"></i>
+                  </a>
+                </li>
+            @endif
+            @yield('breadcrumbs')
+        </ol>
         <ul class="nav-tabsV2">
             @yield('nav-tabs')
         </ul>

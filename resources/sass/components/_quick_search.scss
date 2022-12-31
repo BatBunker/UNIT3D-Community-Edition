@@ -12,7 +12,7 @@
 .quick-search:active,
 .quick-search:focus-within {
     box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28);
-    border-radius: unset;
+    border-radius: 16px;
 }
 
 .quick-search__inputs {
@@ -22,7 +22,7 @@
     align-items: stretch;
     gap: 2px;
     background-color: #444;
-    border-radius: unset;
+    border-radius: 16px;
     overflow: hidden;
     border: 1px solid transparent;
     height: 100%;
@@ -30,7 +30,7 @@
 
 .quick-search:active .quick-search__inputs,
 .quick-search:focus-within .quick-search__inputs {
-    border-radius: unset;
+    border-radius: 16px 16px 0 0;
 }
 
 .quick-search__input {
@@ -113,7 +113,7 @@
     left: 0;
     top: 100%;
     width: 100%;
-    border-radius: unset;
+    border-radius: 0 0 16px 16px;
     box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28);
     max-height: 80vh;
     overflow-y: auto;
@@ -145,7 +145,7 @@
 
 .quick-search__image {
     width: 40px;
-    border-radius: unset;
+    border-radius: 5px;
 }
 
 .quick-search__result-text {
