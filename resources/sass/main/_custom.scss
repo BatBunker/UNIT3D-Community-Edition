@@ -9006,6 +9006,7 @@ section.tall_categories div.category.anime span {
 
 .card.is-torrent .body_poster img {
     height: 231px;
+    max-width: unset!important;
 }
 
 .card.is-torrent .poster_placeholder img {
