@@ -229,6 +229,7 @@
     </div>
 </nav>
 
+@include('donations.progress')
 
 <nav class=" py-2 bg-[rgb(0,0,0,.4)]">
     <div class="container_v2 mx-auto">
