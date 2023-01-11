@@ -57,3 +57,12 @@
 @livewireStyles
 
 @yield('stylesheets')
+
+
+<style>
+    .container_v2 {
+        width: 1240px!important;
+        min-width: 1240px!important;
+        max-width: 1240px!important;
+    }
+</style>
