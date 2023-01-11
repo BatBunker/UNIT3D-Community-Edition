@@ -21,6 +21,7 @@ use App\Events\TicketWentStale;
 use App\Listeners\AchievementUnlocked;
 use App\Listeners\FailedLoginListener;
 use App\Listeners\LoginListener;
+use App\Listeners\LogVerifiedUser;
 use App\Listeners\NotifyStaffCommentWasCreated;
 use App\Listeners\NotifyStaffTicketWasAssigned;
 use App\Listeners\NotifyStaffTicketWasClosed;
@@ -34,6 +35,7 @@ use App\Listeners\PasswordProtectBackup;
 use Assada\Achievements\Event\Unlocked;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Spatie\Backup\Events\BackupZipWasCreated;
 
@@ -82,6 +84,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TicketWentStale::class => [
             NotifyUserTicketIsStale::class,
+        ],
+        Verified::class => [
+            LogVerifiedUser::class,
         ],
     ];
 
