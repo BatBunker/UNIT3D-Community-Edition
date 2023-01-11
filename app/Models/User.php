@@ -18,7 +18,6 @@ use App\Helpers\Linkify;
 use App\Helpers\StringHelper;
 use App\Traits\UsersOnlineTrait;
 use Assada\Achievements\Achiever;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -784,7 +783,6 @@ class User extends Authenticatable
                 ->where('user_id', '=', $this->id)
                 ->where('user_read', '=', '0')
                 ->count();
-
     }
 
 
@@ -792,6 +790,4 @@ class User extends Authenticatable
     {
         return Torrent::query()->where('status', '=', '0')->count();
     }
-
-
 }
