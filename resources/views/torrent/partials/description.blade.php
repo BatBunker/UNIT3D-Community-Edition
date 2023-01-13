@@ -5,9 +5,14 @@
     <div class="table-responsive">
         <table class="table table-condensed table-bordered table-striped">
             <tbody>
+            <style>
+                .torrent___description img {
+                    display: inline-block!important;
+                }
+            </style>
             <tr>
                 <td>
-                    <div class="panel-body">
+                    <div class="panel-body torrent___description">
                         @joypixels($torrent->getDescriptionHtml())
                     </div>
                 </td>
