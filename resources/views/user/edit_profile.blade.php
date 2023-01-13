@@ -48,15 +48,13 @@
                         <div class="form-group">
                             <label for="about">{{ __('user.about-me') }} <span class="badge-extra">BBCode
                                     {{ __('common.is-allowed') }}</span></label>
-                            <textarea name="about" id="editor" cols="30" rows="10"
-                                      class="form-control">{{ $user->about }}</textarea>
+                            @livewire('bbcode-input', ['name' => 'about', 'label' =>  __('user.about-me'), 'required' => true,'content' =>  $user->about ])
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="signature">{{ __('user.forum-signature') }} <span class="badge-extra">BBCode
                                     {{ __('common.is-allowed') }}</span></label>
-                            <textarea name="signature" id="editor" cols="30" rows="10"
-                                      class="form-control">{{ $user->signature }}</textarea>
+                            @livewire('bbcode-input', ['name' => 'signature', 'label' => __('user.forum-signature'), 'required' => true,'content' =>  $user->signature ])
                         </div>
                         <br>
                         @if ( !is_null($user->signature))
