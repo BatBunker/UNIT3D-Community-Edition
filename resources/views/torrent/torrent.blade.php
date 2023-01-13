@@ -54,6 +54,9 @@
             {{-- General Info Block --}}
             @include('torrent.partials.general')
 
+            @if($torrent->thanks->count() > 0)
+                @include('torrent.partials.thanks')
+            @endif
             {{-- Tools Block --}}
             @if (auth()->user()->group->is_modo || auth()->user()->id === $uploader->id || auth()->user()->group->is_internal)
                 @include('torrent.partials.tools')
