@@ -1,4 +1,4 @@
-@if ($featured)
+@if ($featured && $featured->count() > 0)
     <div class="col-md-10 col-sm-10 col-md-offset-1 carousel-wrapper">
         <div class="clearfix visible-sm-block"></div>
         <div>
