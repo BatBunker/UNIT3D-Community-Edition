@@ -464,7 +464,7 @@
 </div>
 
 <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
-  document.addEventListener('livewire:load', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     let myOptions = [
             @foreach($regions as $region)
       {

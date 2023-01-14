@@ -16,7 +16,7 @@
     @show
     <link rel="shortcut icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ mix('css/main/auth.css') }}" crossorigin="anonymous">
+    @vite('resources/sass/main/auth.scss')
     @if(config('other.auth-backdrop'))
         <style>
             :where(body):before {
@@ -49,8 +49,8 @@
 
     @yield('content')
 </main>
-<script src="{{ mix('js/public.js') }}" crossorigin="anonymous"></script>
-
+@vite('resources/js/unit3d/public.js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.0/sweetalert2.all.min.js" nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}"></script>
 @foreach (['warning', 'success', 'info'] as $key)
     @if (Session::has($key))
         <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
@@ -75,7 +75,7 @@
         Swal.fire({
             title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
             icon: 'error',
-            html: jQuery('#ERROR_COPY').html(),
+            html: document.getElementById("ERROR_COPY").innerHTML,
             showCloseButton: true,
             heightAuto: false
         })

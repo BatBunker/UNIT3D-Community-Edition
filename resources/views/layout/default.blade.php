@@ -51,11 +51,9 @@
 </main>
 @include('cookie-consent::index')
 @include('partials.footer')
-
-<script src="{{ mix('js/app.js') }}" crossorigin="anonymous"></script>
-<script src="{{ mix('js/unit3d.js') }}" crossorigin="anonymous"></script>
-<script src="{{ mix('js/alpine.js') }}" crossorigin="anonymous" defer></script>
-<script src="{{ mix('js/virtual-select.js') }}" crossorigin="anonymous"></script>
+@vite(['resources/js/app.js','resources/js/unit3d/tmdb.js','resources/js/unit3d/parser.js','resources/js/unit3d/helper.js','resources/js/vendor/alpine.js','resources/js/vendor/virtual-select.js'])
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.0/sweetalert2.all.min.js"
+        nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}"></script>
 
 @if (config('other.freeleech') == true || config('other.invite-only') == false || config('other.doubleup') == true)
     <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
@@ -102,7 +100,7 @@
 @endif
 
 @if (Session::has('achievement'))
-    <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+    <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
         $('#modal-achievement').modal('show')
     </script>
 @endif
@@ -127,44 +125,49 @@
 @endforeach
 
 @if (Session::has('errors'))
-    <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+    <script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
         Swal.fire({
             title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
             icon: 'error',
-            html: jQuery('#ERROR_COPY').html(),
+            html: document.getElementById("ERROR_COPY").innerHTML,
             showCloseButton: true,
-            willOpen: function (el) {
-                $(el).find('textarea').remove()
+            willOpen: (el) => {
+                el.querySelectorAll('textarea').forEach(textarea => textarea.remove());
             }
         })
 
     </script>
 @endif
 
-<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
     window.addEventListener('success', event => {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        })
+        if (event.detail !== undefined) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            })
 
-        Toast.fire({
-            icon: 'success',
-            title: event.detail.message
-        })
+            Toast.fire({
+                icon: 'success',
+                title: event.detail.message
+            })
+        }
+
     })
 </script>
 
-<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
     window.addEventListener('error', event => {
-        Swal.fire({
-            title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
-            icon: 'error',
-            html: event.detail.message,
-            showCloseButton: true,
-        })
+        if (event.detail !== undefined) {
+            Swal.fire({
+                title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
+                icon: 'error',
+                html: event.detail.message,
+                showCloseButton: true,
+            })
+        }
     })
 </script>
 
@@ -172,7 +175,7 @@
 @yield('scripts')
 @livewireScripts(['nonce' => HDVinnie\SecureHeaders\SecureHeaders::nonce()])
 
-<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}">
+<script nonce="{{ HDVinnie\SecureHeaders\SecureHeaders::nonce('script') }}" defer>
     Livewire.on('paginationChanged', () => {
         window.scrollTo({
             top: 15,
