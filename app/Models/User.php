@@ -507,6 +507,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Has Many Donations.
+     */
+    public function donations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(UserDonation::class);
+    }
+
+    /**
      * Get the Users username as slug.
      */
     public function getSlugAttribute(): string

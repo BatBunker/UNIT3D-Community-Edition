@@ -429,6 +429,13 @@ Route::group(['middleware' => 'language'], function () {
                 Route::get('/', [App\Http\Controllers\MissingController::class, 'index'])->name('index');
             });
         });
+
+        Route::group(['prefix' => 'donation'], function () {
+            Route::name('donation.')->group(function () {
+                Route::get('/', [App\Http\Controllers\DonationsController::class, 'index'])->name('index');
+                Route::post('/new-btc-donation', [App\Http\Controllers\DonationsController::class, 'newBTCDonation'])->name('new-btc-donation');
+            });
+        });
     });
 
     /*
@@ -947,6 +954,16 @@ Route::group(['middleware' => 'language'], function () {
                 Route::get('/', [App\Http\Controllers\Staff\WatchlistController::class, 'index'])->name('index');
                 Route::post('/{id}/store', [App\Http\Controllers\Staff\WatchlistController::class, 'store'])->name('store');
                 Route::delete('/{id}/destroy', [App\Http\Controllers\Staff\WatchlistController::class, 'destroy'])->name('destroy');
+            });
+        });
+
+        //Donations
+        Route::group(['prefix' => 'donations'], function () {
+            Route::name('staff.donations.')->group(function () {
+                Route::get('/', [App\Http\Controllers\Staff\DonationsCycleController::class, 'index'])->name('index');
+                Route::post('create', [App\Http\Controllers\Staff\DonationsCycleController::class, 'create'])->name('create');
+                Route::post('verify-donation', [App\Http\Controllers\Staff\DonationsCycleController::class, 'verifyDonation'])->name('verify-donation');
+                Route::post('close', [App\Http\Controllers\Staff\DonationsCycleController::class, 'close'])->name('close');
             });
         });
     });

@@ -187,7 +187,7 @@
             </button>
         </li>
     </menu>
-    <div class="bbcode-input__tab-pane">
+    <div class="bbcode-input__tab-pane torrent___description">
         @if ($isPreviewEnabled)
             <p class="bbcode-input__preview">
                 @joypixels($contentHtml)
