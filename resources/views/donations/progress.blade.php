@@ -1,5 +1,5 @@
 <div class="flex flex-row justify-end items-center donation-progress container_v2 mx-auto">
-    <a class="flex items-center" href="{{ route('pages.show', ['slug' => \config('other.donation_slug_name')]) }}">
+    <a class="flex items-center" href="{{ route('donation.index') }}">
         <div class="mr-2">Donation</div>
         <div class="full-bar">
             <div class="progress leaf  animate-pulse" style="width: {{\App\Models\DonationCycle::getCycleRatio() * 100}}%"></div>
