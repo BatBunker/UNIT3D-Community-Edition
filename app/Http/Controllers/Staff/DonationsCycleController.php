@@ -41,6 +41,12 @@ class DonationsCycleController extends Controller {
 
     public function verifyDonation(Request $request): \Illuminate\Http\RedirectResponse
     {
+        $v = validator($request->toArray(), [
+            'amount' => 'required'
+        ]);
+        if ($v->fails()) {
+            return back()->withErrors($v);
+        }
         $donationId = $request->input('donation-id');
         $verifiedBy = auth()->user()->id;
         $remark = $request->input('remark') ?: 'Thank You!';

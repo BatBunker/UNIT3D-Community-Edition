@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\UserDonation;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
-class DonationsController extends Controller {
+class DonationsController extends Controller
+{
     public function index(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $user = $request->user();
@@ -16,8 +18,20 @@ class DonationsController extends Controller {
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function newBTCDonation(Request $request): \Illuminate\Http\RedirectResponse
     {
+        $v = validator($request->toArray(), [
+            'transaction-id' => 'required|string|min:5',
+            'amount' => 'required'
+        ]);
+        if ($v->fails()) {
+            return back()->withErrors($v);
+        }
+
         $user = $request->user();
         $userDonation = new UserDonation();
         $userDonation->transaction_id = $request->input('transaction-id');
