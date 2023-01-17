@@ -237,6 +237,12 @@
             </h2>
             <div class="panel__body">
                 <li class="form__group form__group--horizontal">
+                    <a class="form__button form__button--text" href="{{ route('staff.donations.index') }}">
+                        <i class="{{ config('other.font-awesome') }} fa-heart"></i>
+                       donations
+                    </a>
+                </li>
+                <li class="form__group form__group--horizontal">
                     <a class="form__button form__button--text" href="{{ route('staff.applications.index') }}">
                         <i class="{{ config('other.font-awesome') }} fa-list"></i>
                         {{ __('staff.applications') }} ({{ $apps->pending }})
