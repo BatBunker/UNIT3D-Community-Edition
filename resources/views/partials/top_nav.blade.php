@@ -228,8 +228,9 @@
         </div>
     </div>
 </nav>
-
-@include('donations.progress')
+@if(config('donation.enabled'))
+    @include('donations.progress')
+@endif
 
 <nav class=" py-2 bg-[rgb(0,0,0,.4)]">
     <div class="container_v2 mx-auto">
