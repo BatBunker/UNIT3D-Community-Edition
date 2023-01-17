@@ -958,7 +958,7 @@ Route::group(['middleware' => 'language'], function () {
         });
 
         //Donations
-        Route::group(['prefix' => 'donations'], function () {
+        Route::group(['prefix' => 'donations', 'middleware' => 'admin'], function () {
             Route::name('staff.donations.')->group(function () {
                 Route::get('/', [App\Http\Controllers\Staff\DonationsCycleController::class, 'index'])->name('index');
                 Route::post('create', [App\Http\Controllers\Staff\DonationsCycleController::class, 'create'])->name('create');
