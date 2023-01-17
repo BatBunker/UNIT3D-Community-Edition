@@ -60,10 +60,10 @@
             <td>{{ $donation->donor_remark }}</td>
             <td>{{ $donation->currency_type }}</td>
             <td>{{ $donation->transaction_amount }}</td>
-            <td><input type="number" step="any" id="{{ $donation->id }}-amount"></td>
-            <td><input type="text" id="{{ $donation->id }}-remark" /></td>
+            <td><input type="number" class="form__text" step="any" id="{{ $donation->id }}-amount"></td>
+            <td><input class="form__text" type="text" id="{{ $donation->id }}-remark" /></td>
             <td>
-                <select id="{{ $donation->id }}-status">
+                <select class="form__select" id="{{ $donation->id }}-status">
                     <option value="accepted">Accept</option>
                     <option value="rejected">Reject</option>
                 </select>
