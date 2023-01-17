@@ -29,13 +29,15 @@ class DonationCycle extends Model {
     public static function getCycleRatio(): float|int
     {
         $openDonationCycle = self::query()->where('open', '=', true)->first();
-        $donatedAmount = UserDonation::getDonationStatusByCycle($openDonationCycle->id);
-        $expectedAmount = $openDonationCycle->amount_wanted_usd;
+        if ($openDonationCycle !== null) {
+            $donatedAmount = UserDonation::getDonationStatusByCycle($openDonationCycle->id);
+            $expectedAmount = $openDonationCycle->amount_wanted_usd;
+            if ($donatedAmount > 0) {
+                return $donatedAmount / $expectedAmount;
+            }
+        }
 
         // to avoid Division By Zero error
-        if ($openDonationCycle->exists() && $donatedAmount > 0) {
-            return $donatedAmount / $expectedAmount;
-        }
         return 0;
     }
 
