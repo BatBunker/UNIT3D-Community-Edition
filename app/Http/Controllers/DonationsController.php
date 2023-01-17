@@ -1,12 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 use App\Models\UserDonation;
+use Illuminate\Http\Request;
 
 class DonationsController extends Controller {
     public function index(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -18,7 +16,7 @@ class DonationsController extends Controller {
         ]);
     }
 
-    public function newBTCDonation(Request $request)
+    public function newBTCDonation(Request $request): \Illuminate\Http\RedirectResponse
     {
         $user = $request->user();
         $userDonation = new UserDonation();

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -12,10 +13,31 @@ class DonationCycle extends Model {
     protected $hidden = [];
 
     /**
-     * Has Many Torrents.
+     * Has Many Donations.
      */
-    public function donations()
+    public function donations(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Donation::class);
+        return $this->hasMany(UserDonation::class);
     }
+
+    /**
+     * @return float|int
+     *
+     * Get Donation Ratio for the progress bar.
+     * If there is no cycle open, then 0 is returned.
+     */
+    public static function getCycleRatio(): float|int
+    {
+        $openDonationCycle = self::query()->where('open', '=', true)->first();
+        $donatedAmount = UserDonation::getDonationStatusByCycle($openDonationCycle->id);
+        $expectedAmount = $openDonationCycle->amount_wanted_usd;
+
+        // to avoid Division By Zero error
+        if ($openDonationCycle->exists() && $donatedAmount > 0) {
+            return $donatedAmount / $expectedAmount;
+        }
+        return 0;
+    }
+
+
 }
