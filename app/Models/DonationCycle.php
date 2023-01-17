@@ -32,12 +32,13 @@ class DonationCycle extends Model {
         if ($openDonationCycle !== null) {
             $donatedAmount = UserDonation::getDonationStatusByCycle($openDonationCycle->id);
             $expectedAmount = $openDonationCycle->amount_wanted_usd;
+            // to avoid Division By Zero error
             if ($donatedAmount > 0) {
                 return $donatedAmount / $expectedAmount;
             }
         }
 
-        // to avoid Division By Zero error
+
         return 0;
     }
 
