@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Staff;
@@ -9,7 +10,8 @@ use App\Models\UserDonation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
-class DonationsCycleController extends Controller {
+class DonationsCycleController extends Controller
+{
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $openDonationCycle = DonationCycle::where('open', '=', true)->first();
@@ -67,7 +69,7 @@ class DonationsCycleController extends Controller {
             'donation_cycle_id' => $currentCycle,
         ]);
 
-        // TODO: page should not reload. 
+        // TODO: page should not reload.
         // instead using js the row should be removed on the page itself.
         return \to_route('staff.donations.index');
     }
@@ -84,6 +86,4 @@ class DonationsCycleController extends Controller {
         DonationCycle::where('id', $cycleId)->first()->update(['open' => false]);
         return \to_route('staff.donations.index');
     }
-
 }
-

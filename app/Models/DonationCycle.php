@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DonationCycle extends Model {
-
+class DonationCycle extends Model
+{
     public $table = 'donations_cycle';
 
     protected $fillable = ['open'];
@@ -41,6 +42,4 @@ class DonationCycle extends Model {
 
         return 0;
     }
-
-
 }

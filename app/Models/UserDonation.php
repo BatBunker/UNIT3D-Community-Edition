@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserDonation extends Model
 {
-
     public $table = 'donations';
 
     protected $guarded = ['*'];

@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use App\Models\UserDonation;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class DonationsController extends Controller
 {
