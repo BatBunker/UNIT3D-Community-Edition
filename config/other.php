@@ -229,6 +229,6 @@ return [
     'enable-support' => env('ENABLE_SUPPORT', false),
 
     'support-link' => env('SUPPORT_LINK', '#'),
-    
+
     'auth-backdrop' => env('AUTH_BACKDROP', false)
 ];
