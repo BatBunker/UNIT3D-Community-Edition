@@ -1,6 +1,6 @@
 @php $bg = rand(1, 13); $bgchange = $bg.".jpg" @endphp
 <br>
-<div id="l-footer" style="background-image: url('/img/footer/{{ $bgchange }}');">
+<div id="l-footer">
     <div class="container">
         <div class="col-md-2 l-footer-section">
             <h2 class="l-footer-section-title"><span class="text-bold">{{ config('other.title') }}</span></h2>
@@ -19,8 +19,7 @@
                 <li>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('common.logout') }}</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
-                    </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 </li>
             </ul>
         </div>
@@ -67,10 +66,3 @@
     </div>
 </div>
 
-
-<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button">
-    <i class="{{ config('other.font-awesome') }} fa-arrow-square-up"></i>
-</a>
-<a id="back-to-down" href="#" class="btn btn-primary btn-lg back-to-down" role="button">
-    <i class="{{ config('other.font-awesome') }} fa-arrow-square-down"></i>
-</a>
