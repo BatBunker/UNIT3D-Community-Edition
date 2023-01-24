@@ -24,6 +24,7 @@ use App\Models\Post;
 use App\Models\Topic;
 use App\Models\Torrent;
 use App\Models\User;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;

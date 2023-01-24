@@ -85,7 +85,7 @@
                    </span>
                 </button>
                 <a class="w-1/2 px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-black hover:text-black hover:bg-white focus:outline-none focus:ring-2"
-                   href="{{ route('registrationForm', ['code' => 'null']) }}">
+                   href="{{ route('register', ['code' => 'null']) }}">
                     <h2 class="inactive underlineHover">{{ __('auth.signup') }} </h2>
                 </a>
             </div>

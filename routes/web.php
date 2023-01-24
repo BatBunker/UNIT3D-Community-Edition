@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -36,7 +37,7 @@ Route::group(['middleware' => 'language'], function () {
     | Website (Not Authorized) (Alpha Ordered)
     |---------------------------------------------------------------------------------
     */
-    Route::group(['before' => 'auth', 'middleware' => 'guest'], function () {
+    Route::group(['before' => ['auth','verified'], 'middleware' => 'guest'], function () {
         // Activation
         Route::get('/activate/{token}', [App\Http\Controllers\Auth\ActivationController::class, 'activate'])->name('activate');
 
@@ -45,8 +46,8 @@ Route::group(['middleware' => 'language'], function () {
         Route::post('/application', [App\Http\Controllers\Auth\ApplicationController::class, 'store'])->name('application.store');
 
         // Authentication
-        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-        Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('');
+//        Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+//        Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('');
 
         // Forgot Username
         Route::get('username/reminder', [App\Http\Controllers\Auth\ForgotUsernameController::class, 'showForgotUsernameForm'])->name('username.request');
@@ -59,20 +60,21 @@ Route::group(['middleware' => 'language'], function () {
         Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 
         // Registration
-        Route::get('/register/{code?}', [App\Http\Controllers\Auth\RegisterController::class, 'registrationForm'])->name('registrationForm');
-        Route::post('/register/{code?}', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+//        Route::get('/register/{code?}', [App\Http\Controllers\Auth\RegisterController::class, 'registrationForm'])->name('registrationForm');
+//        Route::post('/register/{code?}', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
     });
+
 
     /*
     |---------------------------------------------------------------------------------
     | Website (When Authorized) (Alpha Ordered)
     |---------------------------------------------------------------------------------
     */
-    Route::group(['middleware' => ['auth', 'twostep', 'banned']], function () {
+    Route::group(['middleware' => ['auth', 'twostep', 'banned','verified']], function () {
         // General
         Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
-
+        Route::view('/2fa','auth.two-factor-codes');
         // Achievements System
         Route::group(['prefix' => 'achievements'], function () {
             Route::name('achievements.')->group(function () {
@@ -321,6 +323,7 @@ Route::group(['middleware' => 'language'], function () {
             });
         });
 
+
         // Wishlist System
         Route::group(['prefix' => 'wishes'], function () {
             Route::name('wishes.')->group(function () {
@@ -443,7 +446,7 @@ Route::group(['middleware' => 'language'], function () {
     | MediaHub (When Authorized)
     |------------------------------------------
     */
-    Route::group(['prefix' => 'mediahub', 'middleware' => ['auth', 'twostep', 'banned']], function () {
+    Route::group(['prefix' => 'mediahub', 'middleware' => ['auth', 'twostep', 'banned','verified']], function () {
         // MediaHub Home
         Route::get('/', [App\Http\Controllers\MediaHub\HomeController::class, 'index'])->name('mediahub.index');
 
@@ -564,7 +567,7 @@ Route::group(['middleware' => 'language'], function () {
     | Staff Dashboard Routes Group (When Authorized And A Staff Group) (Alpha Ordered)
     |---------------------------------------------------------------------------------
     */
-    Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'twostep', 'modo', 'banned']], function () {
+    Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'twostep', 'modo', 'banned','verified']], function () {
         // Staff Dashboard
         Route::name('staff.dashboard.')->group(function () {
             Route::get('/', [App\Http\Controllers\Staff\HomeController::class, 'index'])->name('index');

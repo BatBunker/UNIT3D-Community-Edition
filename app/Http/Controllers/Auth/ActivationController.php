@@ -22,6 +22,14 @@ use App\Models\UserActivation;
  */
 class ActivationController extends Controller
 {
+    /**
+     * @param $token
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @deprecated
+     *
+     * @TODO To remove
+     */
     public function activate($token): \Illuminate\Http\RedirectResponse
     {
         $bannedGroup = \cache()->rememberForever('banned_group', fn () => Group::where('slug', '=', 'banned')->pluck('id'));

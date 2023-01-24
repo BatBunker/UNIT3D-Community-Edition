@@ -14,7 +14,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\SendActivationMail;
 use App\Models\Group;
 use App\Models\Invite;
 use App\Models\PrivateMessage;
@@ -148,12 +147,12 @@ class RegisterController extends Controller
         }
 
         // Handle The Activation System
-        $token = \hash_hmac('sha256', $user->username . $user->email . Str::random(16), \config('app.key'));
-        $userActivation = new UserActivation();
-        $userActivation->user_id = $user->id;
-        $userActivation->token = $token;
-        $userActivation->save();
-        $this->dispatch(new SendActivationMail($user, $token));
+//        $token = \hash_hmac('sha256', $user->username . $user->email . Str::random(16), \config('app.key'));
+//        $userActivation = new UserActivation();
+//        $userActivation->user_id = $user->id;
+//        $userActivation->token = $token;
+//        $userActivation->save();
+//        $this->dispatch(new SendActivationMail($user, $token));
         // Select A Random Welcome Message
         $profileUrl = \href_profile($user);
         $welcomeArray = [
