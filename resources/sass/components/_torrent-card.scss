@@ -109,17 +109,7 @@
   display: inline;
 }
 
-/* purgecss start ignore */
-.torrent-card > * {
-  opacity: 0%;
-}
 
-.torrent-card:hover > * {
-  opacity: 100%;
-  backdrop-filter: blur(8px) brightness(.6);
-  transition: all .3s ease-out;
-
-}
 
 
 /* purgecss end ignore */

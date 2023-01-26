@@ -1,8 +1,8 @@
 @foreach ($articles as $article)
-    <div class="col-md-10 col-sm-10 col-md-offset-1 panelv3">
+    <div class="panelv3">
         @if ($article->newNews)
             <div>
-                <div class="panel__heading">
+                <div class="panel__heading pb15">
                     <h4 class="text-left">
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                            href="#collapse4" style="color:#ffffff;">
@@ -12,9 +12,9 @@
                     </h4>
                 </div>
                 @else
-                    <div class="pb15">
+                    <div>
                         <div class="">
-                            <h4 class="panelv3__heading panel__heading--transparent">
+                            <h4 class="panelv3__heading panel__heading--transparent pb15">
                                 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapse4" style="color:#ffffff;">
                                     <i class="{{ config('other.font-awesome') }} fa-fire"></i>  {{ __('blocks.check-news') }} {{ $article->created_at->diffForHumans() }}

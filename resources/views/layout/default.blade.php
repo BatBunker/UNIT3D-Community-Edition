@@ -27,7 +27,7 @@
         </div>
     @endif
 </header>
-<main class="@yield('page')">
+<main class="@yield('page') container_v2 mx-auto">
     @hasSection('main')
         @hasSection('sidebar')
             <article class="sidebar2">

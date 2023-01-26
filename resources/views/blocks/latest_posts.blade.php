@@ -1,4 +1,4 @@
-<div class="col-md-10 col-sm-10 col-md-offset-1">
+<section>
     <div class="clearfix visible-sm-block"></div>
     <div class="panel panel-chat shoutbox">
         <div class="panel-heading">
@@ -38,4 +38,4 @@
             </table>
         </div>
     </div>
-</div>
+</section>

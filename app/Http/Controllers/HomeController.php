@@ -34,6 +34,7 @@ use Illuminate\Support\Facades\DB;
  */
 class HomeController extends Controller
 {
+    final const TAKE_LIMIT = 8;
     /**
      * Display Home Page.
      *
@@ -60,19 +61,19 @@ class HomeController extends Controller
         $newest = \cache()->remember('newest_torrents', $expiresAt, fn () => Torrent::with(['user', 'category', 'type', 'resolution'])
             ->withCount(['thanks', 'comments'])
             ->latest()
-            ->take(5)
+            ->take(self::TAKE_LIMIT)
             ->get());
 
         $seeded = \cache()->remember('seeded_torrents', $expiresAt, fn () => Torrent::with(['user', 'category', 'type', 'resolution'])
             ->withCount(['thanks', 'comments'])
             ->latest('seeders')
-            ->take(5)
+            ->take(self::TAKE_LIMIT)
             ->get());
 
         $leeched = \cache()->remember('leeched_torrents', $expiresAt, fn () => Torrent::with(['user', 'category', 'type', 'resolution'])
             ->withCount(['thanks', 'comments'])
             ->latest('leechers')
-            ->take(5)
+            ->take(self::TAKE_LIMIT)
             ->get());
 
         $dying = \cache()->remember('dying_torrents', $expiresAt, fn () => Torrent::with(['user', 'category', 'type', 'resolution'])
@@ -80,14 +81,14 @@ class HomeController extends Controller
             ->where('seeders', '=', 1)
             ->where('times_completed', '>=', 1)
             ->latest('leechers')
-            ->take(5)
+            ->take(self::TAKE_LIMIT)
             ->get());
 
         $dead = \cache()->remember('dead_torrents', $expiresAt, fn () => Torrent::with(['user', 'category', 'type', 'resolution'])
             ->withCount(['thanks', 'comments'])
             ->where('seeders', '=', 0)
             ->latest('leechers')
-            ->take(5)
+            ->take(self::TAKE_LIMIT)
             ->get());
 
         // Latest Topics Block

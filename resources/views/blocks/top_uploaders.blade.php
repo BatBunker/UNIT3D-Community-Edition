@@ -1,5 +1,4 @@
-<div class="col-md-10 col-sm-10 col-md-offset-1">
-    <div class="clearfix visible-sm-block"></div>
+<section>
     <div class="panel panel-chat shoutbox">
         <div class="panel-heading">
             <h4><i class="{{ config('other.font-awesome') }} fa-trophy-alt"></i> {{ __('user.top-uploaders-count') }}
@@ -148,4 +147,4 @@
 
         </div>
     </div>
-</div>
+</section>
