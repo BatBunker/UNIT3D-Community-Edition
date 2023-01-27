@@ -56,9 +56,9 @@
             {{ Str::limit($meta->name_sort ?? $meta->name_short ?? 'N/A', 11,'...') }}
 
             <span>
-            @if($meta->first_air_date)
+            @if(isset($meta->first_air_date))
                     [{{ substr($meta->first_air_date, 0, 4) ?? '' }}]
-                @elseif($meta->release_date)
+                @elseif(isset($meta->release_date))
                     [{{ substr($meta->release_date, 0, 4) ?? '' }}]
                 @endif
         </span>

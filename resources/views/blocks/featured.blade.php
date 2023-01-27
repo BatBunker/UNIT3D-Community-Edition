@@ -1,11 +1,11 @@
 @if ($featured && $featured->count() > 0)
     <section>
-        <div class="carousel__header pb15">
-            <h4 class="carousel__heading">
+        <div class="carousel__header">
+            <h4 class="carousel__heading font-mono">
                 <i class="{{ config('other.font-awesome') }} fa-fire"></i> {{ __('blocks.hot-torrents') }}
             </h4>
         </div>
-        <div class="panel-body">
+        <div class="panel-body overflow-x-scroll">
             <ul class="flex gap-12 ħ-[250px] justify-center">
                 @foreach ($featured as $feature)
                     @if ($feature->torrent === null || ! $feature->torrent->isApproved())

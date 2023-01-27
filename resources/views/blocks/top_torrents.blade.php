@@ -1,7 +1,7 @@
 <section class="panelv3">
     <div class="">
-        <div class="pb15">
-            <h4 class="panelv3__heading panel__heading--transparent">
+        <div class="">
+            <h4 class="panelv3__heading panel__heading--transparent font-mono">
                 <i class="{{ config('other.font-awesome') }} fa-trophy"></i> {{ __('blocks.top-torrents') }}
                 <a role="button" class="pull-right btn btn-primary " href="{{route('top10.index')}}"> View Top 10</a>
             </h4>
@@ -43,7 +43,7 @@
                 </li>
             </ul>
             <br>
-            <div class="tab-content ">
+            <div class="tab-content overflow-x-scroll ">
                 <div class="tab-pane fade active in" id="newtorrents">
                     <ul class="flex gap-12 ħ-[250px] justify-start"
                     >

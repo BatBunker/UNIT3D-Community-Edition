@@ -1,150 +1,16 @@
-<section>
-    <div class="panel panel-chat shoutbox">
-        <div class="panel-heading">
-            <h4><i class="{{ config('other.font-awesome') }} fa-trophy-alt"></i> {{ __('user.top-uploaders-count') }}
-            </h4>
-        </div>
-
-        <ul class="nav nav-tabs mb-12" role="tablist">
-            <li style="padding: 0!important;font-weight: 900" class="col-md-6">
-                <a href="#alltime" role="tab" data-toggle="tab" aria-expanded="true">
-                    {{ __('stat.all-time') }}
-                </a>
-            </li>
-            <li style="padding: 0!important;" class="active col-md-6 ">
-                <a style="text-align: right;margin: 0!important;font-weight: 900" href="#30days" role="tab"
-                   data-toggle="tab" aria-expanded="false">
-                    {{ __('stat.last30days') }}
-                </a>
-            </li>
+<section class="w-[220px]">
+    <div class="carousel__header py-2 text-center">
+        <h3 class="carousel__heading text-2xl font-mono	">
+            {{ __('user.top-uploaders-count') }}
+        </h3>
+    </div>
+    <div class="panel-body w-[220px]">
+        <ul>
+            @foreach ($uploaders as $key => $uploader)
+                <li>
+                    <x-home.row :uploader="$uploader" :key="$loop"/>
+                </li>
+            @endforeach
         </ul>
-
-        <div class="tab-content">
-
-            <div class="tab-pane fade" id="alltime">
-                <div class="table-responsive">
-                    <table class="table table-condensed table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th class="torrents-icon"></th>
-                            <th>{{ __('common.user') }}</th>
-                            <th>{{ __('user.total-uploads') }}</th>
-                            <th>{{ __('stat.place') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($uploaders as $key => $uploader)
-                            <tr>
-                                <td>
-                                    <div class="text-center">
-                                        <i
-                                                class="{{ config('other.font-awesome') }} fa-trophy-alt text-gold torrent-icon"></i>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    @if ($uploader->user->private_profile == 1)
-                                        <span class="badge-user text-bold">
-                                                <span class="text-orange">
-                                                    <i class="{{ config('other.font-awesome') }} fa-eye-slash"
-                                                       aria-hidden="true"></i> {{ strtoupper(__('common.hidden')) }}
-                                                </span>
-                                                @if ($user->id == $uploader->user->id || $user->group->is_modo == 1)
-                                                <a href="{{ route('users.show', ['username' => $uploader->user->username]) }}">
-                                                        ({{ $uploader->user->username }})
-                                                    </a>
-                                            @endif
-                                            </span>
-                                    @else
-                                        <a href="{{ route('users.show', ['username' => $uploader->user->username]) }}">
-                                                <span class="badge-user text-bold"
-                                                      style="color:{{ $uploader->user->group->color }}; background-image:{{ $uploader->user->group->effect }}; margin-bottom: 10px;">
-                                                    <i class="{{ $uploader->user->group->icon }}" data-toggle="tooltip"
-                                                       data-original-title="{{ $uploader->user->group->name }}"></i>
-                                                    {{ $uploader->user->username }}
-                                                </span>
-                                        </a>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    <span class="text-green">{{ $uploader->value }}</span>
-                                </td>
-                                <td>
-                                        <span class="text-bold"><i
-                                                    class="{{ config('other.font-awesome') }} fa-ribbon"></i>
-                                            {{ App\Helpers\StringHelper::ordinal(++$key) }} {{ __('stat.place') }}</span>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="tab-pane fade active in" id="30days">
-                <div class="table-responsive">
-                    <table class="table table-condensed table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th class="torrents-icon"></th>
-                            <th>{{ __('common.user') }}</th>
-                            <th>{{ __('user.total-uploads') }}</th>
-                            <th>{{ __('stat.place') }}</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($past_uploaders as $key => $past_uploader)
-                            <tr>
-                                <td>
-                                    <div class="text-center">
-                                        <i
-                                                class="{{ config('other.font-awesome') }} fa-trophy text-success torrent-icon"></i>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    @if ($past_uploader->user->private_profile == 1)
-                                        <span class="badge-user text-bold">
-                                                <span class="text-orange">
-                                                    <i class="{{ config('other.font-awesome') }} fa-eye-slash"
-                                                       aria-hidden="true"></i> {{ strtoupper(__('common.hidden')) }}
-                                                </span>
-                                                @if ($user->id == $past_uploader->user->id || $user->group->is_modo == 1)
-                                                <a
-                                                        href="{{ route('users.show', ['username' => $past_uploader->user->username]) }}">
-                                                        ({{ $past_uploader->user->username }})
-                                                    </a>
-                                            @endif
-                                            </span>
-                                    @else
-                                        <a href="{{ route('users.show', ['username' => $past_uploader->user->username]) }}">
-                                                <span class="badge-user text-bold"
-                                                      style="color:{{ $past_uploader->user->group->color }}; background-image:{{ $past_uploader->user->group->effect }}; margin-bottom: 10px;">
-                                                    <i class="{{ $past_uploader->user->group->icon }}"
-                                                       data-toggle="tooltip"
-                                                       data-original-title="{{ $past_uploader->user->group->name }}"></i>
-                                                    {{ $past_uploader->user->username }}
-                                                </span>
-                                        </a>
-                                    @endif
-                                </td>
-
-                                <td>
-                                    <span class="text-green">{{ $past_uploader->value }}</span>
-                                </td>
-                                <td>
-                                        <span class="text-bold"><i
-                                                    class="{{ config('other.font-awesome') }} fa-ribbon"></i>
-                                            {{ App\Helpers\StringHelper::ordinal(++$key) }} {{ __('stat.place') }}</span>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
     </div>
 </section>

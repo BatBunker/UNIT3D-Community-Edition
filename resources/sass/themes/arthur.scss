@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 
 body {
   background-color: var(--app-body-bg-color);
@@ -246,6 +246,24 @@ img.torrent-poster-img-small,
   border-radius: unset !important;
 
 }
+
 .news-blocks {
-  box-shadow: unset!important;
+  box-shadow: unset !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+  background-color: #161515 !important;
+  color: #FFFFFF;
+  font-family: 'Space Mono', monospace !important;
+  border-bottom: 1px solid white !important;
+
+  &:hover {
+    border-bottom: 2px solid white;
+    background-color: #161515 !important;
+  }
+
+}
+.panel-body {
+  border: var(--app-border-light-color) 1px solid;
 }

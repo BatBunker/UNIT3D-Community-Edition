@@ -2,7 +2,7 @@
     <div class="panelv3">
         @if ($article->newNews)
             <div>
-                <div class="panel__heading pb15">
+                <div class="panel__heading font-mono ">
                     <h4 class="text-left">
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                            href="#collapse4" style="color:#ffffff;">
@@ -12,9 +12,10 @@
                     </h4>
                 </div>
                 @else
-                    <div>
+                    <div
+                    >
                         <div class="">
-                            <h4 class="panelv3__heading panel__heading--transparent pb15">
+                            <h4 class="panelv3__heading panel__heading--transparent font-mono">
                                 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapse4" style="color:#ffffff;">
                                     <i class="{{ config('other.font-awesome') }} fa-fire"></i>  {{ __('blocks.check-news') }} {{ $article->created_at->diffForHumans() }}
