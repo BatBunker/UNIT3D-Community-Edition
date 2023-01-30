@@ -171,7 +171,7 @@ class HomeController extends Controller
             'uploaders' => $uploaders,
             'freeleech_tokens' => $freeleechTokens,
             'bookmarks' => $bookmarks,
-            'randomTorrent' => $randomTorrent
+            'random_torrent' => $randomTorrent
         ]);
     }
 }
