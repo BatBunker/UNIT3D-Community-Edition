@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 @section('title')
-    <title>{{ page_title(config('other.title')) }}</title>
+<title>{{ page_title(config('other.title')) }}</title>
 @show
 
 <meta name="description" content="{{ config('other.meta_description') }}">
@@ -16,34 +16,8 @@
 
 @if (auth()->user()->standalone_css === null)
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
-    @if (auth()->user()->style == 1)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 2)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-blue.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 3)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-green.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 4)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-pink.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 5)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-purple.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 6)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-red.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 7)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-teal.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 8)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/dark-yellow.css') }}" crossorigin="anonymous">
-    @elseif (auth()->user()->style == 9)
-        <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ mix('css/themes/cosmic-void.css') }}" crossorigin="anonymous">
-    @endif
-
+    <link rel="stylesheet" href="{{ mix('css/themes/galactic.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ mix('css/themes/cosmic-void.css') }}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ mix('css/themes/arthur.css') }}" crossorigin="anonymous">
 
     @if (isset(auth()->user()->custom_css))
@@ -61,8 +35,8 @@
 
 <style>
     .container_v2 {
-        width: 1240px!important;
-        min-width: 1240px!important;
-        max-width: 1240px!important;
+        width: 1240px !important;
+        min-width: 1240px !important;
+        max-width: 1240px !important;
     }
 </style>

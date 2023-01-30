@@ -32,13 +32,6 @@ mix.options({
      */
     .sass('resources/sass/themes/galactic.scss', 'public/css/themes/galactic.css')
     .sass('resources/sass/themes/arthur.scss', 'public/css/themes/arthur.css')
-    .sass('resources/sass/themes/dark-blue.scss', 'public/css/themes/dark-blue.css')
-    .sass('resources/sass/themes/dark-green.scss', 'public/css/themes/dark-green.css')
-    .sass('resources/sass/themes/dark-pink.scss', 'public/css/themes/dark-pink.css')
-    .sass('resources/sass/themes/dark-purple.scss', 'public/css/themes/dark-purple.css')
-    .sass('resources/sass/themes/dark-red.scss', 'public/css/themes/dark-red.css')
-    .sass('resources/sass/themes/dark-teal.scss', 'public/css/themes/dark-teal.css')
-    .sass('resources/sass/themes/dark-yellow.scss', 'public/css/themes/dark-yellow.css')
     .sass('resources/sass/themes/cosmic-void.scss', 'public/css/themes/cosmic-void.css')
 
     /*
