@@ -2,6 +2,7 @@
 
 body {
   background-color: var(--app-body-bg-color);
+  --data-table-tr-even-bg: #1b1b1b !important;
 }
 
 a {
@@ -101,7 +102,7 @@ thead {
 }
 
 .nav-tabs > li > a, td, thead {
-  background-color: var(--app-button-dark-color) !important;
+  //background-color: var(--app-button-dark-color) !important;
   padding-inline: 8px !important;
   padding-block: 10px !important;
 }
@@ -119,20 +120,12 @@ thead {
 /* tables */
 table {
 
-  tbody {
-    border: 1px solid var(--app-border-light-color) !important;
+  tr {
+    border-bottom: 1px solid var(--app-border-light-color) !important;
+  }
 
-    tr[class='success'] > td {
-      background-color: var(--app-table-success-bg-color) !important;
-    }
-
-    tr:nth-child(2n) {
-      background-color: var(--app-table-stripe-even-color) !important;
-    }
-
-    tr:nth-child(2n+1) {
-      background-color: var(--app-table-stripe-odd-color) !important;
-    }
+  .success {
+    background-color: var(--app-table-success-bg-color) !important;
   }
 }
 
@@ -264,10 +257,12 @@ img.torrent-poster-img-small,
   }
 
 }
+
 .panel-body {
   border: var(--app-border-light-color) 1px solid;
 }
+
 .news-blocks {
-  padding: unset!important;
-  margin-bottom: 0 ;
+  padding: unset !important;
+  margin-bottom: 0;
 }
