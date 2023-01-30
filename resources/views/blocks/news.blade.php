@@ -28,7 +28,7 @@
                             <div class="panel-body no-padding">
                                 <div class="news-blocks">
                                     <a href="{{ route('articles.show', ['id' => $article->id]) }}"
-                                       style=" float: right; margin-right: 10px;">
+                                       style=" float: right;">
                                         @if ( ! is_null($article->image))
                                             <img src="{{ url('files/img/' . $article->image) }}"
                                                  alt="{{ $article->title }}">
@@ -44,7 +44,7 @@
                                             {{ $article->created_at->toDayDateTimeString() }}</em>
                                     </p>
 
-                                    <p style="margin-top: 20px;">
+                                    <p style="margin-block: 20px;">
                                         @joypixels(preg_replace('#\[[^\]]+\]#', '', Str::limit($article->content),
                                         150))...
                                     </p>
