@@ -10,10 +10,13 @@
   background-color: var(--app-chip-bg-color);
   color: var(--app-text-color--light);
   cursor: pointer;
-  padding: 8px;
-  border-radius: 25px;
+  padding: 6px;
   font-size: 12px !important;
   font-weight: bolder;
+  filter: brightness(1.1);
+  border-bottom: 1px solid black;
+
+
 
   > a {
     color: var(--app-text-color--light);
@@ -22,6 +25,7 @@
   &.active {
     filter: brightness(1.4);
     border: 1px solid var(--app-divider-color);
+    border-radius: 8px;
   }
 
 }
