@@ -2,8 +2,8 @@
     <div class="panelv3">
         @if ($article->newNews)
             <div>
-                <div class="panel__heading font-mono ">
-                    <h4 class="text-left">
+                <div class="py-2 ">
+                    <h4 class="carousel__heading text-2xl font-mono">
                         <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                            href="#collapse4" style="color:#ffffff;">
                             @joypixels(':rotating_light:') {{ __('blocks.new-news') }} {{ $article->created_at->diffForHumans() }}
@@ -14,17 +14,12 @@
                 @else
                     <div
                     >
-                        <div class="">
-                            <h4 class="panelv3__heading panel__heading--transparent font-mono">
+                        <div class="py-2">
+                            <h4 class="carousel__heading text-2xl font-mono">
                                 <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapse4" style="color:#ffffff;">
                                     <i class="{{ config('other.font-awesome') }} fa-fire"></i>  {{ __('blocks.check-news') }} {{ $article->created_at->diffForHumans() }}
                                 </a>
-                                <div class="pull-right">
-                                    <a href="{{ route('articles.index') }}" class="btn btn-primary">
-                                        {{ __('common.view-all') }}
-                                    </a>
-                                </div>
                             </h4>
                         </div>
                         @endif
@@ -58,6 +53,10 @@
                                        class="btn btn-success">
                                         {{ __('articles.read-more') }}
                                     </a>
+
+                                        <a href="{{ route('articles.index') }}" class="btn btn-primary">
+                                            {{ __('common.view-all') }}
+                                        </a>
 
                                 </div>
                             </div>

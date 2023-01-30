@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\DB;
  */
 class HomeController extends Controller
 {
-    final public const TAKE_LIMIT = 8;
+    final public const TAKE_LIMIT = 6;
 
     /**
      * Display Home Page.

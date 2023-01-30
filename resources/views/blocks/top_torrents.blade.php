@@ -1,16 +1,19 @@
-<section class="panelv3">
-    <div class="">
-        <div class="">
-            <h4 class="panelv3__heading panel__heading--transparent font-mono">
+<section class="panelv3 mt-2">
+        <div class="py-2">
+            <h4 class="carousel__heading text-2xl font-mono	">
                 <i class="{{ config('other.font-awesome') }} fa-trophy"></i> {{ __('blocks.top-torrents') }}
-                <a role="button" class="pull-right btn btn-primary " href="{{route('top10.index')}}"> View Top 10</a>
             </h4>
         </div>
         <div class="panel-body">
-            <ul class="tabs" role="tablist">
+            <ul class="tabs just justify-center" role="tablist">
                 <li class="active chip">
+                        <a href="#featuredtorrents" role="tab" data-toggle="tab" aria-expanded="true">
+                            <i class="{{ config('other.font-awesome') }} fa-trophy text-gold"></i> Featured
+                        </a>
+                    </li>
+                <li class="chip">
                     <a href="#newtorrents" role="tab" data-toggle="tab" aria-expanded="true">
-                        <i class="{{ config('other.font-awesome') }} fa-trophy text-gold"></i> {{ __('blocks.new-torrents') }}
+                        <i class="{{ config('other.font-awesome') }} fa-trophy text-gold"></i> New
                     </a>
                 </li>
                 <li class="chip">
@@ -43,9 +46,30 @@
                 </li>
             </ul>
             <br>
-            <div class="tab-content overflow-x-scroll ">
-                <div class="tab-pane fade active in" id="newtorrents">
-                    <ul class="flex gap-12 ħ-[250px] justify-start"
+            <div class="tab-content overflow-hidden">
+                <div class="tab-pane fade active in" id="featuredtorrents">
+                    <ul class="flex gap-12 ħ-[250px] justify-start">
+                        @foreach ($featured as $feature)
+                            @if ($feature->torrent === null || ! $feature->torrent->isApproved())
+                                @continue
+                            @endif
+                            @php
+                                $meta = match(1) {
+                                    $feature->torrent->category->tv_meta => App\Models\Tv::query()->with('genres', 'networks', 'seasons')->where('id', '=', $feature->torrent->tmdb ?? 0)->first(),
+                                    $feature->torrent->category->movie_meta => App\Models\Movie::query()->with('genres', 'cast', 'companies', 'collection')->where('id', '=', $feature->torrent->tmdb ?? 0)->first(),
+                                    default => null,
+                                };
+                            @endphp
+                            <li class="h-full">
+                                <x-torrent.card :meta="$meta" :torrent="$feature->torrent"/>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+
+                <div class="tab-pane fade" id="newtorrents">
+                    <ul class="flex gap-12 ħ-[250px] justify-center"
                     >
                         @foreach ($newest as $new)
                             @php $meta = null @endphp
@@ -66,7 +90,7 @@
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="topseeded">
-                    <ul class="flex gap-12 ħ-[250px] justify-start">
+                    <ul class="flex gap-12 ħ-[250px] justify-center">
                         @foreach ($seeded as $seed)
                             @php $meta = null @endphp
                             @if ($seed->category->tv_meta)
@@ -86,7 +110,7 @@
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="topleeched">
-                    <ul class=" flex gap-12 ħ-[250px] justify-start">
+                    <ul class=" flex gap-12 ħ-[250px] justify-center">
                         @foreach ($leeched as $leech)
                             @php $meta = null @endphp
                             @if ($leech->category->tv_meta)
@@ -105,9 +129,8 @@
                         @endforeach
                     </ul>
                 </div>
-
                 <div class="tab-pane fade" id="dyingtorrents">
-                    <ul class="flex gap-12 ħ-[250px] justify-start">
+                    <ul class="flex gap-12 ħ-[250px] justify-center">
                         @foreach ($dying as $d)
                             @php $meta = null @endphp
                             @if ($d->category->tv_meta)
@@ -126,9 +149,8 @@
                         @endforeach
                     </ul>
                 </div>
-
                 <div class="tab-pane fade" id="deadtorrents">
-                    <ul class="flex gap-12 ħ-[250px] justify-start">
+                    <ul class="flex gap-12 ħ-[250px] justify-center">
                         @foreach ($dead as $d)
                             @php $meta = null @endphp
                             @if ($d->category->tv_meta)
@@ -138,18 +160,15 @@
                             @endif
                             @if ($d->category->movie_meta)
                                 @if ($d->tmdb || $d->tmdb != 0)
-                                    @php $meta = cache()->remember('moviemeta:'.$leech->tmdb.$new->category_id, 3_600, fn () => App\Models\Movie::query()->with('genres', 'cast', 'companies', 'collection')->where('id', '=', $d->tmdb)->first()) @endphp
+                                    @php $meta = cache()->remember('moviemeta:'.$d->tmdb.$d->category_id, 3_600, fn () => App\Models\Movie::query()->with('genres', 'cast', 'companies', 'collection')->where('id', '=', $d->tmdb)->first()) @endphp
                                 @endif
                             @endif
                             <li>
                                 <x-torrent.card :meta="$meta" :torrent="$d"/>
                             </li>
-                            @endforeach
-                            </tbody>
-                            </table>
+                        @endforeach
                     </ul>
                 </div>
-            </div>
         </div>
     </div>
 </section>
