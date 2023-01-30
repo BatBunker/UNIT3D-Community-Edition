@@ -50,7 +50,7 @@ class HomeControllerTest extends TestCase
             ->assertViewHas('featured')
             ->assertViewHas('poll')
             ->assertViewHas('uploaders')
-            ->assertViewHas('past_uploaders')
+            ->assertViewHas('random_torrent')
             ->assertViewHas('freeleech_tokens')
             ->assertViewHas('bookmarks');
     }
