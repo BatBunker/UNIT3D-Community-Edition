@@ -50,11 +50,11 @@
                                     </p>
 
                                     <a href="{{ route('articles.show', ['id' => $article->id]) }}"
-                                       class="btn btn-success">
+                                       class="btn btn-success pull-right">
                                         {{ __('articles.read-more') }}
-                                    </a>
+                                    <hr class="mx-2">
 
-                                        <a href="{{ route('articles.index') }}" class="btn btn-primary">
+                                        <a href="{{ route('articles.index') }}" class="btn btn-primary pull-right">
                                             {{ __('common.view-all') }}
                                         </a>
 
