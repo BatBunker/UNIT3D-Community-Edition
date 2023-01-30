@@ -18,8 +18,6 @@ return new class () extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('show_poster')->default(true)->change();
             $this->updateOptionForUsers();
-
-
         });
     }
 
