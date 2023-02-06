@@ -1099,7 +1099,7 @@ pre code {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #e2e2e2;
+    background-color: var(--data-table-tr-even-bg)
 }
 
 .table-hover > tbody > tr:hover,
