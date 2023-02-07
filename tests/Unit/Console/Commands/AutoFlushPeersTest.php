@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoFlushPeers
+ * @see \src\Commands\AutoFlushPeers
  */
 class AutoFlushPeersTest extends TestCase
 {

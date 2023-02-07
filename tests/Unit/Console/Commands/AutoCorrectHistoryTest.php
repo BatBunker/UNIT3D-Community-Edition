@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoCorrectHistory
+ * @see \src\Commands\AutoCorrectHistory
  */
 class AutoCorrectHistoryTest extends TestCase
 {

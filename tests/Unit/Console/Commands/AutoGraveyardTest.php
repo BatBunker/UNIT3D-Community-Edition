@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoGraveyard
+ * @see \src\Commands\AutoGraveyard
  */
 class AutoGraveyardTest extends TestCase
 {

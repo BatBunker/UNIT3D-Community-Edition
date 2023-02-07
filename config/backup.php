@@ -263,7 +263,7 @@ return [
 
     'security' => [
         'password'   => env('APP_KEY'),
-        'encryption' => \App\Helpers\BackupEncryption::ENCRYPTION_DEFAULT,
+        'encryption' => \Src\Helper\BackupEncryption::ENCRYPTION_DEFAULT,
     ],
 
 ];

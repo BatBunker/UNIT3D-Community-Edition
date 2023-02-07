@@ -13,7 +13,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Bencode;
 use App\Models\Movie;
 use App\Models\Playlist;
 use App\Models\PlaylistTorrent;
@@ -23,6 +22,7 @@ use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use src\Helpers\Bencode;
 use ZipArchive;
 
 /**

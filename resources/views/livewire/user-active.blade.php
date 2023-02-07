@@ -4,20 +4,23 @@
             <div class="mx-0 mt-5 form-group fatten-me">
                 <label for="name" class="mt-5 col-sm-1 label label-default fatten-me">{{ __('torrent.name') }}</label>
                 <div class="col-sm-9 fatten-me">
-                    <input type="text" class="form-control" id="name" wire:model="name" placeholder="{{ __('torrent.name') }}">
+                    <input type="text" class="form-control" id="name" wire:model="name"
+                           placeholder="{{ __('torrent.name') }}">
                 </div>
             </div>
             <div class="mx-0 mt-5 form-group fatten-me">
-                <label for="name" class="mt-5 col-sm-1 label label-default fatten-me">{{ __('torrent.filters') }}</label>
+                <label for="name"
+                       class="mt-5 col-sm-1 label label-default fatten-me">{{ __('torrent.filters') }}</label>
                 <div class="col-sm-10">
                     <span class="badge-user">
-                        <label style="user-select: none" class="inline" x-data="{ state: @entangle('seeding'), ...ternaryCheckbox() }">
+                        <label style="user-select: none" class="inline"
+                               x-data="{ state: @entangle('seeding'), ...ternaryCheckbox() }">
                             <input
-                                type="checkbox"
-                                class="user-active__checkbox"
-                                x-init="updateTernaryCheckboxProperties($el, state)"
-                                x-on:click="state = getNextTernaryCheckboxState(state); updateTernaryCheckboxProperties($el, state);"
-                                x-bind:checked="state === 'include'"
+                                    type="checkbox"
+                                    class="user-active__checkbox"
+                                    x-init="updateTernaryCheckboxProperties($el, state)"
+                                    x-on:click="state = getNextTernaryCheckboxState(state); updateTernaryCheckboxProperties($el, state);"
+                                    x-bind:checked="state === 'include'"
                             >
                             {{ __('torrent.seeding') }}
                         </label>
@@ -36,7 +39,8 @@
                 </div>
             </div>
             <div class="mx-0 mt-5 form-group fatten-me">
-                <label for="name" class="mt-5 col-sm-1 label label-default fatten-me">{{ __('common.quantity') }}</label>
+                <label for="name"
+                       class="mt-5 col-sm-1 label label-default fatten-me">{{ __('common.quantity') }}</label>
                 <div class="col-sm-9">
                     <select wire:model="perPage" class="form-control">
                         <option value="25">25</option>
@@ -55,15 +59,18 @@
                     {{ __('torrent.name') }}
                     @include('livewire.includes._sort-icon', ['field' => 'name'])
                 </th>
-                <th class="user-active__seeders-header" wire:click="sortBy('seeders')" role="columnheader button" title="{{ __('torrent.seeders') }}">
+                <th class="user-active__seeders-header" wire:click="sortBy('seeders')" role="columnheader button"
+                    title="{{ __('torrent.seeders') }}">
                     <i class="fas fa-arrow-alt-circle-up"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'seeders'])
                 </th>
-                <th class="user-active__leechers-header" wire:click="sortBy('leechers')" role="columnheader button" title="{{ __('torrent.leechers') }}">
+                <th class="user-active__leechers-header" wire:click="sortBy('leechers')" role="columnheader button"
+                    title="{{ __('torrent.leechers') }}">
                     <i class="fas fa-arrow-alt-circle-down"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'leechers'])
                 </th>
-                <th class="user-active__times-header" wire:click="sortBy('times_completed')" role="columnheader button" title="{{ __('torrent.completed') }}">
+                <th class="user-active__times-header" wire:click="sortBy('times_completed')" role="columnheader button"
+                    title="{{ __('torrent.completed') }}">
                     <i class="fas fa-check-circle"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'times_completed'])
                 </th>
@@ -84,7 +91,8 @@
                         <i class="{{ config('other.font-awesome') }} fa-wifi" title="Connectable"></i>
                     </th>
                 @endif
-                <th class="user-active__seeding-header" wire:click="sortBy('size')" role="columnheader button" title="{{ __('torrent.seeding') }}">
+                <th class="user-active__seeding-header" wire:click="sortBy('size')" role="columnheader button"
+                    title="{{ __('torrent.seeding') }}">
                     <i class="{{ config('other.font-awesome') }} fa-arrow-up"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'seeding'])
                 </th>
@@ -164,38 +172,43 @@
                                     }
                                 @endphp
                                 @if ($connectable === null)
-                                    <i class="{{ config('other.font-awesome') }} text-blue fa-question" title="Unknown Connectable Status"></i>
+                                    <i class="{{ config('other.font-awesome') }} text-blue fa-question"
+                                       title="Unknown Connectable Status"></i>
                                 @else
                                     @if ($connectable)
-                                        <i class="{{ config('other.font-awesome') }} text-green fa-check" title="Connectable"></i>
+                                        <i class="{{ config('other.font-awesome') }} text-green fa-check"
+                                           title="Connectable"></i>
                                     @else
-                                        <i class="{{ config('other.font-awesome') }} text-red fa-times" title="Not Connectable"></i>
+                                        <i class="{{ config('other.font-awesome') }} text-red fa-times"
+                                           title="Not Connectable"></i>
                                     @endif
                                 @endif
                             </td>
                         @endif
                         <td class="user-active__seeding">
                             @if ($active->seeder === 1)
-                                <i class="{{ config('other.font-awesome') }} text-green fa-check" title="{{ __('torrent.seeding') }}"></i>
+                                <i class="{{ config('other.font-awesome') }} text-green fa-check"
+                                   title="{{ __('torrent.seeding') }}"></i>
                             @else
-                                <i class="{{ config('other.font-awesome') }} text-red fa-times" title="Not {{ __('torrent.seeding') }}"></i>
+                                <i class="{{ config('other.font-awesome') }} text-red fa-times"
+                                   title="Not {{ __('torrent.seeding') }}"></i>
                             @endif
                         </td>
                         <td class="user-active__size">
-                            {{ App\Helpers\StringHelper::formatBytes($active->size) }}
+                            {{ \src\Helpers\StringHelper::formatBytes($active->size) }}
                         </td>
                         <td class="user-active__uploaded text-green">
-                            {{ App\Helpers\StringHelper::formatBytes($active->uploaded, 2) }}
+                            {{ \src\Helpers\StringHelper::formatBytes($active->uploaded, 2) }}
                         </td>
                         <td class="user-active__downloaded text-red">
-                            {{ App\Helpers\StringHelper::formatBytes($active->downloaded, 2) }}
+                            {{ \src\Helpers\StringHelper::formatBytes($active->downloaded, 2) }}
                         </td>
                         <td class="user-active__left">
-                            {{ App\Helpers\StringHelper::formatBytes($active->left, 2) }}
+                            {{ \src\Helpers\StringHelper::formatBytes($active->left, 2) }}
                         </td>
                         <td
-                            class="user-active__progress"
-                            title="{{ __('torrent.progress') }}: {{ $active->progress * 100 }}%"
+                                class="user-active__progress"
+                                title="{{ __('torrent.progress') }}: {{ $active->progress * 100 }}%"
                         >
                             {{ $active->progress < 100 ? \floor($active->progress * 10000) / 100 : INF }}%
                         </td>

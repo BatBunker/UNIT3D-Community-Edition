@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoRecycleFailedLogins
+ * @see \src\Commands\AutoRecycleFailedLogins
  */
 class AutoRecycleFailedLoginsTest extends TestCase
 {

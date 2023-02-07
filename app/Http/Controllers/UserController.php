@@ -13,7 +13,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Bencode;
 use App\Models\Ban;
 use App\Models\BonTransactions;
 use App\Models\Follow;
@@ -38,6 +37,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use src\Helpers\Bencode;
 use ZipArchive;
 
 /**

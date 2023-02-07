@@ -13,10 +13,6 @@
 
 namespace App\Models;
 
-use App\Helpers\Bbcode;
-use App\Helpers\Linkify;
-use App\Helpers\MediaInfo;
-use App\Helpers\StringHelper;
 use App\Notifications\NewComment;
 use App\Notifications\NewThank;
 use App\Traits\Auditable;
@@ -25,6 +21,10 @@ use App\Traits\TorrentFilter;
 use Hootlex\Moderation\Moderatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Src\Helper\Bbcode;
+use Src\Helper\Linkify;
+use Src\Helper\MediaInfo;
+use Src\Helper\StringHelper;
 use voku\helper\AntiXSS;
 
 class Torrent extends Model

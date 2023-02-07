@@ -27,26 +27,26 @@
         <div class="data-table-wrapper">
             <table class="data-table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{{ __('common.user') }}</th>
-                        <th>{{ __('common.upload') }}</th>
-                        <th>{{ __('common.download') }}</th>
-                        <th>{{ __('common.ratio') }}</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>{{ __('common.user') }}</th>
+                    <th>{{ __('common.upload') }}</th>
+                    <th>{{ __('common.download') }}</th>
+                    <th>{{ __('common.ratio') }}</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach ($downloaded as $user)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <x-user_tag :user="$user" :anon="$user->private_profile" />
-                            </td>
-                            <td>{{ \App\Helpers\StringHelper::formatBytes($user->uploaded, 2) }}</td>
-                            <td>{{ \App\Helpers\StringHelper::formatBytes($user->downloaded, 2) }}</td>
-                            <td>{{ $user->getRatio() }}</td>
-                        </tr>
-                    @endforeach
+                @foreach ($downloaded as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                            <x-user_tag :user="$user" :anon="$user->private_profile"/>
+                        </td>
+                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->uploaded, 2) }}</td>
+                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->downloaded, 2) }}</td>
+                        <td>{{ $user->getRatio() }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

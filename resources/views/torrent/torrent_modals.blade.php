@@ -36,7 +36,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal">{{ __('common.close') }}</button>
+                <button class="btn btn-sm btn-primary" type="button"
+                        data-dismiss="modal">{{ __('common.close') }}</button>
             </div>
         </div>
     </div>
@@ -80,7 +81,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal">{{ __('common.close') }}</button>
+                <button class="btn btn-sm btn-primary" type="button"
+                        data-dismiss="modal">{{ __('common.close') }}</button>
             </div>
         </div>
     </div>
@@ -98,7 +100,7 @@
                             style="display: inline-block; margin-right: 24px"
                     >
                         ({{ $torrent->files->count() }})
-                        {{ App\Helpers\StringHelper::formatBytes($torrent->size, 2) }}
+                        {{ \src\Helpers\StringHelper::formatBytes($torrent->size, 2) }}
                         </span>
                 </h4>
             </div>
@@ -118,11 +120,11 @@
                 <div>
                     <div x-show="tab === 1">
                         @foreach ($files = $torrent->files->sortBy('name')->values()->sortBy(fn ($f) => dirname($f->name)."/~~~", SORT_NATURAL)->values() as $file)
-                        @php $prevNodes = explode("/", $files[$loop->index - 1]->name ?? " ") @endphp
-                        @foreach ($nodes = explode("/", $file->name) as $node)
-                        @if (($prevNodes[$loop->index] ?? "") != $node)
-                        @for ($depth = count($prevNodes); $depth > $loop->index; $depth--)
-                        </details>
+                            @php $prevNodes = explode("/", $files[$loop->index - 1]->name ?? " ") @endphp
+                            @foreach ($nodes = explode("/", $file->name) as $node)
+                                @if (($prevNodes[$loop->index] ?? "") != $node)
+                                    @for ($depth = count($prevNodes); $depth > $loop->index; $depth--)
+                                        </details>
                         @endfor
 
                         @for ($depth = $loop->index; $depth < $loop->count; $depth++)
@@ -169,7 +171,7 @@
                                                                 class="text-info"
                                                                 style="grid-area: size; white-space: nowrap; text-align: right;"
                                                         >
-                                                            {{ App\Helpers\StringHelper::formatBytes($filteredFiles->sum('size'), 2) }}
+                                                            {{ \src\Helpers\StringHelper::formatBytes($filteredFiles->sum('size'), 2) }}
                                                         </span>
                                                     @endif
 
@@ -221,7 +223,7 @@
                 </div>
                 <div class="modal-body text-center">
                     <pre id="torrent_nfo" style="font-size:10pt; font-family: 'Courier New', monospace;">
-                        {!! App\Helpers\Nfo::parseNfo($torrent->nfo) !!}
+                        {!! \src\Helpers\Nfo::parseNfo($torrent->nfo) !!}
                     </pre>
                 </div>
                 <div class="modal-footer">
@@ -241,7 +243,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('common.close') }}"><span
                                 aria-hidden="true">×</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">{{ __('common.moderation-postpone') }}: {{ $torrent->name }}
+                    <h4 class="modal-title" id="myModalLabel">{{ __('common.moderation-postpone') }}
+                        : {{ $torrent->name }}
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -360,7 +363,7 @@
         <div class="modal-content">
             <div class="container-fluid">
                 <form action="{{ route('torrent_doubleup', ['id' => $torrent->id]) }}" method="POST">
-                @csrf
+                    @csrf
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -411,7 +414,8 @@
                     <div class="modal-body">
                         <div class="form-group" x-data="{total_value:0}">
                             <div style="display: flex; margin-bottom: 5px;">
-                                <label for="freeleech"><span x-text="total_value"></span>% {{ __('torrent.freeleech') }}</label>
+                                <label for="freeleech"><span x-text="total_value"></span>% {{ __('torrent.freeleech') }}
+                                </label>
                                 <input type="range"
                                        x-model="total_value" min="0" max="100" step="25" list="steplist"
                                        name="freeleech" value="{{ $torrent->free ?? '0' }}"

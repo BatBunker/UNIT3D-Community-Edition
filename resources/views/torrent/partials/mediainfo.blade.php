@@ -39,7 +39,7 @@
                                             Rate:</u> {{ $mediaInfo['general']['bit_rate'] ?? __('common.unknown') }}
                                     </div>
                                     <div><u style="font-weight: bold;">Overall
-                                            Size:</u> {{ App\Helpers\StringHelper::formatBytes($mediaInfo['general']['file_size'] ?? 0, 2) }}
+                                            Size:</u> {{ \src\Helpers\StringHelper::formatBytes($mediaInfo['general']['file_size'] ?? 0, 2) }}
                                     </div>
                                 </div>
                                 <div class="mediainfo-video" style="width: 30%; display:table-cell; text-align: left;">
@@ -59,7 +59,10 @@
                                             </div>
                                             <div><u style="font-weight: bold;">Frame
                                                     Rate:</u> @if((isset($videoElement['framerate_mode'])) && $videoElement['framerate_mode'] === 'Variable')
-                                                    VFR @else{{ $videoElement['frame_rate'] ?? __('common.unknown') }}@endif
+                                                    VFR
+                                                @else
+                                                    {{ $videoElement['frame_rate'] ?? __('common.unknown') }}
+                                                @endif
                                             </div>
                                             <div><u style="font-weight: bold;">Bit
                                                     Rate:</u> {{ $videoElement['bit_rate'] ?? __('common.unknown') }}
@@ -76,7 +79,8 @@
                                                 </div>
                                             @endif
                                             @if (! $loop->last)
-                                                <div style="border-top: 1px solid #444444; padding-top: 5px; margin-top: 5px; width: 75%;"></div> @endif
+                                                <div style="border-top: 1px solid #444444; padding-top: 5px; margin-top: 5px; width: 75%;"></div>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </div>
@@ -91,7 +95,8 @@
                                                 | {{ $audioElement['bit_rate'] ?? __('common.unknown') }}
                                                 | {{ $audioElement['title'] ?? __('common.unknown') }}</div>
                                             @if (! $loop->last)
-                                                <div style="border-top: 1px solid #444444; padding-top: 5px; margin-top: 5px; width: 75%;"></div> @endif
+                                                <div style="border-top: 1px solid #444444; padding-top: 5px; margin-top: 5px; width: 75%;"></div>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </div>

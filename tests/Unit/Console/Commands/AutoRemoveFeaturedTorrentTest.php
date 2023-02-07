@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoRemoveFeaturedTorrent
+ * @see \src\Commands\AutoRemoveFeaturedTorrent
  */
 class AutoRemoveFeaturedTorrentTest extends TestCase
 {

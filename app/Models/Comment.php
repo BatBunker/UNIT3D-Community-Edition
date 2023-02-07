@@ -14,12 +14,12 @@
 namespace App\Models;
 
 use App\Events\TicketWentStale;
-use App\Helpers\Bbcode;
-use App\Helpers\Linkify;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use src\Helpers\Bbcode;
+use src\Helpers\Linkify;
 
 class Comment extends Model
 {

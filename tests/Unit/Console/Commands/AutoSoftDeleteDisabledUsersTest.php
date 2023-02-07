@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoSoftDeleteDisabledUsers
+ * @see \src\Commands\AutoSoftDeleteDisabledUsers
  */
 class AutoSoftDeleteDisabledUsersTest extends TestCase
 {

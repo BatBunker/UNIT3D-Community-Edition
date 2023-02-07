@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoRecycleInvites
+ * @see \src\Commands\AutoRecycleInvites
  */
 class AutoRecycleInvitesTest extends TestCase
 {

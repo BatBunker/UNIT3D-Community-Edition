@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\ClearCache
+ * @see \src\Commands\ClearCache
  */
 class ClearCacheTest extends TestCase
 {

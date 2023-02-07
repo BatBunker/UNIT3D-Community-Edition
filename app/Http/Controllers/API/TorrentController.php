@@ -13,9 +13,6 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Helpers\Bencode;
-use App\Helpers\TorrentHelper;
-use App\Helpers\TorrentTools;
 use App\Http\Resources\TorrentResource;
 use App\Http\Resources\TorrentsResource;
 use App\Models\Category;
@@ -30,6 +27,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use src\Helpers\Bencode;
+use src\Helpers\TorrentHelper;
+use src\Helpers\TorrentTools;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\TorrentControllerTest

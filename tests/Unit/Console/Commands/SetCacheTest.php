@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\SetCache
+ * @see \src\Commands\SetCache
  */
 class SetCacheTest extends TestCase
 {

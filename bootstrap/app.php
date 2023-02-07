@@ -22,8 +22,10 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+use Src\Infrastructure\Framework\Exceptions\Handler;
+
+$app = new \Src\Infrastructure\Framework\Bootstrap(
+    realpath(__DIR__ . '/../')
 );
 
 /*
@@ -39,17 +41,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     'Illuminate\Contracts\Http\Kernel',
-    \App\Http\Kernel::class
+    \Src\Infrastructure\Framework\Kernels\HTTP::class
 );
 
 $app->singleton(
     'Illuminate\Contracts\Console\Kernel',
-    \App\Console\Kernel::class
+    \Src\Infrastructure\Framework\Kernels\CLI::class
 );
 
 $app->singleton(
     'Illuminate\Contracts\Debug\ExceptionHandler',
-    \App\Exceptions\Handler::class
+    Handler::class
 );
 
 /*

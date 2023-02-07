@@ -13,9 +13,9 @@
 
 namespace App\Models;
 
-use App\Helpers\Bbcode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use src\Helpers\Bbcode;
 use voku\helper\AntiXSS;
 
 class Message extends Model

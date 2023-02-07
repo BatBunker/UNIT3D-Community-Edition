@@ -13,13 +13,13 @@
 
 namespace App\Http\Controllers\Staff;
 
-use App\Helpers\TorrentHelper;
 use App\Http\Controllers\Controller;
 use App\Models\PrivateMessage;
 use App\Models\Torrent;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use src\Helpers\TorrentHelper;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\Staff\ModerationControllerTest

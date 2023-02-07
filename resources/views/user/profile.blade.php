@@ -89,7 +89,7 @@
                                     @endif
                                 </h2>
                                 <h4>{{ __('common.group') }}: <span class="badge-user text-bold"
-                                                                 style="color:{{ $user->group->color }}; background-image:{{ $user->group->effect }};"><i
+                                                                    style="color:{{ $user->group->color }}; background-image:{{ $user->group->effect }};"><i
                                                 class="{{ $user->group->icon }}" data-toggle="tooltip" title=""
                                                 data-original-title="{{ $user->group->name }}"></i> {{ $user->group->name }}</span>
                                 </h4>
@@ -156,10 +156,12 @@
                                         class="text-red text-bold">{{ $history->where('actual_downloaded', '>', 0)->count() }}</span></span>
                             <span class="badge-user badge-float p-10"><i
                                         class="{{ config('other.font-awesome') }} fa-cloud-upload"></i> {{ __('user.total-seeding') }}
-                                        : <span class="text-green text-bold">{{ $user->seedingTorrents()->count() }}</span></span>
+                                        : <span
+                                        class="text-green text-bold">{{ $user->seedingTorrents()->count() }}</span></span>
                             <span class="badge-user badge-float p-10"><i
                                         class="{{ config('other.font-awesome') }} fa-cloud-download"></i> {{ __('user.total-leeching') }}
-                                        : <span class="text-red text-bold">{{ $user->leechingTorrents()->count() }}</span></span>
+                                        : <span
+                                        class="text-red text-bold">{{ $user->leechingTorrents()->count() }}</span></span>
                         </div>
                     </div>
                 @endif
@@ -174,7 +176,8 @@
                         <tr>
                             <td colspan="2" class="text-bold">
                                 <div class="button-holder">
-                                    <div class="button-left-small">{{ __('user.user') }} {{ __('user.information') }}:</div>
+                                    <div class="button-left-small">{{ __('user.user') }} {{ __('user.information') }}:
+                                    </div>
                                     <div class="button-right-large">
 
                                     </div>
@@ -216,13 +219,13 @@
                     <span class="badge-extra text-blue" data-toggle="tooltip" title=""
                           data-original-title="{{ __('user.download-recorded') }}">{{ $realdownload }}</span> =
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Default Starter Download">{{ App\Helpers\StringHelper::formatBytes($def_download , 2) }}</span>
+                                          data-original-title="Default Starter Download">{{ \src\Helpers\StringHelper::formatBytes($def_download , 2) }}</span>
                                     +
                                     <span class="badge-extra text-red" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.download-true') }}">{{ App\Helpers\StringHelper::formatBytes($his_down , 2) }}</span>
+                                          data-original-title="{{ __('user.download-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_down , 2) }}</span>
                                     −
                                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                                          data-original-title="Freeleech Downloads">{{ App\Helpers\StringHelper::formatBytes($free_down , 2) }}</span>
+                                          data-original-title="Freeleech Downloads">{{ \src\Helpers\StringHelper::formatBytes($free_down , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -231,26 +234,26 @@
                     <span class="badge-extra text-blue" data-toggle="tooltip" title=""
                           data-original-title="{{ __('user.upload-recorded') }}">{{ $user->getUploaded() }}</span> =
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Default Starter Upload">{{ App\Helpers\StringHelper::formatBytes($def_upload , 2) }}</span>
+                                          data-original-title="Default Starter Upload">{{ \src\Helpers\StringHelper::formatBytes($def_upload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.upload-true') }}">{{ App\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
+                                          data-original-title="{{ __('user.upload-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
                                     +
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Upload from Multipliers">{{ App\Helpers\StringHelper::formatBytes($multi_upload , 2) }}</span>
+                                          data-original-title="Upload from Multipliers">{{ \src\Helpers\StringHelper::formatBytes($multi_upload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-orange" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.upload-bon') }}">{{ App\Helpers\StringHelper::formatBytes($bonupload , 2) }}</span>
+                                          data-original-title="{{ __('user.upload-bon') }}">{{ \src\Helpers\StringHelper::formatBytes($bonupload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-pink" data-toggle="tooltip" title=""
-                                          data-original-title="Manually Added or Misc">{{ App\Helpers\StringHelper::formatBytes($man_upload , 2) }}</span>
+                                          data-original-title="Manually Added or Misc">{{ \src\Helpers\StringHelper::formatBytes($man_upload , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.upload-true') }}</td>
                                 <td>
                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                          data-original-title="{{ __('user.upload-true') }}">{{ App\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
+                          data-original-title="{{ __('user.upload-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -268,28 +271,29 @@
                             <tr>
                                 <td>{{ __('user.total-seedtime') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ App\Helpers\StringHelper::timeElapsed($history->sum('seedtime')) }}</span>
+                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::timeElapsed($history->sum('seedtime')) }}</span>
                                     <span>({{ __('user.all-torrents') }})</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.avg-seedtime') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ App\Helpers\StringHelper::timeElapsed(round($history->sum('seedtime') / max(1, $history->count()))) }}</span>
+                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::timeElapsed(round($history->sum('seedtime') / max(1, $history->count()))) }}</span>
                                     <span>({{ __('user.per-torrent') }})</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.seeding-size') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ App\Helpers\StringHelper::formatBytes($user->seedingTorrents()->sum('size') , 2) }}</span>
+                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::formatBytes($user->seedingTorrents()->sum('size') , 2) }}</span>
                                 </td>
                             </tr>
                         @endif
                         <tr>
                             <td colspan="2" class="text-bold">
                                 <div class="button-holder">
-                                    <div class="button-left-small">{{ __('user.user') }} {{ __('user.statistics') }}:</div>
+                                    <div class="button-left-small">{{ __('user.user') }} {{ __('user.statistics') }}:
+                                    </div>
                                     <div class="button-right-large">
 
                                     </div>
@@ -512,7 +516,8 @@
                                 @php
                                     if($x > 25) { continue; }
                                 @endphp
-                                <img src="/img/badges/{{ $achievement->details->name }}.png" data-toggle="tooltip" title=""
+                                <img src="/img/badges/{{ $achievement->details->name }}.png" data-toggle="tooltip"
+                                     title=""
                                      height="50px" data-original-title="{{ $achievement->details->name }}"
                                      alt="{{ $achievement->details->name }}">
                                 @php
@@ -553,7 +558,8 @@
             </div>
             @if (auth()->user()->id == $user->id || auth()->user()->group->is_modo)
                 <div class="block">
-                    <h3><i class="{{ config('other.font-awesome') }} fa-broadcast-tower"></i> {{ __('user.client-list') }}
+                    <h3>
+                        <i class="{{ config('other.font-awesome') }} fa-broadcast-tower"></i> {{ __('user.client-list') }}
                     </h3>
                     <div style="word-wrap: break-word; display: table; width: 100%;">
                         <table class="table table-condensed table-striped table-bordered">
@@ -664,8 +670,12 @@
                             </tr>
                             <tr>
                                 <td> {{ __('user.last-login') }}</td>
-                                <td>@if ($user->last_login != null){{ $user->last_login->toDayDateTimeString() }}
-                                    ({{ $user->last_login->diffForHumans() }})@else N/A @endif</td>
+                                <td>@if ($user->last_login != null)
+                                        {{ $user->last_login->toDayDateTimeString() }}
+                                        ({{ $user->last_login->diffForHumans() }})
+                                    @else
+                                        N/A
+                                    @endif</td>
                             </tr>
                             <tr>
                                 <td> {{ __('user.can-upload') }}</td>
@@ -790,12 +800,6 @@
                         {{ $hitrun->links() }}
                     </div>
                 </div>
-
-
-
-
-
-
 
             @endif
         @endif

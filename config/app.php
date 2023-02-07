@@ -194,11 +194,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Src\Infrastructure\Framework\Providers\AppServiceProvider::class,
+        Src\Infrastructure\Framework\Providers\AuthServiceProvider::class,
+        Src\Infrastructure\Framework\Providers\BroadcastServiceProvider::class,
+        Src\Infrastructure\Framework\Providers\EventServiceProvider::class,
+        Src\Infrastructure\Framework\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -223,7 +223,7 @@ return [
         'Broadcast'       => Illuminate\Support\Facades\Broadcast::class,
         'Bus'             => Illuminate\Support\Facades\Bus::class,
         'Cache'           => Illuminate\Support\Facades\Cache::class,
-        'CacheUser'       => App\Helpers\CacheUser::class,
+        'CacheUser'       => \Src\Helpers\CacheUser::class,
         'Config'          => Illuminate\Support\Facades\Config::class,
         'Cookie'          => Illuminate\Support\Facades\Cookie::class,
         'CookieConsent'   => BrianFaust\CookieConsent\Facades\CookieConsent::class,

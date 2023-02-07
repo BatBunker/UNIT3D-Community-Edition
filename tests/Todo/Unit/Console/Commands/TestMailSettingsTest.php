@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\TestMailSettings
+ * @see \src\Commands\TestMailSettings
  */
 class TestMailSettingsTest extends TestCase
 {

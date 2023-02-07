@@ -2,10 +2,10 @@
 
 namespace App\Rules;
 
-use App\Helpers\EmailBlacklistUpdater;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 use Psr\SimpleCache\InvalidArgumentException;
+use src\Helpers\EmailBlacklistUpdater;
 
 class EmailBlacklist implements Rule
 {

@@ -52,8 +52,8 @@
              alt="{{ __('torrent.poster') }}"
         />
 
-        <figcaption class="mt-1 font-bold block text-lg" title="{{ $meta->name_sort ?? $meta->name_short ?? 'N/A' }}">
-            {{ Str::limit($meta->name_sort ?? $meta->name_short ?? 'N/A', 11,'...') }}
+        <figcaption class="mt-1 font-bold block text-lg" title="{{ $meta->name_sort ?? $meta->name ?? 'N/A' }}">
+            {{ Str::limit($meta->name_sort ?? $meta->name ?? $meta->title ?? 'N/A', 11,'...') }}
 
             <span>
             @if(isset($meta->first_air_date))

@@ -13,11 +13,11 @@
 
 namespace App\Models;
 
-use App\Helpers\BBCodeConverter;
-use App\Helpers\MarkdownExtra;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use src\Helpers\BBCodeConverter;
+use src\Helpers\MarkdownExtra;
 
 class Page extends Model
 {

@@ -27,22 +27,22 @@
         <div class="data-table-wrapper">
             <table class="data-table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>{{ __('common.user') }}</th>
-                        <th>{{ __('torrent.seedsize') }}</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>{{ __('common.user') }}</th>
+                    <th>{{ __('torrent.seedsize') }}</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <x-user_tag :user="$user" :anon="$user->private_profile" />
-                            </td>
-                            <td>{{ \App\Helpers\StringHelper::formatBytes($user->seedsize ?? 0) }}</td>
-                        </tr>
-                    @endforeach
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                            <x-user_tag :user="$user" :anon="$user->private_profile"/>
+                        </td>
+                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->seedsize ?? 0) }}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

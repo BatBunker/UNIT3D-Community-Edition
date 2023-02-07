@@ -14,8 +14,8 @@
         </div>
         <a href="{{route('torrent', ['id' => $random_torrent->id])}}"
            title="{{Str::limit(strip_tags($meta->overview ?: $meta->summary), 350, '...') }}">
-            <figure class="flex flex-col w-[220px] text-center">
-                <img style="border: var(--app-border-light-color) 1px solid" class="object-contain "
+            <figure class="flex flex-col h-[300px] text-center">
+                <img style="border: var(--app-border-light-color) 1px solid;height: 280px"
                      @switch (true)
                          @case ($random_torrent->category->movie_meta || $random_torrent->category->tv_meta)
                              src="{{ isset($meta->poster) ? tmdb_image('poster_mid', $meta->poster) : 'https://via.placeholder.com/160x240' }}"
