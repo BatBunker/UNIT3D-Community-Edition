@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoBanDisposableUsers
+ * @see \src\Commands\AutoBanDisposableUsers
  */
 class AutoBanDisposableUsersTest extends TestCase
 {

@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoPreWarning
+ * @see \src\Commands\AutoPreWarning
  */
 class AutoPreWarningTest extends TestCase
 {

@@ -135,10 +135,10 @@
                                         $resurrection->torrent_id)->pluck('id') @endphp
                                     @php $history = App\Models\History::select(['seedtime'])->where('user_id', '=',
                                         $user->id)->where('torrent_id', '=', $torrent)->first() @endphp
-                                    {{ empty($history) ? '0' : App\Helpers\StringHelper::timeElapsed($history->seedtime) }}
+                                    {{ empty($history) ? '0' : \src\Helpers\StringHelper::timeElapsed($history->seedtime) }}
                                 </td>
                                 <td>
-                                    {{ App\Helpers\StringHelper::timeElapsed($resurrection->seedtime) }}
+                                    {{ \src\Helpers\StringHelper::timeElapsed($resurrection->seedtime) }}
                                 </td>
                                 <td>
                                     @if ($resurrection->rewarded == 0)

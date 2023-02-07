@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoRecycleClaimedTorrentRequests
+ * @see \src\Commands\AutoRecycleClaimedTorrentRequests
  */
 class AutoRecycleClaimedTorrentRequestsTest extends TestCase
 {

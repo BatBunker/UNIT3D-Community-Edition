@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\FetchReleaseYears
+ * @see \src\Commands\FetchReleaseYears
  */
 class FetchReleaseYearsTest extends TestCase
 {

@@ -4,7 +4,8 @@
             <div class="mx-0 mt-5 form-group fatten-me">
                 <label for="name" class="mt-5 col-sm-1 label label-default fatten-me">{{ __('torrent.name') }}</label>
                 <div class="col-sm-9 fatten-me">
-                    <input type="text" class="form-control" id="name" wire:model="name" placeholder="{{ __('torrent.name') }}">
+                    <input type="text" class="form-control" id="name" wire:model="name"
+                           placeholder="{{ __('torrent.name') }}">
                 </div>
             </div>
 
@@ -14,13 +15,14 @@
                 </div>
                 <div class="col-sm-10">
                     <span class="badge-user">
-                        <label style="user-select: none" class="inline" x-data="{ state: @entangle('personalRelease'), ...ternaryCheckbox() }">
+                        <label style="user-select: none" class="inline"
+                               x-data="{ state: @entangle('personalRelease'), ...ternaryCheckbox() }">
                             <input
-                                type="checkbox"
-                                class="user-uploads__checkbox"
-                                x-init="updateTernaryCheckboxProperties($el, state)"
-                                x-on:click="state = getNextTernaryCheckboxState(state); updateTernaryCheckboxProperties($el, state)"
-                                x-bind:checked="state === 'include'"
+                                    type="checkbox"
+                                    class="user-uploads__checkbox"
+                                    x-init="updateTernaryCheckboxProperties($el, state)"
+                                    x-on:click="state = getNextTernaryCheckboxState(state); updateTernaryCheckboxProperties($el, state)"
+                                    x-bind:checked="state === 'include'"
                             >
                             {{ __('torrent.personal-release') }}
                         </label>
@@ -83,35 +85,43 @@
                     {{ __('torrent.size') }}
                     @include('livewire.includes._sort-icon', ['field' => 'size'])
                 </th>
-                <th class="user-uploads__seeders-header" wire:click="sortBy('seeders')" role="columnheader button" title="{{ __('torrent.seeders') }}">
+                <th class="user-uploads__seeders-header" wire:click="sortBy('seeders')" role="columnheader button"
+                    title="{{ __('torrent.seeders') }}">
                     <i class="fas fa-arrow-alt-circle-up"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'seeders'])
                 </th>
-                <th class="user-uploads__leechers-header" wire:click="sortBy('leechers')" role="columnheader button" title="{{ __('torrent.leechers') }}">
+                <th class="user-uploads__leechers-header" wire:click="sortBy('leechers')" role="columnheader button"
+                    title="{{ __('torrent.leechers') }}">
                     <i class="fas fa-arrow-alt-circle-down"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'leechers'])
                 </th>
-                <th class="user-uploads__times-header" wire:click="sortBy('times_completed')" role="columnheader button" title="{{ __('torrent.completed') }}">
+                <th class="user-uploads__times-header" wire:click="sortBy('times_completed')" role="columnheader button"
+                    title="{{ __('torrent.completed') }}">
                     <i class="fas fa-check-circle"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'times_completed'])
                 </th>
-                <th class="user-uploads__tips-header" wire:click="sortBy('tips_sum_cost')" role="columnheader button" title="{{ __('bon.tips') }}">
+                <th class="user-uploads__tips-header" wire:click="sortBy('tips_sum_cost')" role="columnheader button"
+                    title="{{ __('bon.tips') }}">
                     <i class="fas fa-coins"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'tips_sum_cost'])
                 </th>
-                <th class="user-uploads__thanks-header" wire:click="sortBy('thanks_count')" role="columnheader button" title="{{ __('torrent.thanks') }}">
+                <th class="user-uploads__thanks-header" wire:click="sortBy('thanks_count')" role="columnheader button"
+                    title="{{ __('torrent.thanks') }}">
                     <i class="fas fa-heart"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'thanks_count'])
                 </th>
-                <th class="user-uploads__created-at-header" wire:click="sortBy('created_at')" role="columnheader button">
+                <th class="user-uploads__created-at-header" wire:click="sortBy('created_at')"
+                    role="columnheader button">
                     {{ __('torrent.uploaded') }}
                     @include('livewire.includes._sort-icon', ['field' => 'created_at'])
                 </th>
-                <th class="user-uploads__personal-release-header" wire:click="sortBy('personal_release')" role="columnheader button" title="{{ __('torrent.personal-release') }}">
+                <th class="user-uploads__personal-release-header" wire:click="sortBy('personal_release')"
+                    role="columnheader button" title="{{ __('torrent.personal-release') }}">
                     <i class="fas fa-user-plus"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'status'])
                 </th>
-                <th class="user-uploads__status-header" wire:click="sortBy('status')" role="columnheader button" title="{{ __('torrent.approved') }}">
+                <th class="user-uploads__status-header" wire:click="sortBy('status')" role="columnheader button"
+                    title="{{ __('torrent.approved') }}">
                     <i class="fas fa-tasks"></i>
                     @include('livewire.includes._sort-icon', ['field' => 'status'])
                 </th>
@@ -128,7 +138,7 @@
                             </a>
                         </td>
                         <td class="user-uploads__size">
-                            {{ App\Helpers\StringHelper::formatBytes($torrent->size) }}
+                            {{ \src\Helpers\StringHelper::formatBytes($torrent->size) }}
                         </td>
                         <td class="user-uploads__seeders">
                             <a href="{{ route('peers', ['id' => $torrent->id]) }}">
@@ -176,16 +186,20 @@
                         <td class="user-uploads__status">
                             @switch($torrent->status)
                                 @case(0)
-                                    <span title="{{ __('torrent.pending') }}" class="{{ config('other.font-awesome') }} fa-tasks text-orange"></span>
+                                    <span title="{{ __('torrent.pending') }}"
+                                          class="{{ config('other.font-awesome') }} fa-tasks text-orange"></span>
                                     @break
                                 @case(1)
-                                    <span title="{{ __('torrent.approved') }}" class="{{ config('other.font-awesome') }} fa-check text-green"></span>
+                                    <span title="{{ __('torrent.approved') }}"
+                                          class="{{ config('other.font-awesome') }} fa-check text-green"></span>
                                     @break
                                 @case(2)
-                                    <span title="{{ __('torrent.rejected') }}" class ="{{ config('other.font-awesome') }} fa-times text-red"></span>
+                                    <span title="{{ __('torrent.rejected') }}"
+                                          class="{{ config('other.font-awesome') }} fa-times text-red"></span>
                                     @break
                                 @case(3)
-                                    <span title="Postponed" class ="{{ config('other.font-awesome') }} fa-hourglass text-red"></span>
+                                    <span title="Postponed"
+                                          class="{{ config('other.font-awesome') }} fa-hourglass text-red"></span>
                                     @break
                             @endswitch
                         </td>

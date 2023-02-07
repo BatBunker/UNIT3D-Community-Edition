@@ -13,8 +13,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Helpers\Bbcode;
 use Livewire\Component;
+use src\Helpers\Bbcode;
 
 class BbcodeInput extends Component
 {

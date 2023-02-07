@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoGroup
+ * @see \src\Commands\AutoGroup
  */
 class AutoGroupTest extends TestCase
 {

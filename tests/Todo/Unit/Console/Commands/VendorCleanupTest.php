@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\VendorCleanup
+ * @see \src\Commands\VendorCleanup
  */
 class VendorCleanupTest extends TestCase
 {

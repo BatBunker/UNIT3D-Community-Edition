@@ -45,10 +45,10 @@
                     @endphp
                     @php $history = App\Models\History::select(['seedtime'])->where('user_id', '=',
                         $user->id)->where('torrent_id', '=', $torrent)->first() @endphp
-                    {{ empty($history) ? '0' : App\Helpers\StringHelper::timeElapsed($history->seedtime) }}
+                    {{ empty($history) ? '0' : \Src\Helper\StringHelper::timeElapsed($history->seedtime) }}
                 </td>
                 <td>
-                    {{ App\Helpers\StringHelper::timeElapsed($resurrection->seedtime) }}
+                    {{ \Src\Helper\StringHelper::timeElapsed($resurrection->seedtime) }}
                 </td>
                 <td>
                     @if ($resurrection->rewarded == 0)

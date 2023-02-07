@@ -46,7 +46,7 @@
                         <th>{{ __('common.ip') }}</th>
                         <th>{{ __('common.port') }}</th>
                         @if (\config('announce.connectable_check') == true)
-                        <th>Connectable</th>
+                            <th>Connectable</th>
                         @endif
                         <th>{{ __('torrent.started') }}</th>
                         <th>{{ __('torrent.last-update') }}</th>
@@ -67,7 +67,8 @@
                                         <a href="{{ route('users.show', ['username' => $p->user->username]) }}"><span
                                                     class="badge-user text-bold"
                                                     style="color:{{ $p->user->group->color }};">({{ $p->user->username }}
-                                                )</span></a>@endif</td>
+                                                )</span></a>
+                                    @endif</td>
                             @else
                                 <td>
                                     @if($p->user->privacy && $p->user->privacy->show_peer != 1)
@@ -86,25 +87,25 @@
                             <td>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-striped active" role="progressbar"
-                                            aria-valuenow="{{ $p->progress }}"
-                                            aria-valuemin="0"
-                                            aria-valuemax="100"
-                                            style="width: {{ $p->progress }}%;">
+                                         aria-valuenow="{{ $p->progress }}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         style="width: {{ $p->progress }}%;">
                                         {{ $p->progress }}%
                                     </div>
                                 </div>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-green text-bold">{{ \App\Helpers\StringHelper::formatBytes($p->uploaded, 2) }}</span>
+                                            class="badge-extra text-green text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->uploaded, 2) }}</span>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-red text-bold">{{ \App\Helpers\StringHelper::formatBytes($p->downloaded, 2) }}</span>
+                                            class="badge-extra text-red text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->downloaded, 2) }}</span>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-orange text-bold">{{ \App\Helpers\StringHelper::formatBytes($p->left, 2) }}</span>
+                                            class="badge-extra text-orange text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->left, 2) }}</span>
                             </td>
                             <td><span class="badge-extra text-purple text-bold">{{ $p->agent }}</span></td>
                             @if (auth()->user()->group->is_modo || auth()->user()->id == $p->user_id)
@@ -121,7 +122,9 @@
                                         $connectable = cache()->get('peers:connectable:'.$p->ip.'-'.$p->port.'-'.$p->agent);
                                     }
                                 @endphp
-                                <td><span class="badge-extra text-bold {{ $connectable ? 'text-success' : 'text-danger' }}">@choice('user.client-connectable-state', $connectable)</span></td>
+                                <td>
+                                    <span class="badge-extra text-bold {{ $connectable ? 'text-success' : 'text-danger' }}">@choice('user.client-connectable-state', $connectable)</span>
+                                </td>
                             @endif
                             <td>{{ $p->created_at ? $p->created_at->diffForHumans() : 'N/A' }}</td>
                             <td>{{ $p->updated_at ? $p->updated_at->diffForHumans() : 'N/A' }}</td>

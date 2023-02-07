@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoDisableInactiveUsers
+ * @see \src\Commands\AutoDisableInactiveUsers
  */
 class AutoDisableInactiveUsersTest extends TestCase
 {

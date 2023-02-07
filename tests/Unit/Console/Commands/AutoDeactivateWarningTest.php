@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoDeactivateWarning
+ * @see \src\Commands\AutoDeactivateWarning
  */
 class AutoDeactivateWarningTest extends TestCase
 {

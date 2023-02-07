@@ -529,15 +529,15 @@
                                                         @if (!$history)
                                                                 0
                                                             @else
-                                                                {{ App\Helpers\StringHelper::timeElapsed($history->seedtime) }}
+                                                                {{ \src\Helpers\StringHelper::timeElapsed($history->seedtime) }}
                                                             @endif
                                                     </span>
                                                         {{ strtolower(__('graveyard.howto-hits')) }}
                                                         <span class="text-red text-bold">
                                                         @if (!$history)
-                                                                {{ App\Helpers\StringHelper::timeElapsed(config('graveyard.time')) }}
+                                                                {{ \src\Helpers\StringHelper::timeElapsed(config('graveyard.time')) }}
                                                             @else
-                                                                {{ App\Helpers\StringHelper::timeElapsed($history->seedtime + config('graveyard.time')) }}
+                                                                {{ \src\Helpers\StringHelper::timeElapsed($history->seedtime + config('graveyard.time')) }}
                                                             @endif
                                                     </span>
                                                         {{ strtolower(__('graveyard.howto-desc2')) }}

@@ -18,7 +18,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Exceptions\TrackerException;
-use App\Helpers\Bencode;
 use App\Jobs\ProcessAnnounce;
 use App\Models\BlacklistClient;
 use App\Models\Group;
@@ -27,6 +26,7 @@ use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Src\Helper\Bencode;
 
 class AnnounceController extends Controller
 {

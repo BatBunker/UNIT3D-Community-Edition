@@ -13,9 +13,9 @@
 
 namespace App\Models;
 
-use App\Helpers\StringHelper;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
+use src\Helpers\StringHelper;
 
 class Subtitle extends Model
 {

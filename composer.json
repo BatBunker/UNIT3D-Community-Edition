@@ -68,11 +68,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Src\\": "src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/Helpers.php"
+            "src/Helper/Helpers.php"
         ]
     },
     "autoload-dev": {

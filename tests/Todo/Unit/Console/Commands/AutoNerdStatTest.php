@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoNerdStat
+ * @see \src\Commands\AutoNerdStat
  */
 class AutoNerdStatTest extends TestCase
 {

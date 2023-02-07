@@ -5,7 +5,7 @@ namespace Tests\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\AutoRemovePersonalFreeleech
+ * @see \src\Commands\AutoRemovePersonalFreeleech
  */
 class AutoRemovePersonalFreeleechTest extends TestCase
 {

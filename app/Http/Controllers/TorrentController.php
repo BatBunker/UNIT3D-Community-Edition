@@ -13,12 +13,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Bbcode;
-use App\Helpers\Bencode;
-use App\Helpers\Linkify;
-use App\Helpers\MediaInfo;
-use App\Helpers\TorrentHelper;
-use App\Helpers\TorrentTools;
 use App\Models\Audit;
 use App\Models\BonTransactions;
 use App\Models\Category;
@@ -50,6 +44,12 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Src\Helper\Bbcode;
+use Src\Helper\Bencode;
+use Src\Helper\Linkify;
+use Src\Helper\MediaInfo;
+use Src\Helper\TorrentHelper;
+use Src\Helper\TorrentTools;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\TorrentControllerTest

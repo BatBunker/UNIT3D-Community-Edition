@@ -5,7 +5,7 @@ namespace Tests\Todo\Unit\Console\Commands;
 use Tests\TestCase;
 
 /**
- * @see \App\Console\Commands\GitUpdater
+ * @see \src\Commands\GitUpdater
  */
 class GitUpdaterTest extends TestCase
 {
