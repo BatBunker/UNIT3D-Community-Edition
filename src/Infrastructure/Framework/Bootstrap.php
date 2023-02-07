@@ -10,10 +10,6 @@ declare(strict_types=1);
 
 namespace Src\Infrastructure\Framework;
 
-
 class Bootstrap extends \Illuminate\Foundation\Application
 {
-
-
-
 }
