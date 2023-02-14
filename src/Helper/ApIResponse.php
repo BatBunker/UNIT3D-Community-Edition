@@ -11,14 +11,13 @@ declare(strict_types=1);
 
 namespace Src\Helper;
 
-
 use Symfony\Component\HttpFoundation\Response;
 
 class ApIResponse
 {
-    static string $api_version = '1.0.0';
+    public static string $api_version = '1.0.0';
 
-    public  function sendResponse($result, $message, int $code = Response::HTTP_OK): \Illuminate\Http\JsonResponse
+    public function sendResponse($result, $message, int $code = Response::HTTP_OK): \Illuminate\Http\JsonResponse
     {
         $response = [
             'success' => true,

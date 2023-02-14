@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Src\Domain\Torrent\Api\TorrentController;
 
-
 /**
  * NOTICE OF LICENSE.
  *
