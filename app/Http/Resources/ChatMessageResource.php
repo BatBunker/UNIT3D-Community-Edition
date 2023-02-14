@@ -15,7 +15,7 @@ namespace App\Http\Resources;
 
 use hdvinnie\LaravelJoyPixels\LaravelJoyPixels;
 use Illuminate\Http\Resources\Json\JsonResource;
-use src\Helpers\Bbcode;
+use Src\Helper\Bbcode;
 
 class ChatMessageResource extends JsonResource
 {

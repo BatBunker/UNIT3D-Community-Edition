@@ -99,14 +99,14 @@
                             </a>
                         </td>
                         <td title="{{ $torrent->size }}&nbsp;B">
-                            {{ \src\Helpers\StringHelper::formatBytes($torrent->size) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($torrent->size) }}
                         </td>
                         <td title="{{ $torrent->current_balance }}&nbsp;B">
-                            {{ \src\Helpers\StringHelper::formatBytes($torrent->current_balance) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($torrent->current_balance) }}
                         </td>
                         <td>{{ \round($torrent->times_cheated, 3) }}</td>
                         <td title="{{ $torrent->balance }}&nbsp;B">
-                            {{ \src\Helpers\StringHelper::formatBytes($torrent->balance) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($torrent->balance) }}
                         </td>
                         <td>
                             <time datetime="{{ $torrent->created_at ?? '' }}">

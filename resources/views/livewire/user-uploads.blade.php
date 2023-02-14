@@ -138,7 +138,7 @@
                             </a>
                         </td>
                         <td class="user-uploads__size">
-                            {{ \src\Helpers\StringHelper::formatBytes($torrent->size) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($torrent->size) }}
                         </td>
                         <td class="user-uploads__seeders">
                             <a href="{{ route('peers', ['id' => $torrent->id]) }}">

@@ -13,9 +13,9 @@
 
 namespace src\Commands;
 
-use App\Models\Torrent;
 use App\Services\Tmdb\TMDBScraper;
 use Illuminate\Console\Command;
+use src\Domain\Torrent\Torrent;
 
 class FetchMeta extends Command
 {

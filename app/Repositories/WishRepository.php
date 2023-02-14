@@ -14,9 +14,9 @@
 namespace App\Repositories;
 
 use App\Interfaces\WishInterface;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Models\Wish;
+use src\Domain\Torrent\Torrent;
 
 class WishRepository implements WishInterface
 {

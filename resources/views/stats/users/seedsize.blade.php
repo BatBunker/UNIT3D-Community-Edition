@@ -40,7 +40,7 @@
                         <td>
                             <x-user_tag :user="$user" :anon="$user->private_profile"/>
                         </td>
-                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->seedsize ?? 0) }}</td>
+                        <td>{{ \Src\Helper\StringHelper::formatBytes($user->seedsize ?? 0) }}</td>
                     </tr>
                 @endforeach
                 </tbody>

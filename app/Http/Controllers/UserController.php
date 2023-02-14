@@ -23,7 +23,6 @@ use App\Models\Invite;
 use App\Models\Peer;
 use App\Models\Post;
 use App\Models\Topic;
-use App\Models\Torrent;
 use App\Models\TorrentRequest;
 use App\Models\User;
 use App\Models\UserNotification;
@@ -37,7 +36,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use src\Helpers\Bencode;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\Bencode;
 use ZipArchive;
 
 /**

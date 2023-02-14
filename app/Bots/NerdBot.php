@@ -20,13 +20,13 @@ use App\Models\Ban;
 use App\Models\Bot;
 use App\Models\BotTransaction;
 use App\Models\Peer;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Models\UserAudible;
 use App\Models\UserEcho;
 use App\Models\Warning;
 use App\Repositories\ChatRepository;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 class NerdBot
 {

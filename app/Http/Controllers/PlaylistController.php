@@ -16,13 +16,13 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\Playlist;
 use App\Models\PlaylistTorrent;
-use App\Models\Torrent;
 use App\Models\Tv;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-use src\Helpers\Bencode;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\Bencode;
 use ZipArchive;
 
 /**

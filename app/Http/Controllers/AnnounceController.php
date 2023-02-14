@@ -22,10 +22,10 @@ use App\Jobs\ProcessAnnounce;
 use App\Models\BlacklistClient;
 use App\Models\Group;
 use App\Models\Peer;
-use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use src\Domain\Torrent\Torrent;
 use Src\Helper\Bencode;
 
 class AnnounceController extends Controller

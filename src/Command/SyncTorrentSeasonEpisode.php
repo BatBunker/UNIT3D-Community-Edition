@@ -13,8 +13,8 @@
 
 namespace src\Commands;
 
-use App\Models\Torrent;
 use Illuminate\Console\Command;
+use src\Domain\Torrent\Torrent;
 
 class SyncTorrentSeasonEpisode extends Command
 {

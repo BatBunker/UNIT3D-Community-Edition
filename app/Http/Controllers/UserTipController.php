@@ -16,11 +16,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTipRequest;
 use App\Models\BonTransactions;
 use App\Models\Post;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Notifications\NewPostTip;
 use App\Notifications\NewUploadTip;
 use Illuminate\Http\Request;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Feature\Http\Controllers\BonusControllerTest

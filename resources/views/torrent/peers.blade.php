@@ -97,15 +97,15 @@
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-green text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->uploaded, 2) }}</span>
+                                            class="badge-extra text-green text-bold">{{ \Src\Helper\StringHelper::formatBytes($p->uploaded, 2) }}</span>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-red text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->downloaded, 2) }}</span>
+                                            class="badge-extra text-red text-bold">{{ \Src\Helper\StringHelper::formatBytes($p->downloaded, 2) }}</span>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-orange text-bold">{{ \src\Helpers\StringHelper::formatBytes($p->left, 2) }}</span>
+                                            class="badge-extra text-orange text-bold">{{ \Src\Helper\StringHelper::formatBytes($p->left, 2) }}</span>
                             </td>
                             <td><span class="badge-extra text-purple text-bold">{{ $p->agent }}</span></td>
                             @if (auth()->user()->group->is_modo || auth()->user()->id == $p->user_id)

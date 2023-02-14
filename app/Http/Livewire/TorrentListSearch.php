@@ -14,11 +14,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\PersonalFreeleech;
-use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
+use src\Domain\Torrent\Torrent;
 
 class TorrentListSearch extends Component
 {

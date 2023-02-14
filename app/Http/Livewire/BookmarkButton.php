@@ -13,8 +13,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Torrent;
 use Livewire\Component;
+use src\Domain\Torrent\Torrent;
 
 class BookmarkButton extends Component
 {

@@ -29,14 +29,14 @@
                 </div>
                 <div class="button-right">
                     <span class="badge-user"><strong>{{ __('user.total-download') }}:</strong>
-                        <span class="badge-extra text-red">{{ \src\Helpers\StringHelper::formatBytes($his_downl, 2) }}</span>
+                        <span class="badge-extra text-red">{{ \Src\Helper\StringHelper::formatBytes($his_downl, 2) }}</span>
                         <span class="badge-extra text-orange" data-toggle="tooltip"
-                              data-original-title="{{ __('user.credited-download') }}">{{ \src\Helpers\StringHelper::formatBytes($his_downl_cre, 2) }}</span>
+                              data-original-title="{{ __('user.credited-download') }}">{{ \Src\Helper\StringHelper::formatBytes($his_downl_cre, 2) }}</span>
                     </span>
                     <span class="badge-user"><strong>{{ __('user.total-upload') }}:</strong>
-                        <span class="badge-extra text-green">{{ \src\Helpers\StringHelper::formatBytes($his_upl, 2) }}</span>
+                        <span class="badge-extra text-green">{{ \Src\Helper\StringHelper::formatBytes($his_upl, 2) }}</span>
                         <span class="badge-extra text-blue" data-toggle="tooltip"
-                              data-original-title="{{ __('user.credited-upload') }}">{{ \src\Helpers\StringHelper::formatBytes($his_upl_cre, 2) }}</span>
+                              data-original-title="{{ __('user.credited-upload') }}">{{ \Src\Helper\StringHelper::formatBytes($his_upl_cre, 2) }}</span>
                     </span>
                 </div>
             </div>

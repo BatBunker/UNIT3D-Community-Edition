@@ -14,8 +14,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use App\Models\Torrent;
 use App\Models\Tv;
+use src\Domain\Torrent\Torrent;
 
 class SimilarTorrentController extends Controller
 {

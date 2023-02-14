@@ -22,8 +22,8 @@ use App\Repositories\WishRepository;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
-use src\Helpers\ByteUnits;
-use src\Helpers\HiddenCaptcha;
+use Src\Helper\HiddenCaptcha;
+use Src\Helper\ByteUnits;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -68,7 +68,8 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Pagination\Paginator::useBootstrap();
 
         // Hidden Captcha
-        Blade::directive('hiddencaptcha', fn ($mustBeEmptyField = '_username') => \sprintf('<?= App\Helpers\HiddenCaptcha::render(%s); ?>', $mustBeEmptyField));
+        Blade::directive('hiddencaptcha', fn ($mustBeEmptyField = '_username') => \sprintf('<?= Src\Helper\HiddenCaptcha::render(%s); ?>', $mustBeEmptyField));
+
 
         $this->app['validator']->extendImplicit(
             'hiddencaptcha',

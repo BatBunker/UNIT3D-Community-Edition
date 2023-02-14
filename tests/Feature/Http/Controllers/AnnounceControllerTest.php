@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Torrent;
 use App\Models\User;
 use Database\Seeders\GroupsTableSeeder;
+use src\Domain\Torrent\Torrent;
 use Tests\TestCase;
 
 /**

@@ -219,13 +219,13 @@
                     <span class="badge-extra text-blue" data-toggle="tooltip" title=""
                           data-original-title="{{ __('user.download-recorded') }}">{{ $realdownload }}</span> =
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Default Starter Download">{{ \src\Helpers\StringHelper::formatBytes($def_download , 2) }}</span>
+                                          data-original-title="Default Starter Download">{{ \Src\Helper\StringHelper::formatBytes($def_download , 2) }}</span>
                                     +
                                     <span class="badge-extra text-red" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.download-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_down , 2) }}</span>
+                                          data-original-title="{{ __('user.download-true') }}">{{ \Src\Helper\StringHelper::formatBytes($his_down , 2) }}</span>
                                     −
                                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                                          data-original-title="Freeleech Downloads">{{ \src\Helpers\StringHelper::formatBytes($free_down , 2) }}</span>
+                                          data-original-title="Freeleech Downloads">{{ \Src\Helper\StringHelper::formatBytes($free_down , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -234,26 +234,26 @@
                     <span class="badge-extra text-blue" data-toggle="tooltip" title=""
                           data-original-title="{{ __('user.upload-recorded') }}">{{ $user->getUploaded() }}</span> =
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Default Starter Upload">{{ \src\Helpers\StringHelper::formatBytes($def_upload , 2) }}</span>
+                                          data-original-title="Default Starter Upload">{{ \Src\Helper\StringHelper::formatBytes($def_upload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.upload-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
+                                          data-original-title="{{ __('user.upload-true') }}">{{ \Src\Helper\StringHelper::formatBytes($his_upl , 2) }}</span>
                                     +
                                     <span class="badge-extra text-info" data-toggle="tooltip" title=""
-                                          data-original-title="Upload from Multipliers">{{ \src\Helpers\StringHelper::formatBytes($multi_upload , 2) }}</span>
+                                          data-original-title="Upload from Multipliers">{{ \Src\Helper\StringHelper::formatBytes($multi_upload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-orange" data-toggle="tooltip" title=""
-                                          data-original-title="{{ __('user.upload-bon') }}">{{ \src\Helpers\StringHelper::formatBytes($bonupload , 2) }}</span>
+                                          data-original-title="{{ __('user.upload-bon') }}">{{ \Src\Helper\StringHelper::formatBytes($bonupload , 2) }}</span>
                                     +
                                     <span class="badge-extra text-pink" data-toggle="tooltip" title=""
-                                          data-original-title="Manually Added or Misc">{{ \src\Helpers\StringHelper::formatBytes($man_upload , 2) }}</span>
+                                          data-original-title="Manually Added or Misc">{{ \Src\Helper\StringHelper::formatBytes($man_upload , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.upload-true') }}</td>
                                 <td>
                     <span class="badge-extra text-green" data-toggle="tooltip" title=""
-                          data-original-title="{{ __('user.upload-true') }}">{{ \src\Helpers\StringHelper::formatBytes($his_upl , 2) }}</span>
+                          data-original-title="{{ __('user.upload-true') }}">{{ \Src\Helper\StringHelper::formatBytes($his_upl , 2) }}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -271,21 +271,21 @@
                             <tr>
                                 <td>{{ __('user.total-seedtime') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::timeElapsed($history->sum('seedtime')) }}</span>
+                                    <span class="badge-user group-member">{{ \Src\Helper\StringHelper::timeElapsed($history->sum('seedtime')) }}</span>
                                     <span>({{ __('user.all-torrents') }})</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.avg-seedtime') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::timeElapsed(round($history->sum('seedtime') / max(1, $history->count()))) }}</span>
+                                    <span class="badge-user group-member">{{ \Src\Helper\StringHelper::timeElapsed(round($history->sum('seedtime') / max(1, $history->count()))) }}</span>
                                     <span>({{ __('user.per-torrent') }})</span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>{{ __('user.seeding-size') }}</td>
                                 <td>
-                                    <span class="badge-user group-member">{{ \src\Helpers\StringHelper::formatBytes($user->seedingTorrents()->sum('size') , 2) }}</span>
+                                    <span class="badge-user group-member">{{ \Src\Helper\StringHelper::formatBytes($user->seedingTorrents()->sum('size') , 2) }}</span>
                                 </td>
                             </tr>
                         @endif
@@ -380,7 +380,7 @@
                                         </li>
                                         <li>
           <span class="badge-extra"><strong>{{ __('user.torrent-comments') }}:</strong>
-            <span class="text-green text-bold">{{ $user->comments()->whereHasMorph('commentable', [App\Models\Torrent::class])->count() }}</span>
+            <span class="text-green text-bold">{{ $user->comments()->whereHasMorph('commentable', [\src\Domain\Torrent\Torrent::class])->count() }}</span>
           </span>
                                         </li>
                                         <li>

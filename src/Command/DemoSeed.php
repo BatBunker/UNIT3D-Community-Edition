@@ -13,7 +13,6 @@
 
 namespace src\Commands;
 
-use App\Models\Torrent;
 use App\Models\User;
 use App\Services\Tmdb\Client\Movie;
 use App\Services\Tmdb\Client\TV;
@@ -21,6 +20,7 @@ use App\Services\Tmdb\TMDBScraper;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use src\Domain\Torrent\Torrent;
 
 class DemoSeed extends Command
 {

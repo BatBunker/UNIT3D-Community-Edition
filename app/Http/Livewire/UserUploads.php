@@ -13,10 +13,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Torrent;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use src\Domain\Torrent\Torrent;
 
 class UserUploads extends Component
 {

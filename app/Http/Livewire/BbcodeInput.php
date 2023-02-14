@@ -14,7 +14,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use src\Helpers\Bbcode;
+use Src\Helper\Bbcode;
 
 class BbcodeInput extends Component
 {

@@ -22,7 +22,7 @@ return new class () extends Migration {
         foreach ($comments as $comment) {
             if ($comment->torrent_id !== null) {
                 $comment->commentable_id = $comment->torrent_id;
-                $comment->commentable_type = 'App\Models\Torrent';
+                $comment->commentable_type = 'src\Domain\Torrent\Torrent';
                 $comment->save();
             }
 

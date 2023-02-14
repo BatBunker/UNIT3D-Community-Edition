@@ -22,7 +22,6 @@ use App\Models\PersonalFreeleech;
 use App\Models\Poll;
 use App\Models\Post;
 use App\Models\Topic;
-use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -30,6 +29,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\Staff\HomeControllerTest

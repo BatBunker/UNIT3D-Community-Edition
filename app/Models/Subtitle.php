@@ -15,7 +15,8 @@ namespace App\Models;
 
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Model;
-use src\Helpers\StringHelper;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\StringHelper;
 
 class Subtitle extends Model
 {

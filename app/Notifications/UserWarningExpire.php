@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use src\Domain\Torrent\Torrent;
 
 class UserWarningExpire extends Notification
 {

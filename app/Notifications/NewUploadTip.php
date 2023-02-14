@@ -13,10 +13,10 @@
 
 namespace App\Notifications;
 
-use App\Models\Torrent;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
+use src\Domain\Torrent\Torrent;
 
 class NewUploadTip extends Notification implements ShouldQueue
 {

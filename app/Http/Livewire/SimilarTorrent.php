@@ -23,12 +23,12 @@ use App\Models\PersonalFreeleech;
 use App\Models\PlaylistTorrent;
 use App\Models\PrivateMessage;
 use App\Models\Subtitle;
-use App\Models\Torrent;
 use App\Models\TorrentFile;
 use App\Models\TorrentRequest;
 use App\Models\Tv;
 use App\Models\Warning;
 use Livewire\Component;
+use src\Domain\Torrent\Torrent;
 
 class SimilarTorrent extends Component
 {

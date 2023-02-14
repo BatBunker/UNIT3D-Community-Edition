@@ -14,9 +14,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Subtitle;
-use App\Models\Torrent;
 use Livewire\Component;
 use Livewire\WithPagination;
+use src\Domain\Torrent\Torrent;
 
 class SubtitleSearch extends Component
 {

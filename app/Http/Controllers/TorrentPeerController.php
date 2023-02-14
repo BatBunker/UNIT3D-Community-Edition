@@ -14,7 +14,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peer;
-use App\Models\Torrent;
+use src\Domain\Torrent\Torrent;
 
 class TorrentPeerController extends Controller
 {

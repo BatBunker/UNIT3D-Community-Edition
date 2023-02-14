@@ -13,7 +13,7 @@
 
 namespace App\Observers;
 
-use App\Models\Torrent;
+use src\Domain\Torrent\Torrent;
 
 class TorrentObserver
 {

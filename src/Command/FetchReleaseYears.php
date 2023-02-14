@@ -14,9 +14,9 @@
 namespace src\Commands;
 
 use App\Models\Movie;
-use App\Models\Torrent;
 use App\Models\Tv;
 use Illuminate\Console\Command;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Unit\Console\Commands\FetchReleaseYearsTest

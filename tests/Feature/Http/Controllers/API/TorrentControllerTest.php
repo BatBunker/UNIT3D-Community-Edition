@@ -4,13 +4,13 @@ namespace Tests\Feature\Http\Controllers\API;
 
 use App\Models\Category;
 use App\Models\Resolution;
-use App\Models\Torrent;
 use App\Models\Type;
 use App\Models\User;
 use Database\Seeders\BotsTableSeeder;
 use Database\Seeders\ChatroomTableSeeder;
 use Database\Seeders\UsersTableSeeder;
 use Illuminate\Http\UploadedFile;
+use src\Domain\Torrent\Torrent;
 use Tests\TestCase;
 
 /**

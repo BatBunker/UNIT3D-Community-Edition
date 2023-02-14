@@ -15,7 +15,7 @@ namespace Database\Seeders;
 
 use App\Models\BonExchange;
 use Illuminate\Database\Seeder;
-use src\Helpers\ByteUnits;
+use Src\Helper\ByteUnits;
 
 class BonExchangeTableSeeder extends Seeder
 {

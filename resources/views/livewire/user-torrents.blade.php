@@ -295,24 +295,24 @@
                             {{ $history->agent ?: __('common.unknown') }}
                         </td>
                         <td class="user-torrents__size">
-                            {{ \src\Helpers\StringHelper::formatBytes($history->size) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($history->size) }}
                         </td>
                         <td class="user-torrents__upload" title="{{ __('user.actual-upload') }}">
                             <span class="text-green">
-                                {{ \src\Helpers\StringHelper::formatBytes($history->actual_uploaded, 2) }}
+                                {{ \Src\Helper\StringHelper::formatBytes($history->actual_uploaded, 2) }}
                             </span>
                             <br>
                             <span class="text-blue" title="{{ __('user.credited-upload') }}">
-                                {{ \src\Helpers\StringHelper::formatBytes($history->uploaded, 2) }}
+                                {{ \Src\Helper\StringHelper::formatBytes($history->uploaded, 2) }}
                             </span>
                         </td>
                         <td class="user-torrents__download">
                             <span class="text-red" title="{{ __('user.actual-download') }}">
-                                {{ \src\Helpers\StringHelper::formatBytes($history->actual_downloaded, 2) }}
+                                {{ \Src\Helper\StringHelper::formatBytes($history->actual_downloaded, 2) }}
                             </span>
                             <br>
                             <span class="text-orange" title="{{ __('user.credited-download') }}">
-                                {{ \src\Helpers\StringHelper::formatBytes($history->downloaded, 2) }}
+                                {{ \Src\Helper\StringHelper::formatBytes($history->downloaded, 2) }}
                             </span>
                         </td>
                         <td class="user-torrents__ratio">
@@ -353,7 +353,7 @@
                                 @if ($history->leechtime === null)
                                     N/A
                                 @else
-                                    {{ \src\Helpers\StringHelper::timeElapsed($history->leechtime) }}
+                                    {{ \Src\Helper\StringHelper::timeElapsed($history->leechtime) }}
                                 @endif
                             </td>
                             <td class="user-torrents__seedtime">
@@ -361,7 +361,7 @@
                                     @if ($history->seedtime === null)
                                         N/A
                                     @else
-                                        {{ \src\Helpers\StringHelper::timeElapsed($history->seedtime) }}
+                                        {{ \Src\Helper\StringHelper::timeElapsed($history->seedtime) }}
                                     @endif
                                 </span>
                             </td>
@@ -385,7 +385,7 @@
                                 @if ($history->leechtime === null)
                                     N/A
                                 @else
-                                    {{ \implode(" ", \array_slice(\explode(" ", \src\Helpers\StringHelper::timeElapsed($history->leechtime)), 0, 2)) }}
+                                    {{ \implode(" ", \array_slice(\explode(" ", \Src\Helper\StringHelper::timeElapsed($history->leechtime)), 0, 2)) }}
                                 @endif
                             </td>
                             <td class="user-torrents__seedtime">
@@ -393,7 +393,7 @@
                                     N/A
                                 @else
                                     <span class="{{ $history->seedtime < config('hitrun.seedtime') ? 'text-red' : 'text-green' }}">
-                                        {{ \implode(" ", \array_slice(\explode(" ", \src\Helpers\StringHelper::timeElapsed($history->seedtime)), 0, 2)) }}
+                                        {{ \implode(" ", \array_slice(\explode(" ", \Src\Helper\StringHelper::timeElapsed($history->seedtime)), 0, 2)) }}
                                     </span>
                                 @endif
                             </td>

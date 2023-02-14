@@ -21,7 +21,6 @@ use App\Models\BonTransactions;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Resolution;
-use App\Models\Torrent;
 use App\Models\TorrentRequest;
 use App\Models\TorrentRequestBounty;
 use App\Models\TorrentRequestClaim;
@@ -38,6 +37,7 @@ use App\Repositories\ChatRepository;
 use App\Services\Tmdb\TMDBScraper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\RequestControllerTest

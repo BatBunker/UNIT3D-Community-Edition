@@ -30,8 +30,8 @@
         <div class="block">
             <p class="lead">{{ __('torrent.history') }} {{ __('common.for') }}
                 <a href="{{ route('torrent', ['id' => $torrent->id]) }}">{{ $torrent->name }}</a>
-                <span class="badge-extra pull-right">Total Up: {{ \src\Helpers\StringHelper::formatBytes($history->sum('actual_uploaded'), 2) }}</span>
-                <span class="badge-extra pull-right">Total Down: {{ \src\Helpers\StringHelper::formatBytes($history->sum('actual_downloaded'), 2) }}</span>
+                <span class="badge-extra pull-right">Total Up: {{ \Src\Helper\StringHelper::formatBytes($history->sum('actual_uploaded'), 2) }}</span>
+                <span class="badge-extra pull-right">Total Down: {{ \Src\Helper\StringHelper::formatBytes($history->sum('actual_downloaded'), 2) }}</span>
             </p>
             <div class="table-responsive">
                 <table class="table table-condensed table-striped table-bordered">
@@ -91,27 +91,27 @@
                             @endif
                             <td>
                                     <span
-                                            class="badge-extra text-green">{{ \src\Helpers\StringHelper::formatBytes($hpeers->actual_uploaded, 2) }}</span>
+                                            class="badge-extra text-green">{{ \Src\Helper\StringHelper::formatBytes($hpeers->actual_uploaded, 2) }}</span>
                                 <span class="badge-extra text-blue" data-toggle="tooltip"
-                                      data-original-title="{{ __('torrent.credited') }} {{ strtolower(__('common.upload')) }}">{{ \src\Helpers\StringHelper::formatBytes($hpeers->uploaded, 2) }}</span>
+                                      data-original-title="{{ __('torrent.credited') }} {{ strtolower(__('common.upload')) }}">{{ \Src\Helper\StringHelper::formatBytes($hpeers->uploaded, 2) }}</span>
                             </td>
                             <td>
                                     <span
-                                            class="badge-extra text-red">{{ \src\Helpers\StringHelper::formatBytes($hpeers->actual_downloaded, 2) }}</span>
+                                            class="badge-extra text-red">{{ \Src\Helper\StringHelper::formatBytes($hpeers->actual_downloaded, 2) }}</span>
                                 <span class="badge-extra text-orange" data-toggle="tooltip"
-                                      data-original-title="{{ __('torrent.credited') }} {{ strtolower(__('common.download')) }}">{{ \src\Helpers\StringHelper::formatBytes($hpeers->downloaded, 2) }}</span>
+                                      data-original-title="{{ __('torrent.credited') }} {{ strtolower(__('common.download')) }}">{{ \Src\Helper\StringHelper::formatBytes($hpeers->downloaded, 2) }}</span>
                             </td>
                             <td>{{ $hpeers->created_at ? $hpeers->created_at->diffForHumans() : 'N/A' }}</td>
                             <td>{{ $hpeers->updated_at ? $hpeers->updated_at->diffForHumans() : 'N/A' }}</td>
                             @if ($hpeers->seedtime < config('hitrun.seedtime'))
                                 <td>
                                         <span
-                                                class="badge-extra text-red">{{ \src\Helpers\StringHelper::timeElapsed($hpeers->seedtime) }}</span>
+                                                class="badge-extra text-red">{{ \Src\Helper\StringHelper::timeElapsed($hpeers->seedtime) }}</span>
                                 </td>
                             @else
                                 <td>
                                             <span
-                                                    class="badge-extra text-green">{{ \src\Helpers\StringHelper::timeElapsed($hpeers->seedtime) }}</span>
+                                                    class="badge-extra text-green">{{ \Src\Helper\StringHelper::timeElapsed($hpeers->seedtime) }}</span>
                                 </td>
                             @endif
                         </tr>

@@ -14,8 +14,8 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
-use App\Models\Torrent;
 use Illuminate\Support\Facades\DB;
+use src\Domain\Torrent\Torrent;
 
 class CheatedTorrentController extends Controller
 {

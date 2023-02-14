@@ -35,7 +35,6 @@ use App\Models\Thank;
 use App\Models\Ticket;
 use App\Models\TicketAttachment;
 use App\Models\Topic;
-use App\Models\Torrent;
 use App\Models\TorrentDownload;
 use App\Models\TorrentRequest;
 use App\Models\TorrentRequestBounty;
@@ -54,6 +53,7 @@ use Assada\Achievements\Model\AchievementProgress;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use src\Domain\Torrent\Torrent;
 
 return new class () extends Migration {
     /**

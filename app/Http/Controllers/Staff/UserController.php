@@ -29,12 +29,12 @@ use App\Models\Post;
 use App\Models\PrivateMessage;
 use App\Models\Thank;
 use App\Models\Topic;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Models\Warning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\UserControllerTest

@@ -15,12 +15,12 @@ namespace src\Commands;
 
 use App\Models\Ban;
 use App\Models\Peer;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Models\Warning;
 use App\Repositories\ChatRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Unit\Console\Commands\AutoNerdStatTest

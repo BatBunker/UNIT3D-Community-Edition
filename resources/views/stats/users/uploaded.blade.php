@@ -42,8 +42,8 @@
                         <td>
                             <x-user_tag :user="$user" :anon="$user->private_profile"/>
                         </td>
-                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->uploaded, 2) }}</td>
-                        <td>{{ \src\Helpers\StringHelper::formatBytes($user->downloaded, 2) }}</td>
+                        <td>{{ \Src\Helper\StringHelper::formatBytes($user->uploaded, 2) }}</td>
+                        <td>{{ \Src\Helper\StringHelper::formatBytes($user->downloaded, 2) }}</td>
                         <td>{{ $user->getRatio() }}</td>
                     </tr>
                 @endforeach

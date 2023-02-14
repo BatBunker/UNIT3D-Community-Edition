@@ -195,10 +195,10 @@
                             @endif
                         </td>
                         <td class="user-active__size">
-                            {{ \src\Helpers\StringHelper::formatBytes($active->size) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($active->size) }}
                         </td>
                         <td class="user-active__uploaded text-green">
-                            {{ \src\Helpers\StringHelper::formatBytes($active->uploaded, 2) }}
+                            {{ \Src\Helper\StringHelper::formatBytes($active->uploaded, 2) }}
                         </td>
                         <td class="user-active__downloaded text-red">
                             {{ \src\Helpers\StringHelper::formatBytes($active->downloaded, 2) }}

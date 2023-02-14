@@ -15,7 +15,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use src\Helpers\StringHelper;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\StringHelper;
 
 class TorrentFile extends Model
 {

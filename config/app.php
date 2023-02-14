@@ -223,7 +223,7 @@ return [
         'Broadcast'       => Illuminate\Support\Facades\Broadcast::class,
         'Bus'             => Illuminate\Support\Facades\Bus::class,
         'Cache'           => Illuminate\Support\Facades\Cache::class,
-        'CacheUser'       => \Src\Helpers\CacheUser::class,
+        'CacheUser'       => \Src\Helper\CacheUser::class,
         'Config'          => Illuminate\Support\Facades\Config::class,
         'Cookie'          => Illuminate\Support\Facades\Cookie::class,
         'CookieConsent'   => BrianFaust\CookieConsent\Facades\CookieConsent::class,

@@ -14,6 +14,14 @@ namespace Src\Infrastructure\Framework;
 class Bootstrap extends \Illuminate\Foundation\Application
 {
 
+   public function __construct($basePath = null)
+   {
+       /*
+        * The path to the application "src" directory overrides the default.
+        */
+//       $this->appPath = realpath(__DIR__  .'/../../');
+       parent::__construct($basePath);
+   }
 
 
 }

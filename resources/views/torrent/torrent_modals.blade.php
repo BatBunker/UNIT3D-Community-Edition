@@ -100,7 +100,7 @@
                             style="display: inline-block; margin-right: 24px"
                     >
                         ({{ $torrent->files->count() }})
-                        {{ \src\Helpers\StringHelper::formatBytes($torrent->size, 2) }}
+                        {{ \Src\Helper\StringHelper::formatBytes($torrent->size, 2) }}
                         </span>
                 </h4>
             </div>
@@ -171,7 +171,7 @@
                                                                 class="text-info"
                                                                 style="grid-area: size; white-space: nowrap; text-align: right;"
                                                         >
-                                                            {{ \src\Helpers\StringHelper::formatBytes($filteredFiles->sum('size'), 2) }}
+                                                            {{ \Src\Helper\StringHelper::formatBytes($filteredFiles->sum('size'), 2) }}
                                                         </span>
                                                     @endif
 
@@ -223,7 +223,7 @@
                 </div>
                 <div class="modal-body text-center">
                     <pre id="torrent_nfo" style="font-size:10pt; font-family: 'Courier New', monospace;">
-                        {!! \src\Helpers\Nfo::parseNfo($torrent->nfo) !!}
+                        {!! \Src\Helper\Nfo::parseNfo($torrent->nfo) !!}
                     </pre>
                 </div>
                 <div class="modal-footer">

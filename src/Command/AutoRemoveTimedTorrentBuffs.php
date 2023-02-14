@@ -13,10 +13,10 @@
 
 namespace src\Commands;
 
-use App\Models\Torrent;
 use App\Repositories\ChatRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Unit\Console\Commands\AutoRemoveTimedTorrentBuffs

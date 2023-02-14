@@ -12,6 +12,7 @@ const tailwindcss = require("tailwindcss");
  */
 
 mix.version();
+
 mix.options({
   processCssUrls: false,
   postCss: [tailwindcss('./tailwind.config.js')]
@@ -66,3 +67,6 @@ mix.options({
     .js('resources/js/vendor/alpine.js', 'public/js')
     .js('resources/js/vendor/virtual-select.js', 'public/js')
     .js('resources/js/unit3d/public.js', 'public/js');
+
+mix.sourceMaps(false, 'source-map');
+

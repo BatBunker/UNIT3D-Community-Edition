@@ -68,7 +68,7 @@
                 <dt>{{ __('stat.total-torrents') }}</dt>
                 <dd>{{ $num_torrent }}</dd>
                 <dt>{{ __('stat.total-torrents') }} {{ __('torrent.size') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($torrent_size, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($torrent_size, 2) }}</dd>
             </dl>
         </section>
         <section class="panelV2 panel--grid-item">
@@ -101,17 +101,17 @@
             <h2 class="panel__heading">{{ __('stat.total-traffic') }}</h2>
             <dl class="key-value">
                 <dt>{{ __('stat.real') }} {{ __('stat.total-upload') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($actual_upload, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($actual_upload, 2) }}</dd>
                 <dt>{{ __('stat.real') }} {{ __('stat.total-download') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($actual_download, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($actual_download, 2) }}</dd>
                 <dt>{{ __('stat.real') }} {{ __('stat.total-traffic') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($actual_up_down, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($actual_up_down, 2) }}</dd>
                 <dt>{{ __('stat.credited') }} {{ __('stat.total-upload') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($credited_upload, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($credited_upload, 2) }}</dd>
                 <dt>{{ __('stat.credited') }} {{ __('stat.total-download') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($credited_download, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($credited_download, 2) }}</dd>
                 <dt>{{ __('stat.credited') }} {{ __('stat.total-traffic') }}</dt>
-                <dd>{{ \src\Helpers\StringHelper::formatBytes($credited_up_down, 2) }}</dd>
+                <dd>{{ \Src\Helper\StringHelper::formatBytes($credited_up_down, 2) }}</dd>
             </dl>
         </section>
     </div>

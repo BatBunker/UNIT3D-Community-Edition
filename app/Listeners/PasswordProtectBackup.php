@@ -14,7 +14,7 @@
 namespace App\Listeners;
 
 use Spatie\Backup\Events\BackupZipWasCreated;
-use src\Helpers\BackupPassword;
+use Src\Helper\BackupPassword;
 
 class PasswordProtectBackup
 {

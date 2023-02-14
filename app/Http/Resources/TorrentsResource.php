@@ -14,6 +14,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Src\Helper\ApIResponse;
 
 class TorrentsResource extends ResourceCollection
 {
@@ -24,6 +25,7 @@ class TorrentsResource extends ResourceCollection
     {
         return [
             'data' => TorrentResource::collection($this->collection),
+            'api_version' => ApIResponse::$api_version,
         ];
     }
 

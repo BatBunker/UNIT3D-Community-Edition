@@ -14,7 +14,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\History;
-use App\Models\Torrent;
+use src\Domain\Torrent\Torrent;
 
 class TorrentHistoryController extends Controller
 {

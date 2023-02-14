@@ -78,7 +78,7 @@
                                     <div class="item mini backdrop mini_card col-md-3">
                                         <div class="image_content">
                                             @php
-                                                $torrent_temp = App\Models\Torrent::where('tmdb', '=', $movie->id)
+                                                $torrent_temp = \src\Domain\Torrent\Torrent::where('tmdb', '=', $movie->id)
                                                 ->whereIn('category_id', function ($query) {
                                                 $query->select('id')->from('categories')->where('movie_meta', '=', true);
                                                 })->first()

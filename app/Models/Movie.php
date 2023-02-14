@@ -14,6 +14,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use src\Domain\Torrent\Torrent;
 
 class Movie extends Model
 {

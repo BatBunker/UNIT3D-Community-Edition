@@ -41,7 +41,7 @@
                     {{ $resurrection->created_at->diffForHumans() }}
                 </td>
                 <td>
-                    @php $torrent = App\Models\Torrent::where('id', '=', $resurrection->torrent_id)->pluck('id')
+                    @php $torrent = \src\Domain\Torrent\Torrent::where('id', '=', $resurrection->torrent_id)->pluck('id')
                     @endphp
                     @php $history = App\Models\History::select(['seedtime'])->where('user_id', '=',
                         $user->id)->where('torrent_id', '=', $torrent)->first() @endphp

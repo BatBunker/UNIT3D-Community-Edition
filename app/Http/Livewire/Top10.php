@@ -13,10 +13,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Torrent;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use src\Domain\Torrent\Torrent;
 
 class Top10 extends Component
 {

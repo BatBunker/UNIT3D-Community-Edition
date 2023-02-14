@@ -14,8 +14,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Graveyard;
-use App\Models\Torrent;
 use Illuminate\Http\Request;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\GraveyardControllerTest

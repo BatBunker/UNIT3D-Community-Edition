@@ -17,8 +17,9 @@ use App\Notifications\NewComment;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use src\Helpers\Bbcode;
-use src\Helpers\Linkify;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\Bbcode;
+use Src\Helper\Linkify;
 use voku\helper\AntiXSS;
 
 class TorrentRequest extends Model

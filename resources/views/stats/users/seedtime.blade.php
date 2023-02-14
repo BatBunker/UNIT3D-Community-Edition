@@ -40,7 +40,7 @@
                         <td>
                             <x-user_tag :user="$user" :anon="$user->private_profile"/>
                         </td>
-                        <td>{{ \src\Helpers\StringHelper::timeElapsed($user->seedtime ?? 0) }}</td>
+                        <td>{{ \Src\Helper\StringHelper::timeElapsed($user->seedtime ?? 0) }}</td>
                     </tr>
                 @endforeach
                 </tbody>

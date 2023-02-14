@@ -13,11 +13,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torrent;
 use App\Models\TorrentDownload;
 use App\Models\User;
 use Illuminate\Http\Request;
-use src\Helpers\Bencode;
+use src\Domain\Torrent\Torrent;
+use Src\Helper\Bencode;
 
 class TorrentDownloadController extends Controller
 {

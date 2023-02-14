@@ -14,11 +14,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\History;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Notifications\NewReseedRequest;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
+use src\Domain\Torrent\Torrent;
 
 class ReseedController extends Controller
 {

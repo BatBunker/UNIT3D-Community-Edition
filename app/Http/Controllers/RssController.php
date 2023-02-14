@@ -18,10 +18,10 @@ use App\Models\Genre;
 use App\Models\Group;
 use App\Models\Resolution;
 use App\Models\Rss;
-use App\Models\Torrent;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\RssControllerTest

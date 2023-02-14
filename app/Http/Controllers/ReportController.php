@@ -14,10 +14,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
-use App\Models\Torrent;
 use App\Models\TorrentRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\ReportControllerTest

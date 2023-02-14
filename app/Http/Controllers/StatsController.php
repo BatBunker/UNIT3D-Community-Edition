@@ -18,11 +18,11 @@ use App\Models\Group;
 use App\Models\History;
 use App\Models\Language;
 use App\Models\Peer;
-use App\Models\Torrent;
 use App\Models\TorrentRequest;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\StatsControllerTest

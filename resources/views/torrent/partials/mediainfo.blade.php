@@ -39,7 +39,7 @@
                                             Rate:</u> {{ $mediaInfo['general']['bit_rate'] ?? __('common.unknown') }}
                                     </div>
                                     <div><u style="font-weight: bold;">Overall
-                                            Size:</u> {{ \src\Helpers\StringHelper::formatBytes($mediaInfo['general']['file_size'] ?? 0, 2) }}
+                                            Size:</u> {{ \Src\Helper\StringHelper::formatBytes($mediaInfo['general']['file_size'] ?? 0, 2) }}
                                     </div>
                                 </div>
                                 <div class="mediainfo-video" style="width: 30%; display:table-cell; text-align: left;">

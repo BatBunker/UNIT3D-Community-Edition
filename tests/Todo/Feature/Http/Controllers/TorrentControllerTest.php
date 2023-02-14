@@ -2,8 +2,8 @@
 
 namespace Tests\Todo\Feature\Http\Controllers;
 
-use App\Models\Torrent;
 use App\Models\User;
+use src\Domain\Torrent\Torrent;
 use Tests\TestCase;
 
 /**

@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use src\Domain\Torrent\Torrent;
 use Src\Helper\Bbcode;
 use Src\Helper\Linkify;
 use Src\Helper\StringHelper;

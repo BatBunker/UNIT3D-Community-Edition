@@ -28,10 +28,10 @@ use App\Models\Post;
 use App\Models\PrivateMessage;
 use App\Models\Thank;
 use App\Models\Topic;
-use App\Models\Torrent;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Unit\Console\Commands\AutoSoftDeleteDisabledUsersTest

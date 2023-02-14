@@ -11,8 +11,29 @@
  * @license    https://www.gnu.org/licenses/agpl-3.0.en.html/ GNU Affero General Public License v3.0
  */
 
-namespace App\Models;
+namespace src\Domain\Torrent;
 
+use App\Models\BonTransactions;
+use App\Models\Bookmark;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Distributor;
+use App\Models\FeaturedTorrent;
+use App\Models\Genre;
+use App\Models\History;
+use App\Models\Keyword;
+use App\Models\Peer;
+use App\Models\PersonalFreeleech;
+use App\Models\PlaylistTorrent;
+use App\Models\Region;
+use App\Models\Resolution;
+use App\Models\Subtitle;
+use App\Models\Thank;
+use App\Models\TorrentFile;
+use App\Models\TorrentRequest;
+use App\Models\Type;
+use App\Models\User;
+use App\Models\Warning;
 use App\Notifications\NewComment;
 use App\Notifications\NewThank;
 use App\Traits\Auditable;

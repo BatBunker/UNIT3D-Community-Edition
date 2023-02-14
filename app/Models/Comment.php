@@ -18,8 +18,8 @@ use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use src\Helpers\Bbcode;
-use src\Helpers\Linkify;
+use Src\Helper\Bbcode;
+use Src\Helper\Linkify;
 
 class Comment extends Model
 {

@@ -16,10 +16,10 @@ namespace App\Http\Controllers;
 use App\Bots\IRCAnnounceBot;
 use App\Models\FeaturedTorrent;
 use App\Models\FreeleechToken;
-use App\Models\Torrent;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Todo\Feature\Http\Controllers\TorrentControllerTest

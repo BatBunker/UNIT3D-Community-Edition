@@ -48,7 +48,7 @@
                     </td>
                     <td>
                         @if($b->whereNotNull('torrent_id'))
-                            @php $torrent = App\Models\Torrent::select(['anon'])->find($b->torrent_id) @endphp
+                            @php $torrent = \src\Domain\Torrent\Torrent::select(['anon'])->find($b->torrent_id) @endphp
                         @endif
                         @if(isset($torrent) && $torrent->anon === 1 && $b->receiver !== $user->id)
                             <span class="badge-user text-bold">{{ __('common.anonymous') }}</span>
@@ -82,6 +82,6 @@
             <dd>{{ $tips_received }}</dd>
             <dt>{{ __('bon.you-have-sent-tips') }}</dt>
             <dd>{{ $tips_sent }}</dd>
-        </div>
+            </div>
     </section>
 @endsection

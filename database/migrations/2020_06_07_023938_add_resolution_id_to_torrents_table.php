@@ -12,10 +12,10 @@
  */
 
 use App\Models\Resolution;
-use App\Models\Torrent;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use src\Domain\Torrent\Torrent;
 
 return new class () extends Migration {
     /**

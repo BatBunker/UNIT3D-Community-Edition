@@ -13,10 +13,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Torrent;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
+use src\Domain\Torrent\Torrent;
 
 class GraveyardSearch extends Component
 {

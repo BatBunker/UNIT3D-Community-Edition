@@ -5,7 +5,7 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Str;
 use Psr\SimpleCache\InvalidArgumentException;
-use src\Helpers\EmailBlacklistUpdater;
+use Src\Helper\EmailBlacklistUpdater;
 
 class EmailBlacklist implements Rule
 {

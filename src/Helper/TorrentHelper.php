@@ -28,11 +28,11 @@ use App\Achievements\UserMadeUpload;
 use App\Bots\IRCAnnounceBot;
 use App\Models\Follow;
 use App\Models\PrivateMessage;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Models\Wish;
 use App\Notifications\NewUpload;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 class TorrentHelper
 {

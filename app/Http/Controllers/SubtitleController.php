@@ -28,10 +28,10 @@ use App\Achievements\UserUploaded900Subtitles;
 use App\Achievements\UserUploadedFirstSubtitle;
 use App\Models\MediaLanguage;
 use App\Models\Subtitle;
-use App\Models\Torrent;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use src\Domain\Torrent\Torrent;
 
 class SubtitleController extends Controller
 {

@@ -14,8 +14,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Thank;
-use App\Models\Torrent;
 use Livewire\Component;
+use src\Domain\Torrent\Torrent;
 
 class ThankButton extends Component
 {

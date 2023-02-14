@@ -16,11 +16,11 @@ namespace src\Commands;
 use App\Models\Graveyard;
 use App\Models\History;
 use App\Models\PrivateMessage;
-use App\Models\Torrent;
 use App\Models\User;
 use App\Repositories\ChatRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use src\Domain\Torrent\Torrent;
 
 /**
  * @see \Tests\Unit\Console\Commands\AutoGraveyardTest

@@ -16,8 +16,8 @@ namespace App\Models;
 use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use src\Helpers\BBCodeConverter;
-use src\Helpers\MarkdownExtra;
+use Src\Helper\BBCodeConverter;
+use Src\Helper\MarkdownExtra;
 
 class Page extends Model
 {
