@@ -57,7 +57,7 @@ class CLI extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(dirname(__DIR__,3) . '/Command');
+        $this->load(dirname(__DIR__, 3) . '/Command');
 
         require \base_path('routes/console.php');
     }
